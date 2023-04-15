@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @donor %>
+
+<div>
+  <%= link_to "Edit this donor", edit_donor_path(@donor) %> |
+  <%= link_to "Back to donors", donors_path %>
+
+  <%= button_to "Destroy this donor", @donor, method: :delete %>
+</div>
