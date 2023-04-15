@@ -9,6 +9,7 @@ class CreateCharities < ActiveRecord::Migration[7.0]
       t.integer :goal_amount
       t.integer :total_donations
       t.integer :admin_id
+      t.boolean :approved
 
       t.timestamps
     end

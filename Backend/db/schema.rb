@@ -40,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_15_122959) do
     t.integer "goal_amount"
     t.integer "total_donations"
     t.integer "admin_id"
+    t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
