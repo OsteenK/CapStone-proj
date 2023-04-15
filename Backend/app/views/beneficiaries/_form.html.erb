@@ -1,0 +1,47 @@
+<%= form_with(model: beneficiary) do |form| %>
+  <% if beneficiary.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(beneficiary.errors.count, "error") %> prohibited this beneficiary from being saved:</h2>
+
+      <ul>
+        <% beneficiary.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :location, style: "display: block" %>
+    <%= form.text_field :location %>
+  </div>
+
+  <div>
+    <%= form.label :description, style: "display: block" %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div>
+    <%= form.label :items, style: "display: block" %>
+    <%= form.text_area :items %>
+  </div>
+
+  <div>
+    <%= form.label :img_url, style: "display: block" %>
+    <%= form.text_field :img_url %>
+  </div>
+
+  <div>
+    <%= form.label :charity_id, style: "display: block" %>
+    <%= form.number_field :charity_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
