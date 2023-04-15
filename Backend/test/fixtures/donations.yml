@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  donation_amount: 1
+  anonymous: false
+  charity_id: 1
+  donor_id: 1
+
+two:
+  donation_amount: 1
+  anonymous: false
+  charity_id: 1
+  donor_id: 1
