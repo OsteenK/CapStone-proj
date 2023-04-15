@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  email: MyString
+  password: MyString
+  description: MyText
+  img_url: MyString
+  goal_amount: 1
+  total_donations: 1
+  admin_id: 1
+
+two:
+  name: MyString
+  email: MyString
+  password: MyString
+  description: MyText
+  img_url: MyString
+  goal_amount: 1
+  total_donations: 1
+  admin_id: 1
