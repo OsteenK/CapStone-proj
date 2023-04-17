@@ -1,23 +1,21 @@
-//this was test for signup and login pages please revert to app.js styling -antony and osteen
 
-import React, { useState } from "react";
-// import logo from './logo.svg';
 import './App.css';
-import { Login } from "./components/Login";
-import { SignUp } from "./components/SignUp"
+import { Routes,Route } from 'react-router-dom';
+import SignUp from '../src/components/SignUp';
+import Login from '../src/components/Login';
+import NavBar from '../src/components/NavBar'
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('login');
-
-  const toggleForm = (formName) => {
-    setCurrentForm(formName);
-  }
-
   return (
-    <div className="App bg-purple-200">
-      {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <SignUp onFormSwitch={toggleForm} />
-      }
+    <div className="App">
+      <NavBar/>
+      <Routes>
+        
+      <Route exact path="/login" element={<Login/>} />
+      <Route exact path="/signup" element={<SignUp/>} />
+      
+
+      </Routes>
     </div>
   );
 }
