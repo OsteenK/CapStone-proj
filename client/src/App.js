@@ -1,24 +1,25 @@
-//this was test for signup and login pages please revert to app.js styling -antony and osteen
-
-import React, { useState } from "react";
-// import logo from './logo.svg';
 import './App.css';
-import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
-import { Login } from "./components/Login";
-import { SignUp } from "./components/SignUp"
+import { Routes,Route } from 'react-router-dom';
+import SignUp from '../src/components/SignUp';
+import Login from '../src/components/Login';
+import LandingPage from '../src/components/DonorPage/LandingPage';
+import NavBar from '../src/components/NavBar'
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <NavBar>
-    <Footer>
-    <div className="App bg-purple-200">
-      {
-        // currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <SignUp onFormSwitch={toggleForm} />
-      }
+    <div className="App">
+      <NavBar/>
+      <Footer/>
+      <Routes>
+        
+      <Route path='/' element={<LandingPage/>}/>
+      <Route exact path="/login" element={<Login/>} />
+      <Route exact path="/signup" element={<SignUp/>} />
+      
+
+      </Routes>
     </div>
-    </Footer>
-    </NavBar>
   );
 }
 
