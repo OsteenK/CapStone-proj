@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @beneficiary %>
+
+<div>
+  <%= link_to "Edit this beneficiary", edit_beneficiary_path(@beneficiary) %> |
+  <%= link_to "Back to beneficiaries", beneficiaries_path %>
+
+  <%= button_to "Destroy this beneficiary", @beneficiary, method: :delete %>
+</div>
