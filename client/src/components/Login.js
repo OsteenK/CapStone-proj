@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import './login.css'
 
-export const Login = (props) => {
+function Login (props){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [accountType, setAccountType] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
+
+  function handleClick() {
+    props.onFormSwitch('Register');
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,7 +69,7 @@ export const Login = (props) => {
       </form>
       <button
         className="link-btn"
-        onClick={() => props.onFormSwitch("register")}
+        onClick={handleClick}
       >
         Don't have an account? Register here.
       </button>
@@ -72,3 +77,5 @@ export const Login = (props) => {
     </div>
   );
 };
+
+export default Login;

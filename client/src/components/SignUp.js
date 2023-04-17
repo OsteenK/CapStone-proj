@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import './signup.css';
 
-export const SignUp = (props) => {
+ function SignUp (props){
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const [userType, setUserType] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
+
+  function handleClick() {
+    props.onFormSwitch('login');
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,7 +20,7 @@ export const SignUp = (props) => {
   const handleUserTypeChange = (e) => {
     setUserType(e.target.value);
   }
-
+ 
   return (
     <div className="auth-form-container bg-purple-350">
       <h2>SignUp</h2>
@@ -47,7 +52,9 @@ export const SignUp = (props) => {
         </div>
         <button className="bg-blue-800" type="submit">Sign Up</button>
       </form>
-      <button className="link-btn text-black" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+      <button className="link-btn text-black" onClick={handleClick}>Already have an account? Login here.</button>
     </div>
   );
 }
+
+export  default SignUp ;
