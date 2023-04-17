@@ -1,0 +1,59 @@
+footer {
+    background-color: #3A1A52;;
+    color: white;
+    padding: 40px;
+    position: fixed;
+    bottom: 0;
+    width: 1500px;
+    height: 195px;
+  }
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .logo-container img {
+    height: 50px;
+    margin-right: 20px;
+  }
+  
+  .logo-container p {
+    position: absolute;
+width: 557px;
+height: 146px;
+left: 28px;
+top: 129px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 19px;
+
+color: #FFFFFF;
+
+
+  }
+  
+  .logo-container a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .contact-container h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-container p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  
+  .contact-container a {
+    color: white;
+    text-decoration: underline;
+  }

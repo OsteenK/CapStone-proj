@@ -1,43 +1,62 @@
 .navbar {
-    background-color: #D1B2FF;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    background-color: #d1c4e9;
+    padding: 20px;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
   }
   
   .navbar-left img {
     height: 50px;
   }
   
-  .navbar-right ul {
+  .navbar-left ul {
     display: flex;
-    list-style-type: none;
+    list-style: none;
     margin: 0;
     padding: 0;
   }
   
-  .navbar-right li {
+  .navbar-left ul li {
     margin-right: 20px;
   }
   
-  .navbar-right li a {
-    color: #FFFFFF;
-    font-size: 16px;
+  .navbar-left ul li a {
     text-decoration: none;
+    color: #512da8;
+    font-weight: bold;
   }
   
   .navbar-buttons button {
-    background-color: #6A0DAD;
+    margin-left: 20px;
     border: none;
-    border-radius: 5px;
-    color: #FFFFFF;
+    border-radius: 66px;
+    font-weight: bold;
     cursor: pointer;
-    font-size: 16px;
-    margin-left: 10px;
-    padding: 10px;
   }
   
-  .navbar-buttons button:hover {
-    background-color: #4A046A;
+  .donate-button {
+    background-color: #9c27b0;
+    color: #fff;
+    padding: 10px 20px;
   }
   
+  .login-button {
+    background-color: #9c27b0;
+    color: #fff;
+    padding: 10px 20px;
+  }
+  
+  body {
+    margin-top: 80px;
+  }
