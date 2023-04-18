@@ -1,276 +1,64 @@
-/* LandingPage.css */
-
-/* Styling for the hero section */
-.hero-section {
-  
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f2f2f2;
-  padding: 600px;
-  padding-bottom: 800px;
-  padding-top: 8px;
-  /* position: fixed; */
-}
-
-.hero-image {
-  /* background-image: url('/home/rx/coding Repo/PHASE5/CapStone-proj/client/src/components/DonorPage/photo-1584731683340-6495e2e103e9.avif'); */
+.hero{
+  background-image: url("/home/rx/coding Repo/PHASE5/CapStone-proj/client/src/components/DonorPage/photo-1584731683340-6495e2e103e9.avif");
   background-size: cover;
+  height: 70vh;
   background-position: center;
-  width: 50%;
-  height: 0px;
-}
-
-.hero-card {
-  /* width: 45%;
-  padding: 40px;
-  background-color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center; */
-  /* Text */
-
-/* position: absolute; */
-background: rgba(178, 165, 212, 0.77);
-border-radius: 20px;
-/* Put a smile on her face */
-
-position: absolute;
-/* position: fixed;  */
-width: 510px;
-height: 400px;
-left: 80px;
-top: 250px;
-padding-top: 50px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 8000;
-font-size: 48px;
-line-height: 60px;
-
-color: #FFFFFF; 
-
-
-}
-
-.hero-card h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.hero-card-paragraph {
-  font-size: 1rem;
-  line-height: 1.5;
-  margin-bottom: 40px;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.hero-card-button {
-  background-color: #9840D7;
-  color: #ffffff;
-  border: none;
-  padding: 1px 15px;
-  font-size: 1rem;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.hero-card-button:hover {
-  background-color: #9840D7;
-}
-
-/* Styling for the content section */
-.content-section {
-  padding: 70px;
-}
-
-.content-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-  text-align: center;
-  color: #3A1A52;
-}
-
-.content-section h3 {
-  /* Empower girls with DIGNITY and CONFIDENCE. */
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 24px;
-  margin-bottom: 20px;
   margin-top: 10px;
-  line-height: 29px;
-  text-align: center;
-  color: #3A1A52;
-}
-
-.mission-cards {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 100px;
-  padding-right: 100px;
-}
-
-.mission-card {
-/* position: absolute; */
-      width: 350px;
-      height: 340px;
-      gap: 40px;
-      background: #FFFFFF;
-      border: 1px solid #3A1A52;
-      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
-      border-radius: 20px;
-      box-sizing: border-box;
-  
-    }
-
-.mission-card:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-.mission-icon {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-  /* .mission-icon1 {
-  background-image: url('https://www.figma.com/file/qz7bc0jCmThGqHCM91dR8s/Capstone-Donation-Project?node-id=42-173&t=Lq9Vaw9gdUWsfuhD-4');
-} */
-
-/* .mission-icon2 {
-  background-image: url('path/to/mission-icon2.svg');
-}
-
-.mission-icon3 {
-   background-image: url('path/to/mission-icon3.svg'); 
-}   */ */
-.mission-title {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color:#3A1A52;
-  font-weight: 400;
-  
-}
-
-.mission-text {
-  font-size: 1.2rem;
-  line-height: 1.5;
-  margin-bottom: 20px;
-  color: #9840D7;
-  font-weight: 500;
-}
-
-.fight-button {
-  background-color: #9840D7;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 60px;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.fight-button:hover {
-  background-color: #9840D7;
-}
-
-/* Styling for the causes section */
-.beneficiaryStoriesToDisplay-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #B2A5D4;
-  
-}
-.beneficiaryStoriesToDisplay-section{
-  padding: 100px;
-}
-
-
-.beneficiaryStory-card {
- width: 400px;
- height: 400px;
- gap: 40px;
- background: #FFFFFF;
- border: 1px solid #3A1A52;
- box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
- border-radius: 20px;
- box-sizing: border-box;
- flex-basis: calc(33.33% - 20px);
- margin: 10px;
- padding: 20px;
- text-align: center;
- transition: all 0.3s ease;
-
-}
-
-.beneficiaryStory-card:hover {
-  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
-  transform: translateY(-10px);
-  
-}
-
-.beneficiaryStory-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  padding-left: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 20px;
-  color: #9840D7;
-}
-
-.beneficiaryStory-text {
-  font-size: 1.2rem;
-  margin-bottom: 1.5rem;
-  color: #3A1A52;
-  font-family: 'Inter';
-}
-
-.beneficiaryStory-button {
-  background-color: #9840D7;
-  color: #fff;
-  border: none;
-  border-radius: 2rem;
-  padding: 0.8rem 1.5rem;
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.beneficiaryStory-button:hover {
-  background-color: #9840D7;
-}
-.ReactPaginate {
   display: flex;
   justify-content: center;
-  margin-top: 2rem;
-}
-
-.pagination li {
-  list-style: none;
-  margin-right: 0.5rem;
-}
-
-.active {
-  font-weight: bold;
-}
-
-/*   
-@media screen and (max-width: 768px) {
-  .causes-card {
-    width: 45%;
+  align-items: center;
   }
-} */
+  
+  .hero .container1 {
+  text-align: center;
+  margin-left: 10%;
+  }
+  
+  .card-title{
+  color: #9840D7;
+  }
+  
+  .btn-primary{
+  border-radius: 70px;
+  background-color: #9840D7;
+  margin-left: 10%;
+  }
+  
+  .card-text{
+  color: #3A1A52;
+  }
+  
+  .card {
+  margin: 15px;
+  border-radius: 10px;
+  }
+  
+  @media (min-width: 768px) { /* apply styles for screens larger than 768px */
+  .hero .container1 {
+  margin-left: 20%;
+  }
+  
+  .btn-primary {
+  margin-left: 20%;
+  }
+  }
+  
+  @media (min-width: 992px) { /* apply styles for screens larger than 992px */
+  .hero .container1 {
+  margin-left: 30%;
+  }
+  
+  .btn-primary {
+  margin-left: 30%;
+  }
+  }
+  
+  @media (min-width: 1200px) { /* apply styles for screens larger than 1200px */
+  .hero .container1 {
+  margin-left: 40%;
+  }
+  
+  .btn-primary {
+  margin-left: 40%;
+  }
+  }
