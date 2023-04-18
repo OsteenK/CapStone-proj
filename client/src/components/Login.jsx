@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import './login.css'
+import { Link } from "react-router-dom";
 
 function Login (props){
   const [email, setEmail] = useState("");
@@ -17,7 +18,9 @@ function Login (props){
   };
 
   return (
-    <div className="">
+  
+
+    <div className="bg-purple-200">
       <div className="auth-form-container ">
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
@@ -67,14 +70,12 @@ function Login (props){
           Log In
         </button>
       </form>
-      <button
-        className="link-btn"
-        onClick={handleClick}
-      >
-        Don't have an account? Register here.
-      </button>
+      <Link  to='/signup'> Don't have an account? Register here.
+      </Link>
+       
     </div>
     </div>
+    
   );
 };
 

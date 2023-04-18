@@ -1,0 +1,16 @@
+current directory: /home/moringa/Desktop/Development/code/Phase-5/CapStone-proj/Backend/vendor/bundle/ruby/3.0.0/gems/debug-1.7.2/ext/debug
+/home/moringa/.rvm/rubies/ruby-3.0.0/bin/ruby -I /home/moringa/.rvm/rubies/ruby-3.0.0/lib/ruby/3.0.0 -r ./siteconf20230418-6219-3obeou.rb extconf.rb
+creating Makefile
+
+current directory: /home/moringa/Desktop/Development/code/Phase-5/CapStone-proj/Backend/vendor/bundle/ruby/3.0.0/gems/debug-1.7.2/ext/debug
+make "DESTDIR=" clean
+
+current directory: /home/moringa/Desktop/Development/code/Phase-5/CapStone-proj/Backend/vendor/bundle/ruby/3.0.0/gems/debug-1.7.2/ext/debug
+make "DESTDIR="
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.so
+
+current directory: /home/moringa/Desktop/Development/code/Phase-5/CapStone-proj/Backend/vendor/bundle/ruby/3.0.0/gems/debug-1.7.2/ext/debug
+make "DESTDIR=" install
+/usr/bin/install -m 0755 debug.so ./.gem.20230418-6219-eylbgz/debug
