@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+	<title>Thank You for Your Generous Donation!</title>
+</head>
+
+<body>
+	<h4>Dear <%= @donor.first_name%>,</h4>
+	<p>On behalf of <%= @charity.name%>, I would like to extend our heartfelt gratitude for your generous contribution to our cause. Your donation of $<%= @donation.donation_amount%> will go a long way in supporting our efforts to empower girls around the world with access to menstrual hygiene products, so they can stay in school, participate in their communities, and achieve their full potential.</p>
+
+	<p>Your kindness and support are deeply appreciated, and we are grateful for your commitment to making a positive impact in the world. With your help, we can continue to provide every girl with access to basic sanitary products, and break down the barriers that prevent girls from achieving their dreams.</p>
+
+    <p>Read how your donations leave a <strong>permanent, positive impact</strong> on the lives of these girls <a src="/beneficiary-stories">here</a>.</p>
+
+	<p>Once again, thank you for your support and for choosing to partner with us in our mission. We couldn't do it without donors like you.</p>
+
+	<p>Warm regards,<br>
+	<em>Give Hope</em> and 
+	<em><%= @charity.name%></em></p>
+
+    <img src="https://github.com/astronaut-nemo/phase-5-sendgrid-test/blob/main/app/views/user_notifier_mailer/Email%20Banner.png?raw=true"/>
+</body>
+</html>

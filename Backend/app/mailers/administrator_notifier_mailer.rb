@@ -1,0 +1,2 @@
+class AdministratorNotifierMailer < ApplicationMailer
+end

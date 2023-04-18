@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :null_session
   before_action :authorize
 
@@ -67,4 +68,5 @@ class ApplicationController < ActionController::Base
 
     render json: { message: 'Please log in as a donor or as a charity or as an admin' }, status: :unauthorized
   end
+
 end
