@@ -14,7 +14,7 @@ function App() {
     <div className="App">
 
       <NavBar/>
-
+      <Footer/>
       <Routes>
         
       <Route path='/' element={<LandingPage/>}/>
