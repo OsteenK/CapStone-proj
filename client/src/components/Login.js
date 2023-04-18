@@ -17,7 +17,9 @@ function Login (props){
   };
 
   return (
-    <div className="">
+  
+
+    <div className="bg-purple-200">
       <div className="auth-form-container ">
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
@@ -75,6 +77,7 @@ function Login (props){
       </button>
     </div>
     </div>
+    
   );
 };
 

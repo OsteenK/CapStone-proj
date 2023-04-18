@@ -22,7 +22,7 @@ import './signup.css';
   }
  
   return (
-    <div className="auth-form-container bg-purple-350">
+    <div className="auth-form-container bg-purple-200">
       <h2>SignUp</h2>
       <form className="register-form" onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
