@@ -1,70 +1,116 @@
 class CharitiesController < ApplicationController
-  before_action :set_charity, only: %i[ show edit update destroy ]
+  before_action :set_charity, only: [:show, :edit, :update, :destroy]
 
-  # GET /charities or /charities.json
   def index
     @charities = Charity.all
+    render json: @charities, status: :ok
   end
 
-  # GET /charities/1 or /charities/1.json
   def show
+    render json: @charity, status: :ok
   end
 
-  # GET /charities/new
-  def new
-    @charity = Charity.new
-  end
-
-  # GET /charities/1/edit
-  def edit
-  end
-
-  # POST /charities or /charities.json
   def create
     @charity = Charity.new(charity_params)
 
-    respond_to do |format|
-      if @charity.save
-        format.html { redirect_to charity_url(@charity), notice: "Charity was successfully created." }
-        format.json { render :show, status: :created, location: @charity }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @charity.errors, status: :unprocessable_entity }
-      end
+    if @charity.save
+      render json: @charity, status: :created, location: @charity
+    else
+      render json: @charity.errors, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /charities/1 or /charities/1.json
   def update
-    respond_to do |format|
-      if @charity.update(charity_params)
-        format.html { redirect_to charity_url(@charity), notice: "Charity was successfully updated." }
-        format.json { render :show, status: :ok, location: @charity }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @charity.errors, status: :unprocessable_entity }
-      end
+    if @charity.update(charity_params)
+      render json: @charity, status: :ok
+    else
+      render json: @charity.errors, status: :unprocessable_entity
     end
   end
 
-  # DELETE /charities/1 or /charities/1.json
   def destroy
     @charity.destroy
+    head :no_content
+  end
 
-    respond_to do |format|
-      format.html { redirect_to charities_url, notice: "Charity was successfully destroyed." }
-      format.json { head :no_content }
+  def beneficiaries
+    @charity = Charity.find(params[:id])
+    @beneficiaries = @charity.beneficiaries
+    render json: @beneficiaries, status: :ok
+  end
+
+  def create_beneficiary
+    @charity = Charity.find(params[:id])
+    @beneficiary = @charity.beneficiaries.create(beneficiary_params)
+    render json: @beneficiary, status: :created, location: @beneficiary
+  end
+
+  def update_beneficiary
+    @charity = Charity.find(params[:id])
+    @beneficiary = @charity.beneficiaries.find(params[:beneficiary_id])
+
+    if @beneficiary.update(beneficiary_params)
+      render json: @beneficiary, status: :ok
+    else
+      render json: @beneficiary.errors, status: :unprocessable_entity
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_charity
-      @charity = Charity.find(params[:id])
-    end
+  def destroy_beneficiary
+    @charity = Charity.find(params[:id])
+    @beneficiary = @charity.beneficiaries.find(params[:beneficiary_id])
+    @beneficiary.destroy
+    head :no_content
+  end
 
-    # Only allow a list of trusted parameters through.
-    def charity_params
-      params.require(:charity).permit(:name, :email, :password, :description, :img_url, :goal_amount, :total_donations, :admin_id)
+  def inventory
+    @charity = Charity.find(params[:id])
+    @beneficiary = @charity.beneficiaries.find(params[:beneficiary_id])
+    @inventory = @beneficiary.inventory
+    render json: @inventory, status: :ok
+  end
+
+  def create_inventory
+    @charity = Charity.find(params[:id])
+    @beneficiary = @charity.beneficiaries.find(params[:beneficiary_id])
+    @inventory = @beneficiary.inventory.create(inventory_params)
+    render json: @inventory, status: :created, location: @inventory
+  end
+
+  def update_inventory
+    @charity = Charity.find(params[:id])
+    @beneficiary = @charity.beneficiaries.find(params[:beneficiary_id])
+    @inventory = @beneficiary.inventory.find(params[:inventory_id])
+
+    if @inventory.update(inventory_params)
+      render json: @inventory, status: :ok
+    else
+      render json: @inventory.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy_inventory
+    @charity = Charity.find(params[:id])
+    @beneficiary = @charity.beneficiaries.find(params[:beneficiary_id])
+    @inventory = @beneficiary.inventory.find(params[:inventory_id])
+    @inventory.destroy
+    head :no_content
+end
+
+private
+def set_charity
+@charity = Charity.find(params[:id])
+end
+
+def charity_params
+params.require(:charity).permit(:name, :description)
+end
+
+def beneficiary_params
+params.require(:beneficiary).permit(:name, :description)
+end
+
+def inventory_params
+params.require(:inventory).permit(:name, :description, :quantity)
+end
 end
