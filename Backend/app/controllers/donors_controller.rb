@@ -1,70 +1,63 @@
 class DonorsController < ApplicationController
-  before_action :set_donor, only: %i[ show edit update destroy ]
-
-  # GET /donors or /donors.json
+  before_action :authorize_request, only: [:create, :donate, :set_donation_reminder]
+  
   def index
-    @donors = Donor.all
+    charities = Charity.all
+    render json: { charities: charities }, status: :ok
   end
 
-  # GET /donors/1 or /donors/1.json
-  def show
-  end
-
-  # GET /donors/new
-  def new
-    @donor = Donor.new
-  end
-
-  # GET /donors/1/edit
-  def edit
-  end
-
-  # POST /donors or /donors.json
   def create
-    @donor = Donor.new(donor_params)
-
-    respond_to do |format|
-      if @donor.save
-        format.html { redirect_to donor_url(@donor), notice: "Donor was successfully created." }
-        format.json { render :show, status: :created, location: @donor }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @donor.errors, status: :unprocessable_entity }
-      end
+    donor = Donor.create(donor_params)
+    if donor.save
+      render json: { message: 'Donor created successfully' }, status: :created
+    else
+      render json: { error: 'Unable to create donor' }, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /donors/1 or /donors/1.json
-  def update
-    respond_to do |format|
-      if @donor.update(donor_params)
-        format.html { redirect_to donor_url(@donor), notice: "Donor was successfully updated." }
-        format.json { render :show, status: :ok, location: @donor }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @donor.errors, status: :unprocessable_entity }
-      end
+  def donate
+    charity = Charity.find(params[:charity_id])
+    donation = Donation.create(donation_params)
+    if donation.save
+      render json: { message: 'Donation made successfully' }, status: :created
+    else
+      render json: { error: 'Unable to make donation' }, status: :unprocessable_entity
     end
   end
 
-  # DELETE /donors/1 or /donors/1.json
-  def destroy
-    @donor.destroy
-
-    respond_to do |format|
-      format.html { redirect_to donors_url, notice: "Donor was successfully destroyed." }
-      format.json { head :no_content }
+  def set_donation_reminder
+    reminder = Reminder.create(reminder_params)
+    if reminder.save
+      render json: { message: 'Donation reminder set successfully' }, status: :created
+    else
+      render json: { error: 'Unable to set donation reminder' }, status: :unprocessable_entity
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_donor
-      @donor = Donor.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def donor_params
-      params.require(:donor).permit(:first_name, :last_name, :email, :password)
+  def donor_params
+    params.permit(:name, :email, :password)
+  end
+
+  def donation_params
+    params.permit(:amount, :charity_id, :anonymous, :payment_method)
+  end
+
+  def reminder_params
+    params.permit(:donor_id, :reminder_time)
+  end
+
+  def authorize_request
+    header = request.headers['Authorization']
+    token = header.split(' ').last if header
+    begin
+      @decoded = JsonWebToken.decode(token)
+      @current_donor = Donor.find(@decoded[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { errors: e.message }, status: :unauthorized
+    rescue JWT::DecodeError => e
+      render json: { errors: e.message }, status: :unauthorized
     end
+  end
 end
