@@ -9,18 +9,21 @@ import Footer from './components/Footer';
 
 
 
+
 function App() {
   return (
     <div className="App">
 
+
+
       <NavBar/>
       <Footer/>
       <Routes>
-        
+
       <Route path='/' element={<LandingPage/>}/>
       <Route exact path="/login" element={<Login/>} />
       <Route exact path="/signup" element={<SignUp/>} />
-      
+
 
       </Routes>
     </div>
