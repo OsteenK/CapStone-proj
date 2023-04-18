@@ -3,19 +3,19 @@ import { Routes,Route } from 'react-router-dom';
 import SignUp from '../src/components/SignUp';
 import Login from '../src/components/Login';
 import LandingPage from '../src/components/DonorPage/LandingPage';
-import ContactUs from './components/ContactUs';
-
+import CharityDashboard from '../src/components/CharityPage/CharityDashboard'
 import NavBar from '../src/components/NavBar'
 import Footer from './components/Footer';
+import ContactUs from './components/ContactUs'
 
 
 
 function App() {
+  
   return (
     <div className="App">
 
-      <NavBar/>
-      <Footer/>
+     
       <Routes>
         
       <Route path='/' element={<LandingPage/>}/>
@@ -23,9 +23,12 @@ function App() {
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/contactus" element={<ContactUs/>} />
 
+      <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
       
 
       </Routes>
+      <NavBar/>
+      <Footer/>
     </div>
    
   );

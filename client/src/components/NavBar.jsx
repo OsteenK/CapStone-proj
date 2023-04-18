@@ -21,7 +21,10 @@ function NavBar() {
         </ul>
         <div className='navbar-buttons'>
           <button className='donate-button'>Donate</button>
+          
+          <Link   to='/login' >
           <button className='login-button'>Login</button>
+          </Link>
         </div>
       </div>
     </nav>
