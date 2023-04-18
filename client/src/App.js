@@ -1,10 +1,31 @@
 import './App.css';
-import ContactUs from './components/ContactUs'
+import { Routes,Route } from 'react-router-dom';
+import SignUp from '../src/components/SignUp';
+import Login from '../src/components/Login';
+import LandingPage from '../src/components/DonorPage/LandingPage';
+import ContactUs from './components/ContactUs';
+
+import NavBar from '../src/components/NavBar'
+import Footer from './components/Footer';
+
+
 
 function App() {
   return (
     <div className="App">
-    <ContactUs/>
+
+      <NavBar/>
+      <Footer/>
+      <Routes>
+        
+      <Route path='/' element={<LandingPage/>}/>
+      <Route exact path="/login" element={<Login/>} />
+      <Route exact path="/signup" element={<SignUp/>} />
+      <Route exact path="/contactus" element={<ContactUs/>} />
+
+      
+
+      </Routes>
     </div>
    
   );

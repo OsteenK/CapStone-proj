@@ -24,17 +24,17 @@ const ContactUs = () => {
   };
 
   return (
-    <div>
+    <div >
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-            <div class="mb-10px">Contact Us</div>
+            <div class="">Contact Us</div>
           </div>
         </div>
       </div>
 
       <div className="row p-5">
-        <div className="col mt-2 ">
+        <div className="col  ">
           <h1>
             Queries? Feedback? <br />
             Comments?

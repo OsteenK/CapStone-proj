@@ -1,13 +1,14 @@
 .container-fluid {
     background-color: #B2A5D4;
-    height: 60px;
+    /* height: 20px; */
     font-size: 35px;
     font-weight: bolder;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    padding-block: 50px;
+    padding-block: 20px;
+
   }
   
   h1 {
@@ -37,4 +38,8 @@
     text-align: left;
   }
  
+  body {
+    overflow-x: hidden;
+  }
   
+ 
