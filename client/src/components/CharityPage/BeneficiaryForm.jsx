@@ -2,6 +2,7 @@
 import './BeneficiaryForm.css'
 import { useState } from "react";
 import Footer from '../Footer';
+import CharityNavBar from './CharityNavBar';
 const BeneficiaryForm = () => {
 
     const [benName, setBenName] = useState("");
@@ -54,6 +55,7 @@ const BeneficiaryForm = () => {
 
     return(
         <div>
+            <CharityNavBar />
             <form className="Beneficiary-form" onSubmit={handleSubmit}>
                 <input className="beneficiary-form-input"
                 name="Name"
@@ -102,7 +104,7 @@ const BeneficiaryForm = () => {
                 value= {description}
                 placeholder= "Description of how your charity helped the beneficiary using the donations from the donors"
                 />
-                <button className='rounded-full' type= "submit">Add Story</button>
+                <button className='submit-button' type= "submit">Add Story</button>
             </form>
 
             <div className='text-part-left'>

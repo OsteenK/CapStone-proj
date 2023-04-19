@@ -1,6 +1,7 @@
 
 import React, {useState} from "react";
 import './CharityEditForm.css'
+import CharityNavBar from "./CharityNavBar";
 
 const CharityForm = () => {
 
@@ -53,6 +54,7 @@ const CharityForm = () => {
 
     return(
         <div>
+            <CharityNavBar />
             <form className="Charity-form" onSubmit={handleSubmit}>
                 <input className="charity-form-input"
                 name="Name"
@@ -92,7 +94,8 @@ const CharityForm = () => {
                 value= {description}
                 placeholder= "Description of the charity"
                 />
-                <button className='rounded-full' type= "submit">Submit Application</button>
+
+                <button className='submit-button' type= "submit">Submit Application</button>
             </form>
 
             <div className="left-side-text">

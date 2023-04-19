@@ -3,7 +3,7 @@ form {
     width: 600px;
     height: 640px;
     left: 510px;
-    top: 50px;
+    top: 120px;
     bottom: 30px;
 
     background: #B2A5D4;
@@ -34,7 +34,7 @@ form {
     margin-top: 20px;
 
 }
-button {
+.submit-button {
     position: absolute;
     width: 256px;
     height: 62px;
@@ -47,7 +47,7 @@ button {
     width: 439px;
     height: 400px;
     left: 0px;
-    top: 50px;
+    top: 120px;
 
 }
 

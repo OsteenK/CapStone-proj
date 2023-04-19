@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <title></title>
+  </head>
+
+  <body>
+        <p>Hello <%= @administrator.first_name%>,</p>
+
+        <p>This email is to inform you that a new application has been submitted on the Give Hope platform and is currently awaiting review on the administrator dashboard.
+        <p>The details of the new application are as follows:</p>
+        <ul>
+            <li>Charity Name: <%= @charity.name%></li>
+            <li>Email Address: <%= @charity.email%></li>
+            <li>Goal Amount: <%= @charity.goal_amount%></li>
+            <li>Description: <%= @charity.description%></li>
+        </ul>
+
+        <p>Please take the necessary steps to review and process the application.</p>
+      <img src="https://github.com/astronaut-nemo/phase-5-sendgrid-test/blob/main/app/views/user_notifier_mailer/Email%20Banner.png?raw=true"/>
+  </body>
+</html>
