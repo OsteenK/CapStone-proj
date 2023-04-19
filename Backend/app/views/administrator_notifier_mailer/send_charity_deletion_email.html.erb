@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <title></title>
+  </head>
+
+  <body>
+        <p>Hello <%= @administrator.first_name%>,</p>
+
+        <p>This email is a receipt for the deletion of the Charity <%= @charity.name%> from the Give Hope platform through your administrator dashboard.
+        <p>The details of the deletion are as follows:</p>
+        <ul>
+            <li>Charity Name: <%= @charity.name%></li>
+            <li>Email Address: <%= @charity.email%></li>
+            <li>Goal Amount: <%= @charity.goal_amount%></li>
+            <li>Total Donations Received: <%= @charity.total_donations%></li>
+            <li>Description: <%= @charity.description%></li>
+        </ul>
+
+        <p>If you have any concerns regarding this matter, please check your administrator dashboard or reach out to the supervisor. We value your input and appreciate your efforts in helping us maintain a safe and effective platform for our users.</p>
+      <img src="https://github.com/astronaut-nemo/phase-5-sendgrid-test/blob/main/app/views/user_notifier_mailer/Email%20Banner.png?raw=true"/>
+  </body>
+</html>
