@@ -9,8 +9,9 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
-      <NavBar/>
-      <Footer/>
+      {/* <NavBar/> */}
+      {/* <Footer/> */}
+      <LandingPage/>
       <Routes>
         
       <Route path='/' element={<LandingPage/>}/>
