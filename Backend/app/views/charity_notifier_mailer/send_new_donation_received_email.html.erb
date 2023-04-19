@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <title></title>
+  </head>
+
+  <body>
+        <h1>Dear <%= @charity.name%>,</h1>
+        
+        <p>We hope this message finds you well. We are pleased to inform you that a new donation has been made to your goal on your behalf. The donation amount is <%= @donation.donation_amount%>, and it was made by <%= @donor_name%>. This is a huge step towards achieving your goal, and we couldn't be more thrilled.</p>
+        
+        <p>We would like to take this opportunity to thank you for the work you do and for being a valued member of our Give Hope community. Your dedication to improving the lives of those in need is truly inspiring, and we are honored to be a part of your journey.</p>
+        <p>You can view the details of the donation on your dashboard. Keep up the fantastic work, and we look forward to continuing to support you on your mission.</p>
+        <br>
+        
+        <p>Cheering you on,<br>
+        The Give Hope Team</p>
+      <img src="https://github.com/astronaut-nemo/phase-5-sendgrid-test/blob/main/app/views/user_notifier_mailer/Email%20Banner.png?raw=true"/>
+  </body>
+</html>

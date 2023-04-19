@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,11 @@ function NavBar() {
         <ul>
           <li><a href='#home'>Home</a></li>
           <li><a href='#about'>About</a></li>
-          <li><a href='#contact'>Contact Us</a></li>
+          <li>
+              <Link to="/contactus" className="nav-link active">
+                Contact Us
+                </Link>    
+          </li>
           <li><a href='#beneficiaries'>Beneficiary Stories</a></li>
         </ul>
         <div className='navbar-buttons'>
