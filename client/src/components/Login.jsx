@@ -2,23 +2,17 @@ import React, { useState } from "react";
 import './login.css'
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert';
-
+import { Link } from "react-router-dom";
 
 function Login (props){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [accountType, setAccountType] = useState("");
-  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [accountType, setAccountType] = useState("user");
+  
+  const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
 
-  function handleClick() {
-    props.onFormSwitch('Register');
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email, password, accountType, acceptTerms);
-  };
+  
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -37,7 +31,7 @@ function Login (props){
       
     }
     
-    fetch("/login",{
+    fetch("http://127.0.0.1:3000/login",{
       method: "POST",
       headers:{
         "Content-Type": "application/json"
@@ -71,19 +65,24 @@ function Login (props){
             navigate("/CharityDashboard");
             break;
           case "administrator":
-            navigate("/AdministratorDashboard");
+            navigate("/AdministratorDashBoard");
             break;
           
         }
       }
     });
   };
+
+  function handleClick() {
+    props.onFormSwitch('Register');
+  }
   
   return (
     <div className="">
       <div className="auth-form-container ">
-      <h2>Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
+      
+      <form className="login-form" onSubmit={handleLogin}>
+       <h2>Login</h2>
         <label htmlFor="username">Username</label>
         <input
           value={email}
@@ -124,11 +123,22 @@ function Login (props){
             />
             Charity
           </label>
+          <label>
+           <input
+            type="radio"
+            name="accountType"
+            value="administrator"
+            checked={accountType === "administrator"}
+            onChange={(e) => setAccountType(e.target.value)}
+           />
+           Administrator
+         </label>
         </div>
         
-        <button type="submit" onClick={handleLogin} >
-          Log In
+        <button type="submit" >
+            Log In
         </button>
+
       </form>
       <button
         className="link-btn"
