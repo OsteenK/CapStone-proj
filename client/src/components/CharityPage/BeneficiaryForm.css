@@ -1,7 +1,7 @@
 form {
     position: absolute;
     width: 600px;
-    height: 800px;
+    height: 500px;
     left: 510px;
     top: 0px;
 
@@ -13,46 +13,51 @@ form {
 .beneficiary-form-input {
 
     width: 400px;
-    height: 57px;
+    height: 47px;
     left: 54px;
     top: 52px;
     bottom: 0px;
-    margin-top: 50px;
+    margin-top: 20px;
 
 
 }
 
-.text-part-left {
-    position: absolute;
-    width: 439px;
-    height: 880px;
-    left: 0px;
-    top: 0px;
-}
+
 
 .beneficiary-form-input-description {
-    position: absolute;
+    /* position: absolute; */
     width: 400px;
-    height: 150px;
+    height: 100px;
     left: 97px;
     top: 502px;
-}
+    margin-top: 20px;
 
+}
 button {
     position: absolute;
     width: 256px;
     height: 62px;
     left: 64px;
-    top: 702px;
+    top: 400px;
     color: #3A1A52;
 }
+.text-part-left {
+    position: absolute;
+    width: 439px;
+    height: 400px;
+    left: 0px;
+    top: 0px;
+
+}
+
+
 
 h3 {
 
     font-family: 'Inter';
     font-style: normal;
     font-weight: 700;
-    font-size: 32px;
+    font-size: 25px;
     line-height: 39px;
 
     color: #9840D7;
@@ -62,8 +67,9 @@ h3 {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 22px;
+
 
 color: #3A1A52;
 }
@@ -72,7 +78,7 @@ li {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 13px;
     line-height: 22px;
 
     color: #3A1A52;

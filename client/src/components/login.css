@@ -22,3 +22,8 @@ form h3 {
     text-align: center;
     padding-top: 5%;
 }
+body {
+    background-color: #a78bfa; /* fallback color */
+    background-color: var(--bg-purple-200); /* custom CSS variable */
+  }
+  
