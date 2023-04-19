@@ -1,12 +1,14 @@
 
 import './BeneficiaryForm.css'
 import { useState } from "react";
+import Footer from '../Footer';
 const BeneficiaryForm = () => {
 
     const [benName, setBenName] = useState("");
     const [location, setLocation] = useState("");
     const [cardImage, setCardImage] = useState("");
     const [items, setItems] = useState("");
+    const [charityId, setCharityId] = useState()
     const [description, setDescription] = useState("");
 
     const handleSubmit = (e) => {
@@ -15,14 +17,16 @@ const BeneficiaryForm = () => {
         setLocation("")
         setCardImage("")
         setItems("")
+        setCharityId()
         setDescription("")
 
+
         // const updateData = {
-        //     name,
+        //     benName,
         //     location,
         //     description,
-        //     item,
-        //     image_url
+        //     items,
+        //     cardImage
 
         // };
 
@@ -82,6 +86,15 @@ const BeneficiaryForm = () => {
                 value= {items}
                 placeholder= "Items Received"
                 />
+
+                <input className="beneficiary-form-input"
+                name="charityId"
+                type="integer"
+                onChange= {(event)=>{setCharityId(event.target.value)}}
+                value= {charityId}
+                placeholder= "Charity_Id"
+                />
+
                 <input className="beneficiary-form-input-description"
                 name="description"
                 type="text"
@@ -115,6 +128,7 @@ const BeneficiaryForm = () => {
                     </li>
                 </ul>
             </div>
+            {/* <Footer /> */}
         </div>
     )
 

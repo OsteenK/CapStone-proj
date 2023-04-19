@@ -1,9 +1,10 @@
 form {
     position: absolute;
     width: 600px;
-    height: 500px;
+    height: 640px;
     left: 510px;
-    top: 0px;
+    top: 50px;
+    bottom: 30px;
 
     background: #B2A5D4;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -27,7 +28,7 @@ form {
 .beneficiary-form-input-description {
     /* position: absolute; */
     width: 400px;
-    height: 100px;
+    height: 150px;
     left: 97px;
     top: 502px;
     margin-top: 20px;
@@ -38,7 +39,7 @@ button {
     width: 256px;
     height: 62px;
     left: 64px;
-    top: 400px;
+    top: 572px;
     color: #3A1A52;
 }
 .text-part-left {
@@ -46,7 +47,7 @@ button {
     width: 439px;
     height: 400px;
     left: 0px;
-    top: 0px;
+    top: 50px;
 
 }
 

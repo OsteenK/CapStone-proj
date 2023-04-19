@@ -17,6 +17,36 @@ const CharityForm = () => {
         setCharPassword("")
         setImageUrl("")
         setDescription("")
+
+        // const updateData = {
+        //     charName,
+        //     charEmail,
+        //     description,
+        //     charPassword,
+        //     imageUrl
+
+        // };
+
+
+        // fetch(`/charities/${charityId}`, {
+        // method: 'PATCH', // or 'PUT'
+        // headers: {
+        //     'Content-Type': 'application/json'
+        // },
+        // body: JSON.stringify(updateData)
+        // })
+        // .then(response => {
+        //     if (!response.ok) {
+        //     throw new Error('Network response was not ok');
+        //     }
+        //     return response.json();
+        // })
+        // .then(data => {
+        //     console.log('Charity updated:', data);
+        // })
+        // .catch(error => {
+        //     console.error('Error updating charity:', error);
+        // });
     }
 
 
@@ -67,7 +97,7 @@ const CharityForm = () => {
 
             <div className="left-side-text">
                 <h3>Edit Charity Profile</h3>
-                <p>Use this form to update and edit your profile details. Remember to keep it professional.</p>
+                <p className="edit-sentence">Use this form to update and edit your profile details. Remember to keep it professional.</p>
             </div>
         </div>
     )
