@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import './login.css'
+import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert';
+
 
 function Login (props){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [accountType, setAccountType] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const navigate = useNavigate();
 
   function handleClick() {
     props.onFormSwitch('Register');
@@ -16,6 +20,65 @@ function Login (props){
     console.log(email, password, accountType, acceptTerms);
   };
 
+  const handleLogin = (event) => {
+    event.preventDefault();
+  
+    let userType = "";
+    switch (accountType) {
+      case "donor":
+        userType = "donor";
+        break;
+      case "charity":
+        userType = "charity";
+        break;
+      case "administrator":
+        userType = "administrator";
+        break;
+      
+    }
+    
+    fetch("/login",{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email, password, userType
+      })
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response.error) {
+        // Show an error message
+        console.log(response.message);
+        
+      } else {
+        localStorage.setItem("token", response.jwt);
+        console.log(response)
+         // Navigate to the appropriate component
+        Swal({
+          title: "Success!",
+          text: "LoggedIn successfully.",
+          icon: "success",
+          button: "OK",
+        });
+       
+        switch (userType) {
+          case "donor":
+            navigate("/CharitiesPage");
+            break;
+          case "charity":
+            navigate("/CharityDashboard");
+            break;
+          case "administrator":
+            navigate("/AdministratorDashboard");
+            break;
+          
+        }
+      }
+    });
+  };
+  
   return (
     <div className="">
       <div className="auth-form-container ">
@@ -63,7 +126,7 @@ function Login (props){
           </label>
         </div>
         
-        <button type="submit" disabled={!acceptTerms}>
+        <button type="submit" onClick={handleLogin} >
           Log In
         </button>
       </form>

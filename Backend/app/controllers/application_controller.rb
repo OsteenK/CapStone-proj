@@ -31,8 +31,8 @@ class ApplicationController < ActionController::Base
         @current_user = Donor.find(decoded_token[0]['donor_id'])
       elsif decoded_token[0].has_key? 'charity_id'
         @current_user = Charity.find(decoded_token[0]['charity_id'])
-      elsif decoded_token[0].has_key? 'admin_id'
-        @current_user = Admin.find(decoded_token[0]['admin_id'])
+      elsif decoded_token[0].has_key? 'administrator_id'
+        @current_user = Administrator.find(decoded_token[0]['administrator_id'])
       end
     end
   end
@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
     render json: { message: 'Please log in as a charity' }, status: :unauthorized unless logged_in? && @current_user.is_a?(Charity)
   end
 
-  def authorized_admin
+  def authorized_administrator
     render json: { message: 'Please log in as an admin' }, status: :unauthorized unless logged_in? && @current_user.is_a?(Admin)
   end
 
@@ -61,12 +61,12 @@ class ApplicationController < ActionController::Base
     set_current_user
 
     if logged_in?
-      if @current_user.is_a?(Donor) || @current_user.is_a?(Charity) || @current_user.is_a?(Admin)
+      if @current_user.is_a?(Donor) || @current_user.is_a?(Charity) || @current_user.is_a?(Administrator)
         return true
       end
     end
 
-    render json: { message: 'Please log in as a donor or as a charity or as an admin' }, status: :unauthorized
+    render json: { message: 'Please log in as a donor or as a charity or as an administrator' }, status: :unauthorized
   end
 
 end
