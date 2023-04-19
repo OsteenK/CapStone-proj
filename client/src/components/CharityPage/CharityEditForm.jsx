@@ -1,5 +1,6 @@
 
 import React, {useState} from "react";
+import './CharityEditForm.css'
 
 const CharityForm = () => {
 
@@ -22,8 +23,8 @@ const CharityForm = () => {
 
     return(
         <div>
-             <form className="Beneficiary-form" onSubmit={handleSubmit}>
-                <input className="beneficiary-form-input"
+            <form className="Charity-form" onSubmit={handleSubmit}>
+                <input className="charity-form-input"
                 name="Name"
                 type="text"
                 onChange= {(event)=>{setCharName(event.target.value)}}
@@ -31,7 +32,7 @@ const CharityForm = () => {
                 placeholder= "Charity Name"
                 />
 
-                <input className="beneficiary-form-input"
+                <input className="charity-form-input"
                 name="email"
                 type="text"
                 onChange= {(event)=>{setCharEmail(event.target.value)}}
@@ -39,7 +40,7 @@ const CharityForm = () => {
                 placeholder= "Email"
                 />
 
-                <input className="beneficiary-form-input"
+                <input className="charity-form-input"
                 name="password"
                 type="password"
                 onChange= {(event)=>{setCharPassword(event.target.value)}}
@@ -47,14 +48,14 @@ const CharityForm = () => {
                 placeholder= "Password"
                 />
 
-                <input className="beneficiary-form-input"
+                <input className="charity-form-input"
                 name="image"
                 type="text"
                 onChange= {(event)=>{setImageUrl(event.target.value)}}
                 value= {imageUrl}
                 placeholder= "Banner Image"
                 />
-                <input className="beneficiary-form-input-description"
+                <input className="charity-form-input-description"
                 name="description"
                 type="text"
                 onChange= {(event)=>{setDescription(event.target.value)}}
@@ -63,6 +64,11 @@ const CharityForm = () => {
                 />
                 <button className='rounded-full' type= "submit">Submit Application</button>
             </form>
+
+            <div className="left-side-text">
+                <h3>Edit Charity Profile</h3>
+                <p>Use this form to update and edit your profile details. Remember to keep it professional.</p>
+            </div>
         </div>
     )
 
