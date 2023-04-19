@@ -5,7 +5,10 @@ import Footer from "../Footer"
 
 const LandingPage = () => {
   return (
+    <>
+    <NavBar/>
     <div>LandingPage</div>
+    </>
   )
 }
 
