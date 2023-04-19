@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './login.css'
 import { Link } from "react-router-dom";
-
+import NavBar from "./NavBar";
 function Login (props){
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,7 +19,8 @@ function Login (props){
 
   return (
   
-
+    <>
+    <NavBar/>
     <div className="bg-purple-200">
       <div className="auth-form-container ">
       <h2>Login</h2>
@@ -75,7 +76,7 @@ function Login (props){
        
     </div>
     </div>
-    
+    </>
   );
 };
 
