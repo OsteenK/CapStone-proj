@@ -6,6 +6,7 @@ import LandingPage from '../src/components/DonorPage/LandingPage';
 
 import NavBar from '../src/components/NavBar'
 import Footer from './components/Footer';
+import BeneficiaryForm from './components/CharityPage/BeneficiaryForm';
 
 
 
@@ -14,9 +15,9 @@ function App() {
   return (
     <div className="App">
 
+      <BeneficiaryForm />
 
-
-      <NavBar/>
+      {/* <NavBar/>
       <Footer/>
       <Routes>
 
@@ -25,7 +26,7 @@ function App() {
       <Route exact path="/signup" element={<SignUp/>} />
 
 
-      </Routes>
+      </Routes> */}
     </div>
   );
 }

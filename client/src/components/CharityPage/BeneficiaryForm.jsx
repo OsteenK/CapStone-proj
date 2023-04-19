@@ -11,18 +11,23 @@ const BeneficiaryForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setBenName("")
+        setLocation("")
+        setCardImage("")
+        setItems("")
+        setDescription("")
 
         // const updateData = {
-        //     benName,
+        //     name,
         //     location,
         //     description,
-        //     items,
+        //     item,
         //     image_url
 
         // };
 
-        // fetch(`/beneficiaries/${beneficiaryId}`, {
-        // method: 'PATCH', // or 'PUT'
+        // fetch(`/beneficiaries`, {
+        // method: 'POST',
         // headers: {
         //     'Content-Type': 'application/json'
         // },
