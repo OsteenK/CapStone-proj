@@ -1,0 +1,118 @@
+.navbar-charity {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3A1A52;
+  padding: 20px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left img {
+  height: 50px;
+}
+
+.navbar-left ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-left ul li {
+  margin-right: 75px;
+}
+
+.navbar-left ul li a {
+  text-decoration: none;
+  color: #512da8;
+  font-weight: bold;
+}
+
+.navbar-buttons button {
+  margin-left: 20px;
+  border: none;
+  border-radius: 66px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.delete-button {
+  background-color: #9c27b0;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+/* body {
+  margin-top: 80px;
+} */
+text{
+  color: white;
+}
+.header{
+  width: 100vw;
+  background: #3A1A52;
+  /* margin-top: -25.68rem; */
+  height: 15rem;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  color: white;
+  
+}
+.cards{
+  width: 90%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  place-items: center;
+  padding: 2rem;
+  width: 100%;
+  margin-top: 80px;
+  
+}
+.card-1{
+  background: #9c27b0;
+  border-radius: 30px;
+}
+.card-2{
+  background: #3A1A52;
+  border-radius: 30px;
+}
+
+.card-3{
+  background: #ce93d8;
+  border-radius: 30px;
+}
+.donor-table{
+  width: 90%;
+  display: grid;
+  gap: 2rem;
+  place-items: center;
+  padding: 2rem;
+  width: 100%;
+  background: #ce93d8;
+  border-radius: 30px;
+  margin-top: 80px;
+}
+.beneficiary-table{
+  background-color:white;
+  border-radius: 30px;
+  margin-top: 80px;
+}
+.donor-text{
+  color: #3A1A52;
+}
+.more.info{
+  color: #3A1A52;
+}
