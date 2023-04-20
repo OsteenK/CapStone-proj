@@ -1,30 +1,28 @@
 import { useNavigate } from "react-router-dom";
-function BeneficiaryCard() {
+
+function BeneficiaryCard( { story } ) {
     const navigate = useNavigate();
 
     // Event Handlers
     function handleClick(event) {
-        navigate("/"); // Navigate to the CharityDetails page for this beneficiary
+        navigate(`/charity-details/${story.charity_id}`); // Navigate to the CharityDetails page for this beneficiary
     }
 
     return(
         <div class="block rounded-lg bg-white text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.1)]">
-            <div class="">
-                <img class="rounded-t-lg w-full" src="https://images.unsplash.com/photo-1584012961499-2147c0b3cf0d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="beneficiary"/>
-            </div>
-            
+            <img class="rounded-t-lg object-cover h-96 w-full" src={story.img_url} alt="beneficiary"/>            
 
             <div class="p-6 px-8">
                 <h5 class="mb-2 py-2 text-2xl font-extrabold leading-tight text-lavender-200 text-center">
-                    Fatima, Nairobi
+                    {`${story.name}, ${story.location}`}
                 </h5>
 
                 <p class="mb-4 text-base text-lavender-400">
-                Before receiving donations from our organization, Fatima struggled every month to manage her menstrual cycle. Her family struggled to afford basic necessities, let alone sanitary products. This often meant that she had to miss school during her period, causing her to fall behind in her studies. Thanks to our donations, Fatima now has access to sanitary products and is able to attend school regularly.
+                {story.description}
                 </p>
                 <p class="text-base text-lavender-400">
-                    <strong class="">Fatima received:</strong><br/>
-                    Sanitary pads, wash cloths, cleaning kit and supplies
+                    <strong class="">{story.name} received:</strong><br/>
+                    {story.items}
                 </p>
 
                 <div class="text-center">
