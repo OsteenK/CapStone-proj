@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer() {
     return (
       <footer>
-        <div className="logo-container">
+        <div className="logo-container ">
           <img src="/give-hope-logo.png" alt="Give Hope Logo" />
           <p>
           Every member of Give Hope is dedicated to breaking down barriers to education for girls around the world. We can achieve this by not just providing sanitary towels, but also providing clean water and sanitation facilities.

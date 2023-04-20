@@ -1,39 +1,42 @@
+import React from 'react';
 import './App.css';
-import { Routes,Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import SignUp from '../src/components/SignUp';
 import Login from '../src/components/Login';
 import LandingPage from '../src/components/DonorPage/LandingPage';
-import CharityDashboard from '../src/components/CharityPage/CharityDashboard'
-import NavBar from '../src/components/NavBar'
-// import Footer from './components/Footer';
+import CharityForm from '../src/components/CharityPage/CharityEditForm'
+import CharityDashboard from '../src/components/CharityPage/CharityDashboard';
 import ContactUs from './components/ContactUs'
-import Charities from './components/CharityPage/Charities';
-
-
+import BeneficiaryStories from './components/BeneficiaryStories';
+import BeneficiaryForm from "../src/components/CharityPage/BeneficiaryForm"
 
 function App() {
-  
   return (
     <div className="App">
-
-     
+      <LandingPage/>
       <Routes>
-        
+
+
       <Route path='/' element={<LandingPage/>}/>
       <Route exact path="/login" element={<Login/>} />
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/contactus" element={<ContactUs/>} />
-      
+      <Route exact path="/beneficiary-stories" element={<BeneficiaryStories/>} />
 
       <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
-      
+
+      <Route exact path="/charityform" element={<CharityForm/>} />
+      <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
+
+
+
 
       </Routes>
-      <NavBar/>
+
       {/* <Footer/> */}
     </div>
-   
+
   );
 }
 
