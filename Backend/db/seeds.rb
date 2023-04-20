@@ -1,5 +1,6 @@
 # # This file should contain all the record creation needed to seed the database with its default values.
 # # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+<<<<<<< HEAD
 puts "🌱Started seeding..."
  Administrator.create([
     {
@@ -9,6 +10,22 @@ puts "🌱Started seeding..."
         password: "password123"
     }
 ])
+=======
+# #
+# # Examples:
+# #
+# #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+# #   Character.create(name: "Luke", movie: movies.first)
+
+# Administrator.create([
+#     {
+#         first_name: "Give",
+#         last_name: "Hope",
+#         email: "givehopecharities@gmail.com",
+#         password: "password123"
+#     }
+# ])
+>>>>>>> 0b11394ab6b8ae756a2b2a15457d2fd6c512353c
 
 Donor.create([
     {
@@ -34,6 +51,7 @@ Donor.create([
 
 
 
+<<<<<<< HEAD
 Charity.create([
     {
         name: "PadUp 4 North Eastern",
@@ -124,6 +142,98 @@ Charity.create([
         approved: false
     }
 ])
+=======
+# Charity.create([
+#     {
+#         name: "PadUp 4 North Eastern",
+#         email: "joannaoluoch@gmail.com",
+#         password: "password123",
+#         description: "This charity aims to provide for 2000 girls living in the north eastern region with sufficient sanitary towels to participate in the school year and live a comfortable and healthier life during this stage in their life.",
+#         img_url: "https://unsplash.com/photos/2rMn97DPTdU",
+#         goal_amount: 5000,
+#         total_donations: 3857,
+#         admin_id: 1,
+#         approved: true
+#     },
+#     {
+#         name: "Water To Schools",
+#         email: "watertoschools@gmail.com",
+#         password: "password123",
+#         description: "This charity aims to provide for 2000 girls living in the north eastern region with sufficient sanitary towels to participate in the school year and live a comfortable and healthier life during this stage in their life.",
+#         img_url: "https://unsplash.com/photos/V-XM4kkWpng",
+#         goal_amount: 8000,
+#         total_donations: 6542,
+#         admin_id: 1,
+#         approved: true
+#     },
+#     {
+#         name: "Elevating Sanitary Facilities",
+#         email: "sanitary@gmail.com",
+#         password: "password123",
+#         description: "This charity aims to provide for 2000 girls living in the north eastern region with sufficient sanitary towels to participate in the school year and live a comfortable and healthier life during this stage in their life.",
+#         img_url: "https://unsplash.com/photos/gwCpqTiLHlc",
+#         goal_amount: 5000,
+#         total_donations: 3857,
+#         admin_id: 1,
+#         approved: false
+#     },
+#     {
+#         name: "Zana Africa Foundation",
+#         email: "zanafrica@gmail.com",
+#         password: "password123",
+#         description: " Zana Africa Foundation is a non-profit organization working to improve menstrual health and education for girls in Kenya. Our goal is to provide girls with the knowledge and resources they need to manage their periods with dignity and without shame. We provide menstrual health education and distribute menstrual pads to girls in need, and we also work to break down the cultural barriers and stigmas surrounding menstruation. Our goal is to reach 1 million girls in Kenya by 2025.",
+#         img_url: "https://unsplash.com/photos/9cx4-QowgLc",
+#         goal_amount: 7000,
+#         total_donations: 6002,
+#         admin_id: 1,
+#         approved: true
+#     },
+#     {
+#         name: "AfriPads",
+#         email: "afripads@gmail.com",
+#         password: "password123",
+#         description: "Afripads is a social enterprise that produces and distributes reusable menstrual pads in Kenya. Our goal is to provide girls with a sustainable and affordable solution for menstrual care that allows them to stay in school and participate fully in their communities. We also work to break down the cultural barriers and stigmas surrounding menstruation, and we provide menstrual health education to girls and boys. Our goal is to provide 10 million girls in Kenya with reusable menstrual pads by 2025.",
+#         img_url: "https://unsplash.com/photos/cVEOh_JJmEE",
+#         goal_amount: 10000,
+#         total_donations: 4682,
+#         admin_id: 1,
+#         approved: true
+#     },
+#     {
+#         name: "Wash United Kenya",
+#         email: "washunitedke@gmail.com",
+#         password: "password123",
+#         description: "Wash United Kenya is a non-profit organization that uses the power of sports to promote good hygiene and sanitation practices. We believe that everyone has the right to access clean water and sanitation facilities, and that promoting good hygiene practices is critical for the health and well-being of communities. Through our innovative programs, we use sports to engage and educate children and youth on good hygiene practices, including menstrual hygiene management. Our goal is to reach 5 million children and youth in Kenya by 2025.",
+#         img_url: "https://unsplash.com/photos/JQwzKcHLHoc",
+#         goal_amount: 120000,
+#         total_donations: 19670,
+#         admin_id: 1,
+#         approved: true
+#     },
+#     {
+#         name: "Sanergy",
+#         email: "sanergy@gmail.com",
+#         password: "password123",
+#         description: "Description: Sanergy is a social enterprise that provides sustainable sanitation solutions in urban slums in Kenya. We believe that everyone deserves access to safe and dignified sanitation facilities, and that improving access to sanitation can help improve health outcomes and create economic opportunities. We provide affordable and accessible sanitation facilities to communities in need, and we also work to create jobs and promote entrepreneurship through our innovative waste management system. Our goal is to provide access to safe and dignified sanitation facilities to 1 million people in Kenya by 2030.",
+#         img_url: "https://unsplash.com/photos/SPS796v4KmM",
+#         goal_amount: 200000,
+#         total_donations: 174390,
+#         admin_id: 1,
+#         approved: true
+#     },
+#     {
+#         name: "Jacaranda Health",
+#         email: "jakarandahealth@gmail.com",
+#         password: "password123",
+#         description: " Jacaranda Health is a non-profit organization that provides maternal and child health services in Kenya. We believe that access to quality healthcare is critical for the health and well-being of communities, and we also recognize the importance of menstrual health and hygiene management for girls and women. We provide menstrual health education and distribute menstrual pads to our clients, and we also work to promote good hygiene practices in our communities. Our goal is to provide comprehensive maternal and child health services to 1 million people in Kenya by 2030.",
+#         img_url: "https://unsplash.com/photos/0cgpyigyIkM",
+#         goal_amount: 10000,
+#         total_donations: 4000,
+#         admin_id: 1,
+#         approved: false
+#     }
+# ])
+>>>>>>> 0b11394ab6b8ae756a2b2a15457d2fd6c512353c
 
 
 Beneficiary.create([

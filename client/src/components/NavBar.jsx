@@ -1,8 +1,18 @@
 import React  from 'react';
 import './NavBar.css';
 import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
-function NavBar() {
+function NavBar(user) {
+  console.log(user)
+  const navigate = useNavigate();
+  const token =localStorage.getItem('token');
+  // Logout
+  const logout = () =>{
+    sessionStorage.clear();
+    localStorage.clear();
+     navigate("/login");
+  }
   return (
     <nav className='navbar'>
       <div className='navbar-left'>
@@ -10,17 +20,32 @@ function NavBar() {
       </div>
       <div className='navbar-left'>
         <ul>
-          <li><a href='#home'>Home</a></li>
+          
+          
+          <li>
+              <Link to="/home" className="nav-link active">
+              Home
+                </Link>    
+          </li>
           <li><a href='#about'>About</a></li>
           <li>
               <Link to="/contactus" className="nav-link active">
                 Contact Us
                 </Link>    
           </li>
-          <li><a href='#beneficiaries'>Beneficiary Stories</a></li>
+          <li>
+              <Link to="/BeneficiariesS" className="nav-link active">
+              Beneficiary Stories
+              </Link>    
+          </li>
+          
         </ul>
         <div className='navbar-buttons'>
+          
+
+          <Link   to='/charities' >
           <button className='donate-button'>Donate</button>
+          </Link>
           
           <Link   to='/login' >
           <button className='login-button'>Login</button>
