@@ -5,6 +5,7 @@ import CharityNavBar from "./CharityNavBar";
 
 const CharityForm = () => {
 
+    const [formData, setFormData] = useState([])
     const [charName, setCharName] = useState("");
     const [charEmail, setCharEmail] = useState("");
     const [charPassword, setCharPassword] = useState("");
@@ -13,41 +14,44 @@ const CharityForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        setFormData([...formData, {charName, charEmail, charPassword, imageUrl, description}])
         setCharName("")
         setCharEmail("")
         setCharPassword("")
         setImageUrl("")
         setDescription("")
 
-        // const updateData = {
-        //     charName,
-        //     charEmail,
-        //     description,
-        //     charPassword,
-        //     imageUrl
+        const updateData = {
+            charName,
+            charEmail,
+            description,
+            charPassword,
+            imageUrl
 
-        // };
+        };
 
 
-        // fetch(`/charities/${charityId}`, {
-        // method: 'PATCH', // or 'PUT'
-        // headers: {
-        //     'Content-Type': 'application/json'
-        // },
-        // body: JSON.stringify(updateData)
-        // })
-        // .then(response => {
-        //     if (!response.ok) {
-        //     throw new Error('Network response was not ok');
-        //     }
-        //     return response.json();
-        // })
-        // .then(data => {
-        //     console.log('Charity updated:', data);
-        // })
-        // .catch(error => {
-        //     console.error('Error updating charity:', error);
-        // });
+
+
+        fetch(`/charities/${formData.id}`, {
+        method: 'PATCH', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updateData)
+        })
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Charity updated:', data);
+        })
+        .catch(error => {
+            console.error('Error updating charity:', error);
+        });
     }
 
 
@@ -57,7 +61,7 @@ const CharityForm = () => {
             <CharityNavBar />
             <form className="Charity-form" onSubmit={handleSubmit}>
                 <input className="charity-form-input"
-                name="Name"
+                name="name"
                 type="text"
                 onChange= {(event)=>{setCharName(event.target.value)}}
                 value= {charName}
@@ -81,7 +85,7 @@ const CharityForm = () => {
                 />
 
                 <input className="charity-form-input"
-                name="image"
+                name="img_url"
                 type="text"
                 onChange= {(event)=>{setImageUrl(event.target.value)}}
                 value= {imageUrl}
