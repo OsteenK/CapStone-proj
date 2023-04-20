@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import './login.css'
+import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
-import Swal from 'sweetalert';
-import { Link } from "react-router-dom";
+import NavBar from "./NavBar";
 
-function Login (props){
+function Login (props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [accountType, setAccountType] = useState("user");
@@ -76,9 +76,16 @@ function Login (props){
   function handleClick() {
     props.onFormSwitch('Register');
   }
-  
+
+ 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(email, password, accountType);
+  };
+
   return (
     <div className="">
+      <NavBar/>
       <div className="auth-form-container ">
       
       <form className="login-form" onSubmit={handleLogin}>
@@ -146,6 +153,7 @@ function Login (props){
       >
         Don't have an account? Register here.
       </button>
+      
     </div>
     </div>
   );

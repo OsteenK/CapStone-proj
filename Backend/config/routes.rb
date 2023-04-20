@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
 
   get '/donors/:id', to: 'donors#show'
+  get '/login', to: 'session#create'
 
   post '/login' , to: 'session#create'
   delete '/logout', to: 'session#destroy' 
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
   #CHARITY ROUTES
 
   get 'beneficiaries', to: 'charities#beneficiaries'
+  get 'charitydetails', to: 'charities#beneficiaries'
   post 'beneficiaries', to: 'charities#create_beneficiary'
   put 'beneficiaries/:beneficiary_id', to: 'charities#update_beneficiary'
   delete 'beneficiaries/:beneficiary_id', to: 'charities#destroy_beneficiary'
