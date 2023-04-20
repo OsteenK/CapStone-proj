@@ -4,6 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 import SignUp from '../src/components/SignUp';
 import Login from '../src/components/Login';
 import LandingPage from '../src/components/DonorPage/LandingPage';
+
 import CharityDashboard from '../src/components/CharityPage/CharityDashboard';
 import Footer from './components/Footer';
 import ContactUs from './components/ContactUs'
@@ -12,8 +13,9 @@ import BeneficiaryStories from './components/BeneficiaryStories';
 function App() {
   return (
     <div className="App">
-      <NavBar/>
-      <Footer/>
+      {/* <NavBar/> */}
+      {/* <Footer/> */}
+      <LandingPage/>
       <Routes>
 
         
@@ -37,4 +39,3 @@ function App() {
 
 
 export default App;
-

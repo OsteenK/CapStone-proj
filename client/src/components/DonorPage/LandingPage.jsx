@@ -5,7 +5,6 @@ import './LandingPage.css';
 
 const LandingPage = () => {
   return (
-<<<<<<< HEAD:client/src/components/DonorPage/LandingPage.js
     <div>
       <NavBar />
       <main>
@@ -71,13 +70,6 @@ const LandingPage = () => {
     </div>
   );
 };
-=======
-    <>
-    <NavBar/>
-    <div>LandingPage</div>
-    </>
-  )
-}
->>>>>>> 123e21fb0404df8327ae531d5d062e2cbe801c3f:client/src/components/DonorPage/LandingPage.jsx
 
 export default LandingPage;
+
