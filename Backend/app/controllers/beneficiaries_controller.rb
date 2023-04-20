@@ -1,9 +1,11 @@
 class BeneficiariesController < ApplicationController
   before_action :set_beneficiary, only: %i[show edit update destroy]
+  skip_before_action :authorize, only: [:index]
 
   # GET /beneficiaries or /beneficiaries.json
   def index
     @beneficiaries = Beneficiary.all
+    render json: @beneficiaries, status: :ok
   end
 
   # GET /beneficiaries/1 or /beneficiaries/1.json

@@ -1,6 +1,16 @@
+import { useState, useEffect } from "react";
 import BeneficiaryCard from "./BeneficiaryCard";
 
 function BeneficiaryStories(){
+    // States
+    const [stories, setStories] = useState([]);
+
+    // Fetch beneficiary stories
+    useEffect(() =>{
+        fetch("http://localhost:3000/beneficiaries")
+        .then(response => response.json())
+        .then(data => setStories(data))
+    }, [])
 
     return(
         <div class="w-screen mx-0 p-4 bg-lavender-100">
@@ -12,9 +22,8 @@ function BeneficiaryStories(){
             </div>
 
             {/* Card Grid */}
-            <div class="container grid gap-4 lg:grid-cols-2 sm:grid-cols-1">
-                <BeneficiaryCard />
-                <BeneficiaryCard />
+            <div class="mx-20 grid md:gap-8 lg:gap-16 lg:grid-cols-2 md:grid-cols-1">
+                {stories.map(story => <BeneficiaryCard key={story.id} story={story} />)}
             </div>
         </div>
         
