@@ -10,8 +10,10 @@
     padding-block: 70px;
     width: 100vw;
   }
- 
-  
+form{
+  margin-left: 480px;
+  margin-top: 200px;
+}
   h1 {
     color: #8869DB;
     font-size: 24px;
@@ -39,8 +41,6 @@
     text-align: left;
   }
  
-  body {
-    overflow-x: hidden;
-  }
+  
   
  
