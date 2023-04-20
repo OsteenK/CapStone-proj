@@ -9,11 +9,13 @@ import CharityDashboard from '../src/components/CharityPage/CharityDashboard';
 import ContactUs from './components/ContactUs'
 import BeneficiaryStories from './components/BeneficiaryStories';
 import BeneficiaryForm from "../src/components/CharityPage/BeneficiaryForm"
+import Charities from '../src/components/CharityPage/Charities'
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
-      <LandingPage/>
+    <NavBar/>
       <Routes>
 
 
