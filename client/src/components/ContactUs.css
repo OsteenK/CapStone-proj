@@ -7,9 +7,10 @@
     align-items: center;
     justify-content: center;
     color: white;
-    padding-block: 20px;
-
+    padding-block: 70px;
+    width: 100vw;
   }
+ 
   
   h1 {
     color: #8869DB;
