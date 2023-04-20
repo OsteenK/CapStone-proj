@@ -3,6 +3,7 @@ import './login.css'
 import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
+import { Link } from "react-router-dom";
 
 function Login (props) {
   const [email, setEmail] = useState("");
@@ -147,13 +148,8 @@ function Login (props) {
         </button>
 
       </form>
-      <button
-        className="link-btn"
-        onClick={handleClick}
-      >
-        Don't have an account? Register here.
-      </button>
       
+      <Link  to='/signup'>Don't have an account? Register here.</Link>
     </div>
     </div>
   );
