@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import NavBar from "../NavBar";
-import charitydetails from "./charitydetails.css";
-import ReactPaginate from 'react-paginate';
+import './charitydetails.css';
+
+
+import BeneficiaryStories from '../BeneficiaryStories';
 
 
 
@@ -38,11 +40,93 @@ const CharityDetails = () => {
     <div>
     <NavBar />
     <main>
-      <section className="hero-section">
-        <div className="hero-image"></div>
+    <section className="hero-section">
+     
+     <div>    
+     {/* container */}
+  
+     <section className="mb-10">
+      {/* <nav className="navbar navbar-expand-lg shadow-md py-2 bg-white relative flex items-center w-full justify-between">
+      <div className="px-6 w-full flex flex-wrap items-center justify-between">
+        <div className="flex items-center">
+          <button
+            className="navbar-toggler border-0 py-3 lg:hidden leading-none text-xl bg-transparent text-gray-600 hover:text-gray-700 focus:text-gray-700 transition-shadow duration-150 ease-in-out mr-2"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContentY"
+            aria-controls="navbarSupportedContentY"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <svg
+              aria-hidden="true"
+              focusable="false"
+              data-prefix="fas"
+              className="w-5"
+              role="img"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                fill="currentColor"
+                d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+              ></path>
+            </svg>
+          </button>
+          <a className="navbar-brand text-blue-600" href="#!">
+            <svg className="w-5 h-5 ml-2 lg:ml-0 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+              <path fill="currentColor" d="M485.5 0L576 160H474.9L405.7 0h79.8zm-128 0l69.2 160H149.3L218.5 0h139zm-267 0h79.8l-69.2 160H0L90.5 0zM0 192h100.7l123 251.7c1.5 3.1-2.7 5.9-5 3.3L0 192zm148.2 0h279.6l-137 318.2c-1 2.4-4.5 2.4-5.5 0L148.2 192zm204.1 251.7l123-251.7H576L357.3 446.9c-2.3 2.7-6.5-.1-5-3.2z"></path>
+            </svg>
+          </a>
+        </div>
+        <div className="navbar-collapse collapse grow items-center" id="navbarSupportedContentY">
+          <ul className="navbar-nav mr-auto lg:flex lg:flex-row">
+            <li className="nav-item">
+              <a className="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">Dashboard</a>
+            </li>
+            <li className="nav-item">
+              <a className="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">Team</a>
+            </li>
+            <li className="nav-item mb-2 lg:mb-0">
+              <a className="nav-link block pr-2 lg:px-2 py-2 text-gray-600 hover:text-gray-700 focus:text-gray-700 transition duration-150 ease-in-out" href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light">Projects</a>
+            </li>
+          </ul>
+        </div>
+        <div className="flex items-center lg:ml-auto">
+          <button type="button" className="inline-block px-6 py-2.5 mr-2 bg-transparent text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">Login</button>
+          <button type="button" className="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light">Sign up for free</button>
+        </div>
+      </div>
+     </nav> */}
+
+      <div className="px-6 py-12 md:px-12 text-gray-800 text-center lg:text-left">
+      <div className="container mx-auto xl:px-32">
+        <div className="grid lg:grid-cols-2 flex items-center">
+          <div className="md:mt-12 lg:mt-0 mb-12 lg:mb-0">
+            <div className="block rounded-lg shadow-lg px-6 py-12 md:px-12 lg:-mr-14" style={{background: "hsla(0, 0%, 100%, 0.55)", backdropfilter: "blur(30px)"}}>
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-12">The best offer <br /><span className="text-blue-600">for your business</span></h1>
+              <a className="inline-block px-7 py-3 mb-2 md:mb-0 md:mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="#!" role="button">Get started</a>
+              <a className="inline-block px-7 py-3 bg-transparent text-blue-600 font-medium text-sm leading-snug uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="#!" role="button">Learn more</a>
+            </div>
+          </div>
+          <div className="md:mb-12 lg:mb-0">
+            <img
+              src="client/src/components/DonorPage/photo-1584731683340-6495e2e103e9.avif"
+              className="w-full rounded-lg shadow-lg"
+              alt=""
+            />
+          </div>
+        </div>
+       </div>
+       </div>
+     </section>
+  
+
+     </div>
+
         
-      </section>
-      <section className="content-section">
+    </section>
+    <section className="content-section">
         <div className="content-container">
          <div className="content-card">
            <img src="/home/rx/coding Repo/PHASE5/CapStone-proj/client/src/components/DonorPage/photo-1584731683340-6495e2e103e9.avif" alt="card-image" className="card-image" />
@@ -61,97 +145,15 @@ const CharityDetails = () => {
          <button className="content-button">Donate Now</button>
         </div>
        </div>
-      </section>
+    </section>
         
-      <section className="beneficiaryStoriesToDisplay-section">
+    <section className="beneficiaryStoriesToDisplay-section">
         
-          <div className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8">
-                <h1 className="mb-2 sm:mt-4 md:mt-5 text-5xl text-white font-extrabold leading-tight">Changing the World</h1>
-                
-                <p className="mb-16 mt-4 text-xl text-center font-medium text-white"> Thousands of girls have benefited from Give Hope’s constant effort to improve menstrual care. Read on to learn about the real-life impact of <span class="text-lavender-200 font-bold">your donations</span> on the lives of these girls.</p>
-          </div>
-          <div className="container">   
-           <div className="row">
-            {beneficiaryStoriesToDisplay.map((story) => (
-             <><div className='col-md-4 mb-4'>
-               <div className='beneficiaryStory-card'>
-                <img className='beneficiaryStory-card-img-top' src='https://images.unsplash.com/photo-1509100297676-1a18b3842dd6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8Mjh8MjQ1OTc1N3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='...' />
-               <div className='beneficiaryStory-card-body'>
-                 <h5 className='beneficiaryStory-title'>Water To Schools</h5>
-                 <p className='beneficiaryStory-text'>Our charity is working to provide a reliable source of clean water to a school in an under developed region,so students can focus...</p>
-                 <button className='beneficiaryStory-button'>Donate Now</button>
-               </div>
-            </div>
-            </div>
-            <div className='col-md-4 mb-4'>
-            <div className='beneficiaryStory-card'>
-              <img className='beneficiaryStory-card-img-top' src='https://images.unsplash.com/photo-1509099927777-1b8a87bc3b21?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MnwyNDU5NzU3fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60' alt='...' />
-              <div className='beneficiaryStory-card-body'>
-                <h5 className='beneficiaryStory-title'>PadUp 4 North Eastern</h5>
-                <p className='beneficiaryStory-text'>This charity aims to provide 2000 girls living in the North Eastern region with sufficient sanitary towels to participate in the school year...</p>
-                <button className='beneficiaryStory-button '>Donate Now</button>
-              </div>
-            </div>
-            </div><div className='col-md-4 mb-4'>
-            <div className='beneficiaryStory-card'>
-              <img className='beneficiaryStory-card-img-top' src='https://images.unsplash.com/photo-1509100297676-1a18b3842dd6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8Mjh8MjQ1OTc1N3x8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' alt='...' />
-              <div className='beneficiaryStory-card-body'>
-                <h5 className='beneficiaryStory-title'>Water To Schools</h5>
-                <p className='beneficiaryStory-text'>Our charity is working to provide a reliable source of clean water to a school in an under developed region,so students can focus...</p>
-                <button className='beneficiaryStory-button'>Donate Now</button>
-              </div>
-            </div>
-          </div></>
-        ))}
-        </div>
-        </div>
-    
-          {/* <div className="beneficiaryStories-cards">
-             {beneficiaryStoriesToDisplay.map((story) => (
-            <div className="beneficiaryStory-card">
-             <h4 className="beneficiaryStory-title">{story.title}</h4>
-             <p className="beneficiaryStory-text">{story.text}</p>
-             <button className="beneficiaryStory-button">Donate Now</button>
-            </div>
-           ))}
-          </div>
-          <div className="beneficiaryStories-cards">
-             {beneficiaryStoriesToDisplay.map((story) => (
-            <div className="beneficiaryStory-card">
-              <h4 className="beneficiaryStory-title">{story.title}</h4>
-              <p className="beneficiaryStory-text">{story.text}</p>
-              <button className="beneficiaryStory-button">Donate Now</button>
-            </div>
-           ))}
-          </div>
-         <div className="beneficiaryStories-cards">
-             {beneficiaryStoriesToDisplay.map((story) => (
-            <div className="beneficiaryStory-card">
-              <h4 className="beneficiaryStory-title">{story.title}</h4>
-              <p className="beneficiaryStory-text">{story.text}</p>
-              <button className="beneficiaryStory-button">Donate Now</button>
-            </div>
-           ))}
-          </div>
-          <div className="beneficiaryStories-cards">
-             {beneficiaryStoriesToDisplay.map((story) => (
-            <div className="beneficiaryStory-card">
-              <h4 className="beneficiaryStory-title">{story.title}</h4>
-               <p className="beneficiaryStory-text">{story.text}</p>
-               <button className="beneficiaryStory-button">Donate Now</button>
-            </div>
-           ))}
-          </div> */}
-        <ReactPaginate
-          pageCount={Math.ceil(beneficiaryStories.length / PER_PAGE)}
-          onPageChange={({ selected }) => setCurrentPage(selected)}
-          containerClassName="pagination"
-          activeClassName="active"
-          previousLabel="Prev"
-          nextLabel="Next"
-        />
+     <div>
+      <BeneficiaryStories/>
+     </div>
 
-      </section>
+    </section>
     </main>
     {/* <Footer /> */}
   </div>

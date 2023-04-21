@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../components/ContactUs.css";
 import NavBar from "./NavBar";
 
+
 const ContactUs = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

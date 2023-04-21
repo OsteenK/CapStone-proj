@@ -5,6 +5,7 @@ class BeneficiariesController < ApplicationController
   # GET /beneficiaries or /beneficiaries.json
   def index
     @beneficiaries = Beneficiary.all
+    render json: @beneficiaries, status: :ok
   end
 
   # GET /beneficiaries/1 or /beneficiaries/1.json
