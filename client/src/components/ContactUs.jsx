@@ -3,21 +3,44 @@ import "../components/ContactUs.css";
 
 
 const ContactUs = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [subject, setSubject] = useState("");
-  const [message, setMessage] = useState("");
+  // States
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: ""
+  })
+
+  // Event Handlers
+  const handleChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setFormData({
+      ...formData,
+      [name]: value
+    })
+  }
+  // console.log(formData)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
       // Do something with form data
-      console.log("Form submitted!", name, email, subject, message);
+      fetch("http://localhost:3000/contact-us", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      })
+
       alert("Your message has been sent!");
-      setName("");
-      setEmail("");
-      setSubject("");
-      setMessage("");
+      // Reset the form
+      setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: ""
+      });
     } catch (error) {
       console.error("An error occurred:", error);
       alert("There was an error submitting your message. Please try again.");
@@ -72,8 +95,9 @@ const ContactUs = () => {
                 className="form-control  "
                 id="name"
                 placeholder="Name*"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
               />
             </div>
             <div className="form-group mt-4 mb-4">
@@ -82,8 +106,9 @@ const ContactUs = () => {
                 className="form-control"
                 id="email"
                 placeholder="Email*"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
               />
             </div>
             <div className="form-group mt-4 mb-4">
@@ -92,8 +117,9 @@ const ContactUs = () => {
                 className="form-control"
                 id="subject"
                 placeholder="Subject*"
-                value={subject}
-                onChange={(e) => setSubject(e.target.value)}
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
               />
             </div>
             <div className="form-group mt-4 mb-4">
@@ -102,8 +128,9 @@ const ContactUs = () => {
                 id="message"
                 rows="4"
                 placeholder="Message"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
               ></textarea>
             </div>
             <button type="submit" className="btn btn-primary">
