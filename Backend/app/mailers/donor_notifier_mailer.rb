@@ -9,7 +9,7 @@ class DonorNotifierMailer < ApplicationMailer
         )
     end
 
-    # Email to the donor once their donation ahs been received
+    # Email to the donor once their donation has been received
     def send_donation_received_email(donation)
         @donation = donation
         @donor = donation.donor

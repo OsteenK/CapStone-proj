@@ -1,9 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
+
 import CharityNavBar from './CharityNavBar';
 import './CharityDashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+// import ReactPaginate from 'react-paginate';
+import { donorData } from './donorData';
+
+
 function CharityDashboard() {
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const PER_PAGE = 10;
+  const offset = currentPage * PER_PAGE;
+
+   const donorsData = [
+    {
+      id: 1,
+      firstName: 'Maggy',
+      lastName: 'jerry',
+      amount: '780',
+      type: 'monthly',
+      date: '7th November 2022',
+    },
+    {
+      id: 2,
+      firstName: 'Jacob',
+      lastName: 'Thornton',
+      amount: '6000',
+      type: 'monthly',
+      date: '9th August 2022',
+    },
+    {
+      id: 3,
+      firstName: 'anonymous',
+      lastName: '',
+      amount: '7009',
+      type: 'one time',
+      date: '14th Febuary 2023',
+    },
+    // ... add more donors data here
+   ];
+
+  const pageCount = Math.ceil(donorsData.length / PER_PAGE);
+
+  function handlePageClick({ selected: selectedPage }) {
+    setCurrentPage(selectedPage);
+  }
+
   return (
     <div>
       <div className='header'>
@@ -58,46 +102,42 @@ function CharityDashboard() {
       </div>
       <div className='donor-table donor-text '>
       <h2>Donors</h2>
-      <p> The list of donors to the Charity</p>
-      <table className="table donor-text" style={{ backgroundColor: 'white', borderRadius: '20px'}}>
+      <p>The list of donors to the Charity</p>
+      <table className='table donor-text' style={{ backgroundColor: 'white', borderRadius: '20px' }}>
+        <thead>
+          <tr>
+            <th scope='col'>First</th>
+            <th scope='col'>Last</th>
+            <th scope='col'>Amount </th>
+            <th scope='col'>Type</th>
+            <th scope='col'>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {donorsData.slice(offset, offset + PER_PAGE).map((donor) => (
+            <tr key={donor.id}>
+              <td>{donor.firstName}</td>
+              <td>{donor.lastName}</td>
+              <td>{donor.amount}</td>
+              <td>{donor.type}</td>
+              <td>{donor.date}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
 
-          <thead>
-            <tr>
-              {/* <th scope="col">#</th> */}
-              <th scope="col">First</th>
-              <th scope="col">Last</th>
-              <th scope="col">Amount </th>
-              <th scope="col">Type</th>
-              <th scope="col">Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              {/* <th scope="row">1</th> */}
-              <td>Maggy</td>
-              <td>jerry</td>
-              <td>780</td>
-              <td>monthly</td>
-              <td>7th November 2022</td>
-            </tr>
-            <tr>
-              {/* <th scope="row">2</th> */}
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>6000</td>
-              <td>monthly</td>
-              <td>9th August 2022</td>
-            </tr>
-            <tr>
-              {/* <th scope="row">3</th> */}
-              <td colSpan="2">anonymous</td>
-              <td>7009</td>
-              <td>one time</td>
-              <td>14th Febuary 2023</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {/* <ReactPaginate
+        previousLabel={'← Previous'}
+        nextLabel={'Next →'}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        containerClassName={'pagination'}
+        previousLinkClassName={'pagination__link'}
+        nextLinkClassName={'pagination__link'}
+        disabledClassName={'pagination__link--disabled'}
+        activeClassName={'pagination__link--active'}
+      /> */}
+    </div>
       <div className='beneficiary-table donor-text'>
       <h2>Beneficiary Stories</h2>
       <p> Your contrubution has touched and breathed life to this angels, view here</p>
