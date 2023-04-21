@@ -55,6 +55,9 @@ Rails.application.routes.draw do
    put '/donations/:id', to: 'donations#update'
    delete '/donations/:id', to: 'donations#destroy'
 
+  #  Application Routes
+  # Contact Us Form Route
+  post "/contact-us", to: 'application#contact_us'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
