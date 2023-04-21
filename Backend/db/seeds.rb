@@ -1,6 +1,6 @@
 # # This file should contain all the record creation needed to seed the database with its default values.
 # # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-<<<<<<< HEAD
+
 puts "🌱Started seeding..."
  Administrator.create([
     {
@@ -10,7 +10,7 @@ puts "🌱Started seeding..."
         password: "password123"
     }
 ])
-=======
+
 # #
 # # Examples:
 # #
@@ -25,7 +25,7 @@ puts "🌱Started seeding..."
 #         password: "password123"
 #     }
 # ])
->>>>>>> 0b11394ab6b8ae756a2b2a15457d2fd6c512353c
+
 
 Donor.create([
     {
@@ -51,7 +51,7 @@ Donor.create([
 
 
 
-<<<<<<< HEAD
+
 Charity.create([
     {
         name: "PadUp 4 North Eastern",
@@ -142,7 +142,7 @@ Charity.create([
         approved: false
     }
 ])
-=======
+
 # Charity.create([
 #     {
 #         name: "PadUp 4 North Eastern",
@@ -233,7 +233,7 @@ Charity.create([
 #         approved: false
 #     }
 # ])
->>>>>>> 0b11394ab6b8ae756a2b2a15457d2fd6c512353c
+
 
 
 Beneficiary.create([

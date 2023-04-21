@@ -11,7 +11,7 @@ import CharityDashboard from './components/CharityPage/CharityDashboard'
 import CharityEditForm from './components/CharityPage/CharityEditForm'
 import ContactUs from './components/ContactUs';
 import BeneficiaryForm from './components/CharityPage/BeneficiaryForm';
-import chariti
+import Charities from './components/DonorPage/Charities';
 
 
 function App() {
@@ -31,7 +31,7 @@ function App() {
       <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
       <Route exact path="/charityform" element={<CharityEditForm/>} />
       <Route exact path="/charityedit" element={<CharityEditForm/>} />
-      <Route exact path="/charities" element={<CharityEditForm/>} />
+      <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
       
       

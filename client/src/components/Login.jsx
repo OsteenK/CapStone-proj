@@ -16,6 +16,7 @@ function Login (props) {
   
 
   const handleLogin = (event) => {
+
     event.preventDefault();
   
     let userType = "";
@@ -29,10 +30,10 @@ function Login (props) {
       case "administrator":
         userType = "administrator";
         break;
-      
-    }
+    } 
     
-    fetch("http://127.0.0.1:3000/login",{
+    
+    fetch("/login",{
       method: "POST",
       headers:{
         "Content-Type": "application/json"
@@ -60,7 +61,7 @@ function Login (props) {
        
         switch (userType) {
           case "donor":
-            navigate("/CharitiesPage");
+            navigate("/Charities");
             break;
           case "charity":
             navigate("/CharityDashboard");
@@ -73,16 +74,17 @@ function Login (props) {
       }
     });
   };
-
-  function handleClick() {
-    props.onFormSwitch('Register');
-  }
+ 
+  // function handleClick() {
+  //   props.onFormSwitch('Register');
+  // }
 
  
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email, password, accountType);
-  };
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(email, password, accountType);
+  // };
+  
 
   return (
     <div className="">
@@ -90,7 +92,7 @@ function Login (props) {
       <div className="auth-form-container ">
       
       <form className="login-form" onSubmit={handleLogin}>
-       <h2>Login</h2>
+       <h2>Sign In</h2>
         <label htmlFor="username">Username</label>
         <input
           value={email}
@@ -109,6 +111,7 @@ function Login (props) {
           id="password"
           name="password"
         />
+   
         <div className="checkboxes">
           <label htmlFor="accountType">Account Type</label>
           <label>

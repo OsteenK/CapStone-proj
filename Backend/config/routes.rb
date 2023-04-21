@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
 
   get '/donors/:id', to: 'donors#show'
-  get '/login', to: 'session#create'
+
 
   post '/login' , to: 'session#create'
   delete '/logout', to: 'session#destroy' 

@@ -27,7 +27,12 @@ function NavBar(user) {
               Home
                 </Link>    
           </li>
-          <li><a href='#about'>About</a></li>
+          
+          <li>
+              <Link to="/charities" className="nav-link active">
+              About
+              </Link>    
+          </li>
           <li>
               <Link to="/contactus" className="nav-link active">
                 Contact Us
