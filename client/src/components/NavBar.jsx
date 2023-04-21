@@ -11,8 +11,11 @@ function NavBar() {
       <div className='navbar-left'>
         <ul>
           <li><a href='#home'>Home</a></li>
-          <li><a href='#about'>About</a></li>
           <li>
+              <Link to="/charities" className="nav-link active">
+                Charities
+                </Link>    
+          </li>          <li>
               <Link to="/contactus" className="nav-link active">
                 Contact Us
                 </Link>    
