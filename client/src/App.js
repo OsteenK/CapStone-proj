@@ -1,6 +1,8 @@
 
 import './App.css';
+import { useState } from "react";
 import { Routes,Route } from 'react-router-dom';
+import Popup from "../src/components/Popup";
 import SignUp from '../src/components/SignUp';
 import Login from '../src/components/Login';
 import LandingPage from '../src/components/DonorPage/LandingPage';
@@ -12,10 +14,16 @@ import CharityEditForm from './components/CharityPage/CharityEditForm'
 import ContactUs from './components/ContactUs';
 import BeneficiaryForm from './components/CharityPage/BeneficiaryForm';
 import Charities from './components/DonorPage/Charities';
-import DonationForm from './components/DonorPage/DonationForm';
+import AdministratorDashboard from './components/Administrator/AdministratorDashboard';
 
 
 function App() {
+  const [popupVariables, setPopupVariables] = useState({
+    visible: false,
+    header: "",
+    body: ""
+  })
+
   return (
     <div className="App">
       {/* <NavBar/> */}
@@ -34,11 +42,15 @@ function App() {
       <Route exact path="/charityedit" element={<CharityEditForm/>} />
       <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
+      <Route exact path="/administrator-dashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
       
-      <Route exact path="/donationform" element={<DonationForm/>} />
+      {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
       
 
       </Routes>
+
+      {/* Popup Component can be used by any other component */}
+      <Popup visible={popupVariables.visible} header={popupVariables.header} body={popupVariables.body} setPopupVariables={setPopupVariables}/>
     </div>
   );
 }
