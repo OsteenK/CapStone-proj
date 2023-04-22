@@ -11,30 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[7.0].define(version: 2023_04_17_093648) do
-  create_table "Administrators", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "Charities", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.text "description"
-    t.string "img_url"
-    t.integer "goal_amount"
-    t.integer "total_donations"
-    t.integer "admin_id", null: false
-    t.boolean "approved"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "Donors", force: :cascade do |t|
+  create_table "administrators", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
@@ -49,7 +26,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_093648) do
     t.text "description"
     t.text "items"
     t.string "img_url"
-    t.integer "charity_id"
+
+    t.integer "charity_id", null: false
+
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "charities", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.text "description"
+    t.string "img_url"
+    t.integer "goal_amount"
+    t.integer "total_donations"
+
+    t.integer "administrator_id", null: false
+
+    t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,11 +52,30 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_093648) do
   create_table "donations", force: :cascade do |t|
     t.integer "donation_amount"
     t.boolean "anonymous"
-    t.integer "charity_id"
-    t.integer "donor_id"
+    t.integer "charity_id", null: false
+    t.integer "donor_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "Charities", "Administrators", column: "admin_id"
+  create_table "donors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+
+  create_table "donors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+
 end

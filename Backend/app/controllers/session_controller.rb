@@ -9,7 +9,7 @@ class SessionController < ApplicationController
     if donor && donor.authenticate(params[:password])
       token = JWT.encode({ donor_id: donor.id }, 'my_s3cr3t')
       render json: { loggedin: true, donor: donor.as_json(only: [:id, :name]), jwt: token }, status: :accepted
-    elsif charity && charity.authenticate(params[:password])
+    elsif charity && charity.authenticate(params[:password]) && charity.approved?
       token = JWT.encode({ charity_id: charity.id }, 'my_s3cr3t')
       render json: { loggedin: true, charity: charity.as_json(only: [:id, :name]), jwt: token }, status: :accepted
     elsif administrator && administrator.authenticate(params[:password])

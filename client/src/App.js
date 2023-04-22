@@ -1,42 +1,58 @@
-import React from 'react';
+
 import './App.css';
-import { Routes, Route } from 'react-router-dom';
+import { useState } from "react";
+import { Routes,Route } from 'react-router-dom';
+import Popup from "../src/components/Popup";
 import SignUp from '../src/components/SignUp';
 import Login from '../src/components/Login';
 import LandingPage from '../src/components/DonorPage/LandingPage';
-import CharityForm from '../src/components/CharityPage/CharityEditForm';
-import Charities from '../src/components/CharityPage/Charities';
-import CharityDashboard from '../src/components/CharityPage/CharityDashboard';
-import ContactUs from './components/ContactUs'
+// import NavBar from '../src/components/NavBar'
 import BeneficiaryStories from './components/BeneficiaryStories';
-import BeneficiaryForm from "../src/components/CharityPage/BeneficiaryForm"
-import Charities from '../src/components/CharityPage/Charities'
-import NavBar from './components/NavBar';
+import CharityDetails from './components/DonorPage/CharityDetails';
+import CharityDashboard from './components/CharityPage/CharityDashboard'
+import CharityEditForm from './components/CharityPage/CharityEditForm'
+import ContactUs from './components/ContactUs';
+import BeneficiaryForm from './components/CharityPage/BeneficiaryForm';
+import Charities from './components/DonorPage/Charities';
+import AdministratorDashboard from './components/Administrator/AdministratorDashboard';
+
 
 function App() {
+  const [popupVariables, setPopupVariables] = useState({
+    visible: false,
+    header: "",
+    body: ""
+  })
+
   return (
     <div className="App">
-
+      {/* <NavBar/> */}
       <Routes>
-        <Route exact path='/' element={<LandingPage/>}/>
-        <Route exact path="/login" element={<Login/>} />
-        <Route exact path="/signup" element={<SignUp/>} />
-        <Route exact path="/charities" element={<Charities/>} />
-        <Route exact path="/contactus" element={<ContactUs/>} />
-        <Route exact path="/beneficiary-stories" element={<BeneficiaryStories/>} />
+        
+      <Route path='/' element={<LandingPage/>}/>
 
-        <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
-
-        <Route exact path="/charityform" element={<CharityForm/>} />
-        <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
+      <Route path='/home' element={<LandingPage/>}/>
+      <Route exact path="/login" element={<Login/>} />
+      <Route exact path="/signup" element={<SignUp/>} />
+      <Route exact path="/contactus" element={<ContactUs/>} />
+      <Route exact path="/BeneficiariesS" element={<BeneficiaryStories/>} />
+      <Route exact path="/charitydetails" element={<CharityDetails/>} />
+      <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
+      <Route exact path="/charityform" element={<CharityEditForm/>} />
+      <Route exact path="/charityedit" element={<CharityEditForm/>} />
+      <Route exact path="/charities" element={<Charities/>} />
+      <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
+      <Route exact path="/administrator-dashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
+      
+      {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
+      
 
       </Routes>
 
-      {/* <Footer/> */}
+      {/* Popup Component can be used by any other component */}
+      <Popup visible={popupVariables.visible} header={popupVariables.header} body={popupVariables.body} setPopupVariables={setPopupVariables}/>
     </div>
-
   );
 }
-
 
 export default App;
