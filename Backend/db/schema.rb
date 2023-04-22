@@ -26,7 +26,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_093648) do
     t.text "description"
     t.text "items"
     t.string "img_url"
+
     t.integer "charity_id", null: false
+
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,7 +41,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_093648) do
     t.string "img_url"
     t.integer "goal_amount"
     t.integer "total_donations"
+
     t.integer "administrator_id", null: false
+
     t.boolean "approved"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,5 +66,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_17_093648) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+
+  create_table "donors", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 
 end

@@ -10,7 +10,7 @@ class BeneficiariesController < ApplicationController
 
   # GET /beneficiaries/1 or /beneficiaries/1.json
   def show
-    @inventory = @beneficiary.inventory_items
+    @items = @beneficiary.items
   end
 
   # GET /beneficiaries/new
