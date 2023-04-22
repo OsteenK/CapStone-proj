@@ -6,7 +6,7 @@ class CreateBeneficiaries < ActiveRecord::Migration[7.0]
       t.text :description
       t.text :items
       t.string :img_url
-      t.integer :charity_id
+      t.integer :charity_id, null: false, foreign_key: true
 
       t.timestamps
     end
