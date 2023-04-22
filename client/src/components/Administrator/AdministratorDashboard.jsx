@@ -1,16 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Pagination from "../Pagination";
-import Popup from '../Popup';
 
-function AdministratorDashboard() {
+function AdministratorDashboard({ popupVariables, setPopupVariables }) {
   // States
   const [currentPageTable1, setCurrentPageTable1] = useState(1);
   const [currentPageTable2, setCurrentPageTable2] = useState(1);
-  const [popupVariables, setPopupVariables] = useState({
-    visible: false,
-    header: "",
-    body: ""
-  })
 
   // Pagination Variables
   const itemsPerPage = 4;
@@ -300,7 +294,6 @@ function AdministratorDashboard() {
         <Pagination currentPage={currentPageTable2} setCurrentPage={setCurrentPageTable2} totalItems={activeCharities.length} itemsPerPage={itemsPerPage} scrollTo={"#active-charities"}/>
       </div>
 
-      <Popup visible={popupVariables.visible} header={popupVariables.header} body={popupVariables.body} setPopupVariables={setPopupVariables}/>
     </div>
     
   );
