@@ -45,7 +45,7 @@ const Charities = () => {
 
                 <p className="text-xl font-medium mb-6"><strong>Charity:</strong> {charitiesToDisplay[0].name}</p>
 
-                <a className="bg-lavender-200 rounded-3xl p-2.5 px-4 h-12 text-white text-lg font-bold bottom-0 hover:bg-lavender-300" href="#charities">Donate Now!</a>
+                <a className="bg-lavender-200 rounded-3xl p-2.5 px-4 h-12 text-white text-lg font-bold bottom-0 hover:bg-lavender-300 no-underline" href="#charities">Donate Now!</a>
               </div>
             </div>
           </div>
