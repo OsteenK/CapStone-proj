@@ -1,12 +1,13 @@
 import React from "react";
 import NavBar from "../NavBar";
-// import Footer from "../Footer";
+
 import './LandingPage.css';
 
 const LandingPage = () => {
   return (
     <div>
       <NavBar />
+     
       <main>
         <section className="hero-section">
           <div className="hero-image"></div>

@@ -3,17 +3,16 @@
   background-size: cover;
   height: 70vh;
   background-position: center;
-  margin-top: 10px;
+  width: 100vw;
+  /* margin-top: -250px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-  
-  .hero .container1 {
-  text-align: center;
-  margin-left: 10%;
-  }
-  
+}
+.hero .container1 {
+text-align: center;
+margin-left: 450px;
+}
   .card-title{
   color: #9840D7;
   }
@@ -33,32 +32,66 @@
   border-radius: 10px;
   }
   
-  @media (min-width: 768px) { /* apply styles for screens larger than 768px */
-  .hero .container1 {
-  margin-left: 20%;
+ 
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
   }
   
-  .btn-primary {
-  margin-left: 20%;
-  }
-  }
-  
-  @media (min-width: 992px) { /* apply styles for screens larger than 992px */
-  .hero .container1 {
-  margin-left: 30%;
+  .card {
+    width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   }
   
-  .btn-primary {
-  margin-left: 30%;
-  }
-  }
-  
-  @media (min-width: 1200px) { /* apply styles for screens larger than 1200px */
-  .hero .container1 {
-  margin-left: 40%;
+  .card-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
   }
   
-  .btn-primary {
-  margin-left: 40%;
+  .card-content {
+    padding: 20px;
   }
+  
+  .card-title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
   }
+  
+  .card-text {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .card-button {
+    display: block;
+    margin: 20px auto 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+  
+  .content-container {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .content-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  }
+  

@@ -57,3 +57,82 @@ function DonationForm() {
 }
 
 export default DonationForm;
+
+
+
+
+
+
+
+
+
+
+
+    // <div className="">
+    //   <NavBar/>
+    //   <div className="auth-form-container ">
+      
+    //   <form className="login-form" onSubmit={handleLogin}>
+    //    <h2>Sign In</h2>
+    //     <label htmlFor="username">Username</label>
+    //     <input
+    //       value={email}
+    //       onChange={(e) => setEmail(e.target.value)}
+    //       type="email"
+    //       placeholder="yourusername"
+    //       id="name"
+    //       name="name"
+    //     />
+    //     <label htmlFor="password">Password</label>
+    //     <input
+    //       value={password}
+    //       onChange={(e) => setPassword(e.target.value)}
+    //       type="password"
+    //       placeholder="********"
+    //       id="password"
+    //       name="password"
+    //     />
+   
+    //     <div className="checkboxes">
+    //       <label htmlFor="accountType">Account Type</label>
+    //       <label>
+    //         <input
+    //           type="checkbox"
+    //           name="accountType"
+    //           value="donor"
+    //           checked={accountType === "donor"}
+    //           onChange={(e) => setAccountType(e.target.value)}
+    //         />
+    //         Donor
+    //       </label>
+    //       <label>
+    //         <input
+    //           type="checkbox"
+    //           name="accountType"
+    //           value="charity"
+    //           checked={accountType === "charity"}
+    //           onChange={(e) => setAccountType(e.target.value)}
+    //         />
+    //         Charity
+    //       </label>
+    //       <label>
+    //        <input
+    //         type="radio"
+    //         name="accountType"
+    //         value="administrator"
+    //         checked={accountType === "administrator"}
+    //         onChange={(e) => setAccountType(e.target.value)}
+    //        />
+    //        Administrator
+    //      </label>
+    //     </div>
+        
+    //     <button type="submit" >
+    //         Log In
+    //     </button>
+
+    //   </form>
+      
+    //   <Link  to='/signup'>Don't have an account? Register here.</Link>
+    // </div>
+    // </div>

@@ -1,4 +1,3 @@
-
 import './App.css';
 import { useState } from "react";
 import { Routes,Route } from 'react-router-dom';
@@ -15,6 +14,8 @@ import ContactUs from './components/ContactUs';
 import BeneficiaryForm from './components/CharityPage/BeneficiaryForm';
 import Charities from './components/DonorPage/Charities';
 import AdministratorDashboard from './components/Administrator/AdministratorDashboard';
+import Administratornavbar from './components/Administrator/Administrator navbar';
+import CharityNavBar from './components/CharityPage/CharityNavBar';
 
 
 function App() {
@@ -42,8 +43,10 @@ function App() {
       <Route exact path="/charityedit" element={<CharityEditForm/>} />
       <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
-      <Route exact path="/administrator-dashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
-      
+      <Route exact path="/administratordashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
+      <Route exact path="/administratornavbar" element={<Administratornavbar/>} />
+
+      <Route exact path="/ charitynavBar" element={< CharityNavBar/>} />
       {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
       
 
