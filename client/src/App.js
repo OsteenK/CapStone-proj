@@ -35,7 +35,7 @@ function App() {
       <Route exact path="/login" element={<Login/>} />
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/contactus" element={<ContactUs/>} />
-      <Route exact path="/BeneficiariesS" element={<BeneficiaryStories/>} />
+      <Route exact path="/beneficiary-stories" element={<BeneficiaryStories/>} />
       <Route exact path="/charitydetails" element={<CharityDetails/>} />
       <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
       <Route exact path="/charityform" element={<CharityEditForm/>} />

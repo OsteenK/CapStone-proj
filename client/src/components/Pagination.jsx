@@ -19,13 +19,13 @@ function Pagination({ currentPage, setCurrentPage, totalItems, itemsPerPage, scr
     
     return(
         <div>
-            <ul class="list-style-none flex justify-center py-4 px-auto">
+            <ul className="list-style-none flex justify-center py-4 px-auto">
                 {pages.map((page, index) => {
                     return(
                         <button
                             key={index}
                             onClick={() => handleClick(page)}
-                            class={page === currentPage? 'relative block rounded bg-lavender-200 px-3 py-1.5 text-base font-bold text-white transition-all duration-300' : 'relative block rounded bg-transparent px-3 py-1.5 text-base text-lavender-500 transition-all duration-300 hover:bg-neutral-100'} 
+                            className={page === currentPage? 'relative block rounded bg-lavender-200 px-3 py-1.5 text-base font-bold text-white transition-all duration-300' : 'relative block rounded bg-transparent px-3 py-1.5 text-base text-lavender-500 transition-all duration-300 hover:bg-neutral-100'} 
                         >
                             {page}
                         </button>
