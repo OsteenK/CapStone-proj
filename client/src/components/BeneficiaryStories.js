@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import BeneficiaryCard from "./BeneficiaryCard";
 import Pagination from "./Pagination";
+import LoadingScreen from "./LoadingScreen";
 
 function BeneficiaryStories(){
     // States
@@ -23,8 +24,7 @@ function BeneficiaryStories(){
     const storiesPerPage = stories.slice(firstItemIndex, lastItemIndex);
     
     if(storiesPerPage.length === 0){
-        return(<h1 className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
-        role="status"></h1>)
+        return(<LoadingScreen />)
     }else{
         return(
             <div className="w-screen mx-0 p-4 bg-lavender-100">
