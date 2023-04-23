@@ -32,16 +32,26 @@ const Charities = () => {
   return (
     <div>
       {/* Hero Image */}
-      <section className='hero'>
-        <div className='container1'>
-          <div className='card'  style={{backgroundColor: 'rgba(136, 98, 219, 0.3)'}}>
-            <h1>HELP MERCY</h1>
-            <p className='text2'>
-              Mercy lives in an area with poor sanitation and access to water.Sustainable sanitation solutions for poor communities has the potential to solve a range of social and environmental challenges<br></br>Charity:Elevating Sanitary Facilities
-            </p>
-            <button className='btn btn'style={{backgroundColor:'#9840D7',borderRadius:'20px',margin:'30px'}}>Donate Now!</button>
+      <section>
+        <div className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{backgroundImage: `url(${charitiesToDisplay[0].img_url})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}}>
+          <div className="container mx-auto xl:px-32">
+            <div className="flex items-center md:justify-end">
+
+              {/* Text Card */}
+              <div className="mb-12 p-12 lg:mb-0 lg:w-2/5 rounded-2xl bg-lavender-100/80 text-white text-left">
+                <h1 className="mb-4 text-5xl text-white font-extrabold leading-tight">Help Mercy</h1>
+
+                <p className="text-xl font-medium mb-6">Did you know that millions of girls like Mercy lack access to proper sanitary products, hindering their education and putting their health at risk?<br/>You can make a difference by supporting charities that work to improve these conditions and empower girls around the world. Join the movement today and help create a brighter future for all girls.</p>
+
+                <p className="text-xl font-medium mb-6"><strong>Charity:</strong> {charitiesToDisplay[0].name}</p>
+
+                <button className="bg-lavender-200 rounded-3xl p-2.5 px-4 h-12 text-white text-lg font-bold bottom-0 hover:bg-lavender-300">Donate Now!</button>
+              </div>
+            </div>
           </div>
+          
         </div>
+        
       </section>
 
       {/* Header */}
@@ -52,13 +62,13 @@ const Charities = () => {
       </div>
 
       {/* Charity Cards */}
-      <div id="#charities" className='container'>
-        <div className='row row-cols-md-3 row-cols-sm-1 g-4'>
+      <div id="charities" className='container'>
+        <div className='row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4'>
           {charitiesPerPage.map((charity) => <CharityCard key={charity.name} charity={charity}/>)}
         </div>  
       </div>
 
-      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalItems={charitiesToDisplay.length} itemsPerPage={itemsPerPage} scrollTo={'#charities'}/>
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalItems={charitiesToDisplay.length} itemsPerPage={itemsPerPage} scrollTo={"#charities"}/>
     </div>
   )};
 
