@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 function Pagination({ currentPage, setCurrentPage, totalItems, itemsPerPage, scrollTo }) {
     // Navigatiton
     const navigate = useNavigate();
+    const element = document.getElementById(scrollTo)
+    console.log(element)
 
     // Holds the page numbers, thus the buttons numbers
     let pages = [];
@@ -14,7 +16,7 @@ function Pagination({ currentPage, setCurrentPage, totalItems, itemsPerPage, scr
     // On click, set the current page to the number on the button and then scroll to the top of the page
     function handleClick(page){
         setCurrentPage(page);
-        scrollTo === undefined ? window.scrollTo(0, 0) : navigate(scrollTo);
+        scrollTo === undefined ? window.scrollTo(0, 0) : element.scrollIntoView();
     }
     
     return(
