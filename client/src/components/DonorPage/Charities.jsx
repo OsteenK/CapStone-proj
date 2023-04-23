@@ -45,7 +45,7 @@ const Charities = () => {
 
                 <p className="text-xl font-medium mb-6"><strong>Charity:</strong> {charitiesToDisplay[0].name}</p>
 
-                <button className="bg-lavender-200 rounded-3xl p-2.5 px-4 h-12 text-white text-lg font-bold bottom-0 hover:bg-lavender-300">Donate Now!</button>
+                <a className="bg-lavender-200 rounded-3xl p-2.5 px-4 h-12 text-white text-lg font-bold bottom-0 hover:bg-lavender-300" href="#charities">Donate Now!</a>
               </div>
             </div>
           </div>
@@ -55,20 +55,20 @@ const Charities = () => {
       </section>
 
       {/* Header */}
-      <div className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8">
+      <div id="charities" className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8">
         <h1 className="mb-2 sm:mt-4 md:mt-14 text-5xl text-lavender-400 font-extrabold leading-tight">Active Charities</h1>
         
         <p className="mb-16 mt-4 text-xl text-center font-medium "> Each of <span className="text-lavender-200 font-bold">our carefully selected charities</span> aim to promote equality improve health outcomes and create a more just and equitable world for all, through <span className="text-lavender-200 font-bold">proper sanitation and sanitary products</span>.</p>
       </div>
 
       {/* Charity Cards */}
-      <div id="charities" className='container'>
+      <div className='container'>
         <div className='row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4'>
           {charitiesPerPage.map((charity) => <CharityCard key={charity.name} charity={charity}/>)}
         </div>  
       </div>
 
-      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalItems={charitiesToDisplay.length} itemsPerPage={itemsPerPage} scrollTo={"#charities"}/>
+      <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalItems={charitiesToDisplay.length} itemsPerPage={itemsPerPage} scrollTo={"charities"}/>
     </div>
   )};
 
