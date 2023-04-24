@@ -3,9 +3,12 @@ import CharityNavBar from './CharityNavBar';
 import './CharityDashboard.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import charityNavBar from './CharityNavBar';
+
 function CharityDashboard() {
   return (
     <div>
+      <CharityNavBar/>
       <div className='header'>
         <CharityNavBar />
         <div className='mt-9'>
