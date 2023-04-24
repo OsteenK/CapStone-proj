@@ -55,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized_administrator
-    render json: { message: 'Please log in as an admin' }, status: :unauthorized unless logged_in? && @current_user.is_a?(Administrator)
+    render json: { message: 'Please log in as an admin' }, status: :unauthorized unless logged_in? && @current_user.is_a?(Admin)
   end
 
   def authorize

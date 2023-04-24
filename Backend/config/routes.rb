@@ -48,6 +48,12 @@ Rails.application.routes.draw do
    post '/administrator/applications/:id/reject', to: 'administrators#reject_application'
    delete '/administrator/charities/:id', to: 'administrators#delete_charity'
 
+   # Donations routes
+   get '/donations', to: 'donations#index'
+   post '/donations', to: 'donations#create'
+   get '/donations/:id', to: 'donations#show'
+   put '/donations/:id', to: 'donations#update'
+   delete '/donations/:id', to: 'donations#destroy'
 
   #  Application Routes
   # Contact Us Form Route

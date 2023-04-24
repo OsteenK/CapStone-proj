@@ -1,25 +1,39 @@
-
-import React, {  useContext, useState } from "react";
-import Swal from 'sweetalert';
-
-
+import React, { useState } from "react";
+import './login.css'
+import Swal from 'sweetalert2';
 import { useNavigate } from "react-router-dom";
+import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
 
-
-export default function Login() {
+function Login (props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [userType, setUserType] = useState("userType");
+  const [accountType, setAccountType] = useState("user");
+  
   const [loggedIn, setLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   
+
   const handleLogin = (event) => {
+
     event.preventDefault();
   
-    fetch("http://127.0.0.1:3000/login",{
+    let userType = "";
+    switch (accountType) {
+      case "donor":
+        userType = "donor";
+        break;
+      case "charity":
+        userType = "charity";
+        break;
+      case "administrator":
+        userType = "administrator";
+        break;
+    } 
+    
+    
+    fetch("/login",{
       method: "POST",
       headers:{
         "Content-Type": "application/json"
@@ -45,91 +59,103 @@ export default function Login() {
           button: "OK",
         });
        
-        if (userType === "administrator") {
-          navigate("/administratordashboard");
-        } 
-        else if (userType === "charity"){
-          navigate("/charitydashboard");
-        }
-        else  {
-          navigate("/home");
+        switch (userType) {
+          case "donor":
+            navigate("/Charities");
+            break;
+          case "charity":
+            navigate("/CharityDashboard");
+            break;
+          case "administrator":
+            navigate("/AdministratorDashBoard");
+            break;
+          
         }
       }
     });
   };
+ 
+  // function handleClick() {
+  //   props.onFormSwitch('Register');
+  // }
+
+ 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(email, password, accountType);
+  // };
+  
 
   return (
-    <div className="auth-page">
-    <div className="auth-wrapper container">
+    <div className="">
+      <NavBar/>
+      <div className="auth-form-container ">
       
-        <form onSubmit={handleLogin}>
-          <h3>Sign In</h3>
-
-          <div className="mb-3">
-            <label>Email address</label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="Enter email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-
-          <div className="mb-3">
-            <label>Password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="Enter password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <div className="mb-3">
-            <label style={{ marginRight: "10px" }}>
-              Login As:
-              <select
-                value={userType}
-                onChange={(e) => setUserType(e.target.value)}
-                style={{ marginLeft: "5px" }}
-              >
-                <option value="donor">Donor</option>
-                <option value="charity">Charity</option>
-                <option value="administrator">Administrator</option>
-              </select>
-            </label>
-          </div>
-          <div className="mb-3">
-            <div className="custom-control custom-checkbox">
-              <input
-                type="checkbox"
-                className="custom-control-input"
-                id="customCheck1"
-              />
-
-              <label className="custom-control-label" htmlFor="customCheck1">
-                Remember me
-              </label>
-            </div>
-          </div>
-
-          <div className="d-grid">
-            <button type="submit" className="btn btn-primary" onClick={handleLogin}>
-             Login
-            </button>
-          </div>
-          <p class="mb-0 mt-2 pt-1 text-sm font-semibold">
-                Don't have an account?
-                <a
-                  href="#!"
-                  class="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
-                  ></a
-                >
-            
-          <Link to="/signup">Sign Up</Link>
-          </p>
-        </form>
-      </div>
-    </div>
+      <form className="login-form" onSubmit={handleLogin}>
+       <h2>Sign In</h2>
+        <label htmlFor="username">Username</label>
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          placeholder="yourusername"
+          id="name"
+          name="name"
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          placeholder="********"
+          id="password"
+          name="password"
+        />
    
+        <div className="checkboxes">
+          <label htmlFor="accountType">Account Type</label>
+          <label>
+            <input
+              type="checkbox"
+              name="accountType"
+              value="donor"
+              checked={accountType === "donor"}
+              onChange={(e) => setAccountType(e.target.value)}
+            />
+            Donor
+          </label>
+          <label>
+            <input
+              type="checkbox"
+              name="accountType"
+              value="charity"
+              checked={accountType === "charity"}
+              onChange={(e) => setAccountType(e.target.value)}
+            />
+            Charity
+          </label>
+          <label>
+           <input
+            type="radio"
+            name="accountType"
+            value="administrator"
+            checked={accountType === "administrator"}
+            onChange={(e) => setAccountType(e.target.value)}
+           />
+           Administrator
+         </label>
+        </div>
+        
+        <button type="submit" >
+            Log In
+        </button>
+
+      </form>
+      
+      <Link  to='/signup'>Don't have an account? Register here.</Link>
+    </div>
+    </div>
   );
-}
+};
+
+export default Login;

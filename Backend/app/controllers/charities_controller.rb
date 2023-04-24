@@ -27,10 +27,6 @@ class CharitiesController < ApplicationController
     redirect_to @charity
   end
   
-  def unapproved
-    @charities = Charity.where(approved: false)
-    render json: @charities
-  end
   
   
 

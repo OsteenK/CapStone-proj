@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Pagination from "../Pagination";
-import Administratornavbar from './Administrator navbar';
 
 function AdministratorDashboard({ popupVariables, setPopupVariables }) {
   // States
@@ -162,7 +161,6 @@ function AdministratorDashboard({ popupVariables, setPopupVariables }) {
 
   return (
     <div className='w-100 text-base'>
-      <Administratornavbar/>
       {/* Stats Cards */}
       <div className="my-28 text-gray-800 text-center px-32">
         <div className="grid md:gap-x-8 md:grid-cols-1 lg:gap-x-12 lg:grid-cols-3">
