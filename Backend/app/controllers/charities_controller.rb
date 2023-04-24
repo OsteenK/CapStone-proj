@@ -52,7 +52,7 @@ class CharitiesController < ApplicationController
   end
 
   def destroy
-    AdministratorNotifierMailer.send_charity_deletion_email(charity).deliver
+    AdministratorNotifierMailer.send_charity_deletion_email(@charity).deliver
     CharityNotifierMailer.send_charity_deletion_notice(@charity).deliver
     @charity.destroy
     head :no_content
