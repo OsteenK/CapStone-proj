@@ -47,7 +47,7 @@ function NavBar(user) {
         </Link>    
   </li>
   <li>
-      <Link to="/BeneficiariesS" className="nav-link active">
+      <Link to="/beneficiarystories" className="nav-link active">
       Beneficiary Stories
       </Link>    
   </li>

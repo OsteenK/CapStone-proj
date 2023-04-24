@@ -35,12 +35,12 @@ function administratornavbar(user) {
   
   
   <li>
-      <Link to="/contactus" className="nav-link active">
+      <Link to="#active-charities" className="nav-link active">
         Active Charities
         </Link>    
   </li>
   <li>
-      <Link to="#charity-applications" className="nav-link active">
+      <Link to href="#charity-applications" className="nav-link active">
       Applications
       </Link>    
   </li>

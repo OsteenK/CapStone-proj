@@ -16,6 +16,7 @@ import Charities from './components/DonorPage/Charities';
 import AdministratorDashboard from './components/Administrator/AdministratorDashboard';
 import Administratornavbar from './components/Administrator/Administrator navbar';
 import CharityNavBar from './components/CharityPage/CharityNavBar';
+import CharityCard from './components/DonorPage/CharityCard';
 
 
 function App() {
@@ -36,7 +37,7 @@ function App() {
       <Route exact path="/login" element={<Login/>} />
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/contactus" element={<ContactUs/>} />
-      <Route exact path="/BeneficiariesS" element={<BeneficiaryStories/>} />
+      <Route exact path="/beneficiarystories" element={<BeneficiaryStories/>} />
       <Route exact path="/charitydetails" element={<CharityDetails/>} />
       <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
       <Route exact path="/charityform" element={<CharityEditForm/>} />
@@ -45,7 +46,7 @@ function App() {
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
       <Route exact path="/administratordashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
       <Route exact path="/administratornavbar" element={<Administratornavbar/>} />
-
+      <Route exact path="/charitydetails/:id" element={<CharityCard/>} />
       <Route exact path="/ charitynavBar" element={< CharityNavBar/>} />
       {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
       

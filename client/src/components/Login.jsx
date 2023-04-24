@@ -59,8 +59,9 @@ export default function Login() {
   };
 
   return (
+    <div className="auth-page">
     <div className="auth-wrapper container">
-      <div className="auth-inner">
+      
         <form onSubmit={handleLogin}>
           <h3>Sign In</h3>
 
@@ -129,5 +130,6 @@ export default function Login() {
         </form>
       </div>
     </div>
+   
   );
 }

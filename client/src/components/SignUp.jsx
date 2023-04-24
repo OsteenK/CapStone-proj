@@ -11,7 +11,6 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [ password_confirmation, setConfirmPassword ] = useState("")
   const [userType, setUserType] = useState("");
-  const [secretKey, setSecretKey] = useState("");
   const [charityName, setCharityName] = useState("");
  const [contactEmail, setContactEmail] = useState("");
  const [charityDescription, setCharityDescription] = useState("");
@@ -62,7 +61,7 @@ export default function Register() {
   }
 
   return (
-    <div className="auth-wrapper container form-floating mb-3">
+    // <div className="auth-wrapper container form-floating mb-3">
       <div className="auth-inner ">
         <form onSubmit={handleSubmit} className="registration-form">
           <h3>Sign Up</h3>
@@ -85,71 +84,69 @@ export default function Register() {
             />
             Charity
           </div>
+         
           
-          <form action="/charities" method="post">
-          {userType === "Charity" && (
-        <>
-          <div>
-            <label htmlFor="charityName">Charity Name:</label>
-            <input
-              type="text"
-              id="charityName"
-              value={charityName}
-              onChange={(event) => setCharityName(event.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="contactEmail">Contact Email:</label>
-            <input
-              type="email"
-              id="contactEmail"
-              value={contactEmail}
-              onChange={(event) => setContactEmail(event.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Password:</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="goalAmount">Goal Amount:</label>
-            <input
-              type="number"
-              id="goalAmount"
-              value={goalAmount}
-              onChange={(event) => setGoalAmount(event.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="bannerImageUrl">Banner Image URL:</label>
-            <input
-              type="url"
-              id="bannerImageUrl"
-              value={bannerImageUrl}
-              onChange={(event) => setBannerImageUrl(event.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="charityDescription">Charity Description:</label>
-           <textarea
-               id="charityDescription"
-                value={charityDescription}
-                onChange={(event) => setCharityDescription(event.target.value)}
-           />
-         </div>
+         {  userType === "Charity"? 
+             <>
+             <div>
+               <label htmlFor="charityName">Charity Name:</label>
+               <input
+                 type="text"
+                 id="charityName"
+                 value={charityName}
+                 onChange={(event) => setCharityName(event.target.value)}
+               />
+             </div>
+             <div>
+               <label htmlFor="contactEmail">Contact Email:</label>
+               <input
+                 type="email"
+                 id="contactEmail"
+                 value={contactEmail}
+                 onChange={(event) => setContactEmail(event.target.value)}
+               />
+             </div>
+             <div>
+               <label htmlFor="password">Password:</label>
+               <input
+                 type="password"
+                 id="password"
+                 value={password}
+                 onChange={(event) => setPassword(event.target.value)}
+               />
+             </div>
+             <div>
+               <label htmlFor="goalAmount">Goal Amount:</label>
+               <input
+                 type="number"
+                 id="goalAmount"
+                 value={goalAmount}
+                 onChange={(event) => setGoalAmount(event.target.value)}
+               />
+             </div>
+             <div>
+               <label htmlFor="bannerImageUrl">Banner Image URL:</label>
+               <input
+                 type="url"
+                 id="bannerImageUrl"
+                 value={bannerImageUrl}
+                 onChange={(event) => setBannerImageUrl(event.target.value)}
+               />
+             </div>
+             <div>
+               <label htmlFor="charityDescription">Charity Description:</label>
+              <textarea
+                  id="charityDescription"
+                   value={charityDescription}
+                   onChange={(event) => setCharityDescription(event.target.value)}
+              />
+            </div>
+   
+           </>
 
-        </>
-      )}
-      
-      </form>
-
-       {userType === "Donor" && (
-        <>
+          
+          :
+            <>
           <div className="mb-3">
             <label>Name</label>
             <input
@@ -190,7 +187,15 @@ export default function Register() {
             />
           </div>
           </>
-           )}
+          
+          }
+        
+      
+      
+
+       
+        
+  
           <div className="d-grid">
             <button type="submit" className="btn btn-primary" onClick={handleSubmit}>
               Sign Up
@@ -201,6 +206,6 @@ export default function Register() {
           </p>
         </form>
       </div>
-    </div>
+    // </div>
   );
 }
