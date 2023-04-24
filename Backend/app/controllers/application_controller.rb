@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :null_session
   before_action :authorize
+  skip_before_action :authorize, only: [:contact_us]
 
   def encode_token(payload)
     # should store secret in env variable
@@ -67,6 +68,12 @@ class ApplicationController < ActionController::Base
     end
 
     render json: { message: 'Please log in as a donor or as a charity or as an admin' }, status: :unauthorized
+  end
+
+  def contact_us
+    @form_data = params[:application]
+    # render json: @form_data
+    ApplicationMailer.send_contact_form_email(@form_data).deliver
   end
 
 end

@@ -9,11 +9,13 @@ Rails.application.routes.draw do
   get '/donors/:id', to: 'donors#show'
 
   post '/login' , to: 'session#create'
-  delete '/logout', to: 'session#destroy' 
+  delete '/logout', to: 'session#destroy'
   get '/loggedin', to: 'application#logged'
   # get '/loggedin', to: 'users#current_user'
   # get '/logged', to: 'application#administration'
   delete 'logout', to: 'sessions#destroy'
+
+  get '/images' , to: 'images#index'
 
   #CHARITY ROUTES
 
@@ -53,6 +55,9 @@ Rails.application.routes.draw do
    put '/donations/:id', to: 'donations#update'
    delete '/donations/:id', to: 'donations#destroy'
 
+  #  Application Routes
+  # Contact Us Form Route
+  post "/contact-us", to: 'application#contact_us'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
