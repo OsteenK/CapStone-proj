@@ -9,6 +9,7 @@ class DonorsController < ApplicationController
   def create
     donor = Donor.create(donor_params)
     if donor.save
+      DonorNotifierMailer.send(send_donor_signup_email(donor)).deliver
       render json: { message: 'Donor created successfully' }, status: :created
     else
       render json: { error: 'Unable to create donor' }, status: :unprocessable_entity
