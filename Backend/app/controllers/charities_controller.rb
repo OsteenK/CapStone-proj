@@ -35,6 +35,7 @@ class CharitiesController < ApplicationController
     @charity = Charity.new(charity_params)
 
     if @charity.save
+      AdministratorNotifierMailer.send_new_charity_application_email(@charity).deliver
       CharityNotifierMailer.send_application_received_email(@charity).deliver
       render json: @charity, status: :created, location: @charity
     else
@@ -51,6 +52,7 @@ class CharitiesController < ApplicationController
   end
 
   def destroy
+    AdministratorNotifierMailer.send_charity_deletion_email(charity).deliver
     CharityNotifierMailer.send_charity_deletion_notice(@charity).deliver
     @charity.destroy
     head :no_content
