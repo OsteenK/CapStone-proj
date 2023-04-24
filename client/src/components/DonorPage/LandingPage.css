@@ -1,37 +1,24 @@
 /* LandingPage.css */
 
 /* Styling for the hero section */
-
-  
-  
-  .hero-section{
-    background-image: url("https://images.unsplash.com/photo-1544476866-ce192b63bd7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1134&q=80");
-    background-size: cover;
-    filter: brightness(1.2);
-    height: 70vh;
-    background-position: center;
-    width: 100vw;
-    /* margin-top: -250px; */
+.hero-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    opacity: 0;
-  animation: fade-in 1s ease-in forwards;
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
+    background-color: #f2f2f2;
+    padding: 600px;
+    padding-bottom: 800px;
+    padding-top: 8px;
+    /* position: fixed; */
   }
-  to {
-    opacity: 1;
+  
+  .hero-image {
+    /* background-image: url('path/to/hero-image.jpg'); */
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+    height: 0px;
   }
-}
-
-.hero .container1 {
-  text-align: center;
-  margin-left: 450px;
-}
   
   .hero-card {
     /* width: 45%;
@@ -79,14 +66,14 @@ color: #FFFFFF;
   }
   
   .hero-card-button {
-    display: inline-block;
-    background-color: #3A1A52;
-    color: white;
-    font-size: 1.2rem;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+    background-color: #9840D7;
+    color: #ffffff;
+    border: none;
+    padding: 1px 15px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
   }
   
   .hero-card-button:hover {
@@ -117,15 +104,6 @@ color: #FFFFFF;
     line-height: 29px;
     text-align: center;
     color: #3A1A52;
-  }
-  .container1{
-    width: 300px;
-}
-
-.container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
   }
   
   .mission-cards {
@@ -296,8 +274,3 @@ color: #FFFFFF;
       width: 45%;
     }
   } */
-  .charities-container {
-    display: flex;
-    flex-direction: column;
-  }
-  
