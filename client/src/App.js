@@ -28,7 +28,7 @@ function App() {
     <div className="App">
       {/* <NavBar/> */}
       <Routes>
-        
+
       <Route path='/' element={<LandingPage/>}/>
 
       <Route path='/home' element={<LandingPage/>}/>
@@ -43,9 +43,9 @@ function App() {
       <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
       <Route exact path="/administrator-dashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
-      
+
       {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
-      
+
 
       </Routes>
 
