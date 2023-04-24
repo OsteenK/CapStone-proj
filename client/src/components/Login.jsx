@@ -1,30 +1,98 @@
 import React, { useState } from "react";
 import './login.css'
-import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
+import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-function Login (props){
+import { Link } from "react-router-dom";
+
+function Login (props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [accountType, setAccountType] = useState("");
-  const [acceptTerms, setAcceptTerms] = useState(false);
+  const [accountType, setAccountType] = useState("user");
+  
+  const [loggedIn, setLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
-  function handleClick() {
-    props.onFormSwitch('Register');
-  }
+  
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(email, password, accountType, acceptTerms);
+  const handleLogin = (event) => {
+
+    event.preventDefault();
+  
+    let userType = "";
+    switch (accountType) {
+      case "donor":
+        userType = "donor";
+        break;
+      case "charity":
+        userType = "charity";
+        break;
+      case "administrator":
+        userType = "administrator";
+        break;
+    } 
+    
+    
+    fetch("/login",{
+      method: "POST",
+      headers:{
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email, password, userType
+      })
+    })
+    .then(response => response.json())
+    .then(response => {
+      if (response.error) {
+        // Show an error message
+        console.log(response.message);
+        
+      } else {
+        localStorage.setItem("token", response.jwt);
+        console.log(response)
+         // Navigate to the appropriate component
+        Swal({
+          title: "Success!",
+          text: "LoggedIn successfully.",
+          icon: "success",
+          button: "OK",
+        });
+       
+        switch (userType) {
+          case "donor":
+            navigate("/Charities");
+            break;
+          case "charity":
+            navigate("/CharityDashboard");
+            break;
+          case "administrator":
+            navigate("/AdministratorDashBoard");
+            break;
+          
+        }
+      }
+    });
   };
+ 
+  // function handleClick() {
+  //   props.onFormSwitch('Register');
+  // }
+
+ 
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log(email, password, accountType);
+  // };
+  
 
   return (
-  
-    <>
-    <NavBar/>
-    <div className="bg-purple-200">
+    <div className="">
+      <NavBar/>
       <div className="auth-form-container ">
-      <h2>Login</h2>
-      <form className="login-form" onSubmit={handleSubmit}>
+      
+      <form className="login-form" onSubmit={handleLogin}>
+       <h2>Sign In</h2>
         <label htmlFor="username">Username</label>
         <input
           value={email}
@@ -43,6 +111,7 @@ function Login (props){
           id="password"
           name="password"
         />
+   
         <div className="checkboxes">
           <label htmlFor="accountType">Account Type</label>
           <label>
@@ -65,18 +134,27 @@ function Login (props){
             />
             Charity
           </label>
+          <label>
+           <input
+            type="radio"
+            name="accountType"
+            value="administrator"
+            checked={accountType === "administrator"}
+            onChange={(e) => setAccountType(e.target.value)}
+           />
+           Administrator
+         </label>
         </div>
         
-        <button type="submit" disabled={!acceptTerms}>
-          Log In
+        <button type="submit" >
+            Log In
         </button>
+
       </form>
-      <Link  to='/signup'> Don't have an account? Register here.
-      </Link>
-       
+      
+      <Link  to='/signup'>Don't have an account? Register here.</Link>
     </div>
     </div>
-    </>
   );
 };
 

@@ -1,0 +1,66 @@
+.hero{
+    background-image: url("/home/rx/coding Repo/PHASE5/CapStone-proj/client/src/components/DonorPage/photo-1584731683340-6495e2e103e9.avif");
+    background-size: cover;
+    height: 70vh;
+    background-position: center;
+    width: 100vw;
+    /* margin-top: -250px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.hero .container1 {
+  text-align: center;
+  margin-left: 450px;
+}
+
+.text1 {
+  /* text-align: center; */
+  font-size: 20px;
+  line-height: 1.5;
+}
+.container1{
+    width: 300px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .card-title{
+    color: #9840D7;
+  }
+  .btn-primary{
+    border-radius: 70px;
+    background-color: #9840D7;
+    margin-left: 80px;
+  }
+  .card-text{
+    color: #3A1A52;
+  }
+  .card {
+    margin: 15px;
+    border-radius: 10px;
+  }
+ .hero2 h1{
+  color: #3A1A52;
+  font-size: 30px;
+  font-weight: bold;
+ }
+.hero h1{
+  color: white;
+ font-weight: bold;
+}
+.text1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero2{
+  width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+  
+
