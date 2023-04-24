@@ -10,6 +10,7 @@ class DonationsController < ApplicationController
     @donation = Donation.new(donation_params)
     if @donation.save
       DonorNotifierMailer.send_donation_received_email(@donation).deliver
+      CharityNotifierMailer.send_new_donation_received_email(@donation).deliver
       render json: @donation, status: :created
     else
       render json: @donation.errors, status: :unprocessable_entity
