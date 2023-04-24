@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get '/donors/:id', to: 'donors#show'
 
+
   post '/login' , to: 'session#create'
   delete '/logout', to: 'session#destroy'
   get '/loggedin', to: 'application#logged'
@@ -20,13 +21,14 @@ Rails.application.routes.draw do
   #CHARITY ROUTES
 
   get 'beneficiaries', to: 'charities#beneficiaries'
+  get 'charitydetails', to: 'charities#beneficiaries'
   post 'beneficiaries', to: 'charities#create_beneficiary'
   put 'beneficiaries/:beneficiary_id', to: 'charities#update_beneficiary'
   delete 'beneficiaries/:beneficiary_id', to: 'charities#destroy_beneficiary'
-  get 'beneficiaries/:beneficiary_id/inventory', to: 'charities#inventory'
-  post 'beneficiaries/:beneficiary_id/inventory', to: 'charities#create_inventory'
-  put 'beneficiaries/:beneficiary_id/inventory/:inventory_id', to: 'charities#update_inventory'
-  delete 'beneficiaries/:beneficiary_id/inventory/:inventory_id', to: 'charities#destroy_inventory'
+  # get 'beneficiaries/:beneficiary_id/items', to: 'charities#items'
+  # post 'beneficiaries/:beneficiary_id/items', to: 'charities#create_items'
+  # put 'beneficiaries/:beneficiary_id/items/:items_id', to: 'charities#update_items'
+  # delete 'beneficiaries/:beneficiary_id/items/:items_id', to: 'charities#destroy_items'
 
 
   #DONOR ROUTES
@@ -42,11 +44,11 @@ Rails.application.routes.draw do
   post '/donations/stripe', to: 'donor#stripe'
 
    # Administrator routes
-   post '/admin/login', to: 'administrators#login'
-   get '/admin/applications', to: 'administrators#applications'
-   post '/admin/applications/:id/approve', to: 'administrators#approve_application'
-   post '/admin/applications/:id/reject', to: 'administrators#reject_application'
-   delete '/admin/charities/:id', to: 'administrators#delete_charity'
+   post '/administrator/login', to: 'administrators#login'
+   get '/administrator/applications', to: 'administrators#applications'
+   post '/administrator/applications/:id/approve', to: 'administrators#approve_application'
+   post '/administrator/applications/:id/reject', to: 'administrators#reject_application'
+   delete '/administrator/charities/:id', to: 'administrators#delete_charity'
 
    # Donations routes
    get '/donations', to: 'donations#index'
