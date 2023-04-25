@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import CharityCard from "./CharityCard";
 import Pagination from "../Pagination";
 import LoadingScreen from "../LoadingScreen";
+import NavBar from "../NavBar";
 
 
 const Charities = () => {
   // States
   const [charities, setCharities] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(2);
 
   // Pagination variables
   const itemsPerPage = 3; // Number of items per page
@@ -31,6 +32,7 @@ const Charities = () => {
   }
   return (
     <div>
+      <NavBar/>
       {/* Hero Image */}
       <section>
         <div className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{backgroundImage: `url(${charitiesToDisplay[0].img_url})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}}>
@@ -64,7 +66,7 @@ const Charities = () => {
       {/* Charity Cards */}
       <div className='container'>
         <div className='row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4'>
-          {charitiesPerPage.map((charity) => <CharityCard key={charity.name} charity={charity}/>)}
+          {charitiesPerPage.map((charity => <CharityCard key={charity.name} charity={charity}/>))}
         </div>  
       </div>
 
@@ -73,5 +75,3 @@ const Charities = () => {
   )};
 
 export default Charities;
-
-

@@ -10,11 +10,13 @@ Rails.application.routes.draw do
 
 
   post '/login' , to: 'session#create'
-  delete '/logout', to: 'session#destroy' 
+  delete '/logout', to: 'session#destroy'
   get '/loggedin', to: 'application#logged'
   # get '/loggedin', to: 'users#current_user'
   # get '/logged', to: 'application#administration'
   delete 'logout', to: 'sessions#destroy'
+
+  get '/images' , to: 'images#index'
 
   #CHARITY ROUTES
 

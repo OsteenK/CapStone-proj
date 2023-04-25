@@ -56,9 +56,9 @@ const BeneficiaryForm = () => {
     return(
         <div>
             <CharityNavBar />
-            <form className="Beneficiary-form" onSubmit={handleSubmit}>
+            <form className="beneficiary-form" onSubmit={handleSubmit}>
                 <input className="beneficiary-form-input"
-                name="Name"
+                name="name"
                 type="text"
                 onChange= {(event)=>{setBenName(event.target.value)}}
                 value= {benName}
@@ -74,7 +74,7 @@ const BeneficiaryForm = () => {
                 />
 
                 <input className="beneficiary-form-input"
-                name="cardImage"
+                name="img_url"
                 type="text"
                 onChange= {(event)=>{setCardImage(event.target.value)}}
                 value= {cardImage}
@@ -90,7 +90,7 @@ const BeneficiaryForm = () => {
                 />
 
                 <input className="beneficiary-form-input"
-                name="charityId"
+                name="charity_id"
                 type="integer"
                 onChange= {(event)=>{setCharityId(event.target.value)}}
                 value= {charityId}

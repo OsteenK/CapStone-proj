@@ -35,14 +35,14 @@ function App() {
       <Route exact path="/login" element={<Login/>} />
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/contactus" element={<ContactUs/>} />
-      <Route exact path="/beneficiary-stories" element={<BeneficiaryStories/>} />
+      <Route exact path="/beneficiarystories" element={<BeneficiaryStories/>} />
       <Route exact path="/charitydetails" element={<CharityDetails/>} />
       <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
       <Route exact path="/charityform" element={<CharityEditForm/>} />
       <Route exact path="/charityedit" element={<CharityEditForm/>} />
       <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
-      <Route exact path="/administrator-dashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
+      <Route exact path="/administratordashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
       
       {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
       

@@ -16,7 +16,11 @@ function Pagination({ currentPage, setCurrentPage, totalItems, itemsPerPage, scr
     // On click, set the current page to the number on the button and then scroll to the top of the page
     function handleClick(page){
         setCurrentPage(page);
-        scrollTo === undefined ? window.scrollTo(0, 0) : element.scrollIntoView();
+        if (element !== null) {
+            element.scrollIntoView();
+          } else {
+            window.scrollTo(0, 0);
+          }
     }
     
     return(
