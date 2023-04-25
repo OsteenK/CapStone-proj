@@ -158,12 +158,13 @@ color: #FFFFFF;
     font-weight: 400;
     
   }
-  
+
   .mission-text {
     font-size: 1.2rem;
     line-height: 1.5;
     margin-bottom: 20px;
     color: #9840D7;
+    font-family: 'Castoro Titling', cursive;
     font-weight: 500;
   }
   

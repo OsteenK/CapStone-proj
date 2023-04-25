@@ -3,43 +3,50 @@ import NavBar from "../NavBar";
 import './charitydetails.css';
 
 
+import { useParams } from 'react-router-dom';
 import BeneficiaryStories from '../BeneficiaryStories';
+import CharityCard from './CharityCard';
 
 
 
 
 const CharityDetails = () => {
-  const PER_PAGE = 3;
+
   const [currentPage, setCurrentPage] = useState(0);
-  const [beneficiaryStories, setBeneficiaryStories] = useState([]);
+  const [cardData, setCardData] = useState({});
+ 
+  const [progress, setProgress] = useState(0.75); // 75% progress
   const token = localStorage.getItem("token");
+  const { id } = useParams();
+  const [charities, setCharities] = useState([]);
 
 
-//   useEffect(() => {
-//   fetch("http://127.0.0.1:3000/beneficiaries", {
-//   headers: {
-//     Authorization: `Bearer ${token}`,
-//     "Content-Type": "application/json"
-//   }
-//   })
-//   .then(response => response.json())
-//   .then((data) => {
-//   console.log(data);
-//   setBeneficiaryStories(data);
-//   // Do something with the response
-//   })
-//   .catch(error => {
-//   console.log(error);
-//   });
-// }, [token]);
+   // Pagination variables
+   const itemsPerPage = 3; // Number of items per page
+   const lastItemIndex = currentPage * itemsPerPage; // Calculate the index after the last item for the current page
+   const firstItemIndex = lastItemIndex - itemsPerPage; // Calculate the index of the first item for the current page
+ 
 
- const offset = currentPage * PER_PAGE;
-  const beneficiaryStoriesToDisplay = beneficiaryStories.slice(currentPage * PER_PAGE, (currentPage + 1) * PER_PAGE);
+   useEffect(() => {
+  fetch(`http://127.0.0.1:3000/charities/${id}`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((charitiesData) => setCharities(charitiesData))
+    .catch((error) => {
+      console.log(error);
+    });
+}, [id, token]);
+  const charitiesToDisplay = charities.filter((charity) => charity.approved)
+  const charitiesPerPage = charitiesToDisplay.slice(firstItemIndex, lastItemIndex)
 
   return (
     <div>
     <NavBar />
-    <main>
     <section className="hero-section">
      
      <div>    
@@ -104,14 +111,13 @@ const CharityDetails = () => {
         <div className="grid lg:grid-cols-2 flex items-center">
           <div className="md:mt-12 lg:mt-0 mb-12 lg:mb-0">
             <div className="block rounded-lg shadow-lg px-6 py-12 md:px-12 lg:-mr-14" style={{background: "hsla(0, 0%, 100%, 0.55)", backdropfilter: "blur(30px)"}}>
-              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-12">The best offer <br /><span className="text-blue-600">for your business</span></h1>
-              <a className="inline-block px-7 py-3 mb-2 md:mb-0 md:mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="#!" role="button">Get started</a>
-              <a className="inline-block px-7 py-3 bg-transparent text-blue-600 font-medium text-sm leading-snug uppercase rounded hover:text-blue-700 hover:bg-gray-100 focus:bg-gray-100 focus:outline-none focus:ring-0 active:bg-gray-200 transition duration-150 ease-in-out" data-mdb-ripple="true" data-mdb-ripple-color="light" href="#!" role="button">Learn more</a>
+              <h1 className="text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight mb-12">A child is <br /><span className="text-blue-600">smilling because of you</span></h1>
+            
             </div>
           </div>
           <div className="md:mb-12 lg:mb-0">
             <img
-              src="client/src/components/DonorPage/photo-1584731683340-6495e2e103e9.avif"
+              src="https://res.cloudinary.com/dtnt2f8ao/image/upload/v1682256497/Give%20Hope/PadUp4NE.avif"
               className="w-full rounded-lg shadow-lg"
               alt=""
             />
@@ -126,35 +132,44 @@ const CharityDetails = () => {
 
         
     </section>
-    <section className="content-section">
-        <div className="content-container">
-         <div className="content-card">
-           <img src="/home/rx/coding Repo/PHASE5/CapStone-proj/client/src/components/DonorPage/photo-1584731683340-6495e2e103e9.avif" alt="card-image" className="card-image" />
-           <div className="card-info">
-           <h3 className="card-title">Small Title</h3>
-            <p className="card-text">Small Description</p>
-           <div className="goal-bar">
-            {/*Add your goal bar code here*/}
-           </div>
-           <button className="card-button">Observe Impact</button>
+    {/* <section>
+    {charitiesToDisplay.length > 0 && (
+        <div className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{backgroundImage: `url(${charitiesToDisplay.length > 0 ? charitiesToDisplay[0].img_url : ''})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}}>
+          <div className="container mx-auto xl:px-32">
+            <div className="flex items-center md:justify-end">
+
+             
+            </div>
           </div>
+          
         </div>
-        <div className="content-text">
-           <h2>Title</h2>
-          <h3>Description</h3>
-         <button className="content-button">Donate Now</button>
+    )}
+      </section> */}
+    <section className="content-section"style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+    <div className="card-grid"> 
+    <div className='container'>
+        <div className='row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4'>
+          {charitiesPerPage.map((charity) => <CharityCard key={charity.name} charity={charity}/>)}
+        </div>  
+      </div>
+        <div className="content-text"style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+           <h2>Changing the World</h2>
+          <h3> Thousands of girls have benefited from Give Hope’s constant effort to improve menstrual care. Read on to learn about the real-life impact of <span class="text-lavender-200 font-light">your donations</span> on the lives of these girls.</h3>
+          <button className='btn btn' style={{backgroundColor:'#9840D7',borderRadius:'20px',margin:'30px'}} onClick={() => {window.location.href = 'https://checkout.stripe.com/c/pay/cs_test_a1wbe9GTyCQmrXKcsiMcn3kEbRCpCrGaL6hjHXgOm09ZTRdsxkubBybAAR#fidkdWxOYHwnPyd1blpxYHZxWjA0SH9OR2lBX3xgQnwyMnRKTWBKVHxuS0BAN1JxSDJMMUxXf1BhTWlWbGx%2FUlJhbzQ3SXRfPEJ%2FYWhkX0FdYVVxbEdvblZwQjRSaklOdGpnRz0xMjw8bDJvNTVTZn9tSjRUSycpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVoydkw3ZjI1V0IzXzQ0X0YxYmInKSd3YGNgd3dgd0p3bGJsayc%2FJ21xcXV2PyoqZm1gZm5qcHErdnF3bHVgK2ZqaConeCUl'}}>Donate Now!</button>
+
         </div>
-       </div>
+        </div> 
+       
     </section>
         
     <section className="beneficiaryStoriesToDisplay-section">
         
-     <div>
+    
       <BeneficiaryStories/>
-     </div>
+     
 
     </section>
-    </main>
+   
     {/* <Footer /> */}
   </div>
     
