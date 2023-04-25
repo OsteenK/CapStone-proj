@@ -239,7 +239,7 @@ function AdministratorDashboard({ popupVariables, setPopupVariables }) {
           </tbody>
         </table>
 
-        <Pagination currentPage={currentPageTable1} setCurrentPage={setCurrentPageTable1} totalItems={charityApplications.length} itemsPerPage={itemsPerPage} scrollTo={"#charity-applications"}/>
+        <Pagination currentPage={currentPageTable1} setCurrentPage={setCurrentPageTable1} totalItems={charityApplications.length} itemsPerPage={itemsPerPage} scrollTo={"charity-applications"}/>
       </div>
 
 
@@ -291,7 +291,7 @@ function AdministratorDashboard({ popupVariables, setPopupVariables }) {
           </tbody>
         </table>
 
-        <Pagination currentPage={currentPageTable2} setCurrentPage={setCurrentPageTable2} totalItems={activeCharities.length} itemsPerPage={itemsPerPage} scrollTo={"#active-charities"}/>
+        <Pagination currentPage={currentPageTable2} setCurrentPage={setCurrentPageTable2} totalItems={activeCharities.length} itemsPerPage={itemsPerPage} scrollTo={"active-charities"}/>
       </div>
 
     </div>

@@ -1,5 +1,6 @@
 class CharitiesController < ApplicationController
   before_action :set_charity, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:index, :show]
 
   def index
     @charities = Charity.all
@@ -22,6 +23,7 @@ class CharitiesController < ApplicationController
   def approve
     @charity = Charity.find(params[:id])
     @charity.update(approved: true)
+    CharityNotifierMailer.send_application_approved_email(@charity).deliver
   
     redirect_to @charity
   end
@@ -33,6 +35,8 @@ class CharitiesController < ApplicationController
     @charity = Charity.new(charity_params)
 
     if @charity.save
+      AdministratorNotifierMailer.send_new_charity_application_email(@charity).deliver
+      CharityNotifierMailer.send_application_received_email(@charity).deliver
       render json: @charity, status: :created, location: @charity
     else
       render json: @charity.errors, status: :unprocessable_entity
@@ -48,6 +52,8 @@ class CharitiesController < ApplicationController
   end
 
   def destroy
+    AdministratorNotifierMailer.send_charity_deletion_email(@charity).deliver
+    CharityNotifierMailer.send_charity_deletion_notice(@charity).deliver
     @charity.destroy
     head :no_content
   end

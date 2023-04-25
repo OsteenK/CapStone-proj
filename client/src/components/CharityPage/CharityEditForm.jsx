@@ -59,7 +59,7 @@ const CharityForm = () => {
     return(
         <div>
             <CharityNavBar />
-            <form className="Charity-form" onSubmit={handleSubmit}>
+            <form className="charity-form" onSubmit={handleSubmit}>
                 <input className="charity-form-input"
                 name="name"
                 type="text"
