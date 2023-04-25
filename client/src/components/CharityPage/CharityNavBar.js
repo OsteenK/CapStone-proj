@@ -15,7 +15,7 @@ function CharityNavBar(user) {
   return (
     <nav className='navbar-charity '>
       <div className='navbar-left'>
-  <img className='text-white' src='give-hope-logo.png' alt=' ' />
+  <img className='text-white m-2' src='./logo192.png' alt=' ' />
   <span style={{ fontSize: '25px',fontWeight: 'bold' }}>GIVE HOPE</span>
 </div>
 

@@ -1,4 +1,5 @@
 .hero{
+
   background-image: url("https://images.unsplash.com/photo-1544476866-ce192b63bd7f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1134&q=80");
   background-size: cover;
   height: 70vh;
@@ -8,6 +9,17 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+    background-image: url("");
+    background-size: cover;
+    height: 70vh;
+    background-position: center;
+    width: 100vw;
+    /* margin-top: -250px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 .hero .container1 {
 text-align: center;
