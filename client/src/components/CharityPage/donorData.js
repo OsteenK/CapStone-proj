@@ -1,4 +1,4 @@
-const donors = [
+const donorData = [
     { id: 1, firstName: 'Maggy', lastName: 'Jerry', amount: 780, type: 'monthly', date: '7th November 2022' },
     { id: 2, firstName: 'Jacob', lastName: 'Thornton', amount: 6000, type: 'monthly', date: '9th August 2022' },
     { id: 3, firstName: 'anonymous', lastName: '', amount: 7009, type: 'one time', date: '14th February 2023' },
