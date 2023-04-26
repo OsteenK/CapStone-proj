@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Routes,Route } from 'react-router-dom';
 import Popup from "../src/components/Popup";
+import Footer from "../src/components/Footer";
 import SignUp from '../src/components/SignUp';
 import Login from '../src/components/Login';
 import LandingPage from '../src/components/DonorPage/LandingPage';
@@ -49,6 +50,8 @@ function App() {
       
 
       </Routes>
+
+      <Footer />
 
       {/* Popup Component can be used by any other component */}
       <Popup visible={popupVariables.visible} header={popupVariables.header} body={popupVariables.body} setPopupVariables={setPopupVariables}/>
