@@ -92,7 +92,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <button onClick={()=> navigate("/login")} className="bg-lavender-200 text-white font-extrabold mt-12 rounded-lg hover:bg-lavender-300 no-underline p-4">JOIN THE FIGHT!</button>
+          <button onClick={()=> navigate("/signup")} className="bg-lavender-200 text-white font-extrabold mt-12 rounded-lg hover:bg-lavender-300 no-underline p-4">JOIN THE FIGHT!</button>
         </section>
         
         <section className="bg-lavender-100 p-4 text-center">
