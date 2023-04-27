@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 
-export default function Login() {
+export default function Login({ setCurrentUser, setAppUserType }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -30,14 +30,20 @@ export default function Login() {
       })
     })
     .then(response => response.json())
-    .then(response => {
-      if (response.error) {
+    .then(data => {
+      if (data.error) {
         // Show an error message
-        console.log(response.message);
+        Swal({
+          title: "Error",
+          text: `${data.error}`,
+          icon: "error",
+          button: "Try Again"
+        });
         
       } else {
-        localStorage.setItem("token", response.jwt);
-        console.log(response)
+        localStorage.setItem("token", data.jwt);
+        setCurrentUser(data.current_user)
+        setAppUserType(data.user_type)
          // Navigate to the appropriate component
         Swal({
           title: "Success!",
@@ -72,6 +78,8 @@ export default function Login() {
               type="email"
               className="form-control"
               placeholder="Enter email"
+              name="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
@@ -82,6 +90,8 @@ export default function Login() {
               type="password"
               className="form-control"
               placeholder="Enter password"
+              name="password"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
@@ -89,6 +99,7 @@ export default function Login() {
             <label style={{ marginRight: "10px" }}>
               Login As:
               <select
+                name="userType"
                 value={userType}
                 onChange={(e) => setUserType(e.target.value)}
                 style={{ marginLeft: "5px" }}

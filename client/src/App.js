@@ -7,7 +7,6 @@ import Footer from "../src/components/Footer";
 import SignUp from '../src/components/SignUp';
 import Login from '../src/components/Login';
 import LandingPage from '../src/components/DonorPage/LandingPage';
-// import NavBar from '../src/components/NavBar'
 import BeneficiaryStories from './components/BeneficiaryStories';
 import BeneficiaryForm from "../src/components/CharityPage/BeneficiaryForm"
 import NavBar from './components/NavBar';
@@ -42,6 +41,8 @@ function App() {
     })
   }, [])
 
+  console.log("Current user: ", currentUser,", UserType: ", userType)
+
   return (
     <div className="App">
       <NavBar currentUser={currentUser} userType={userType}/>
@@ -50,7 +51,7 @@ function App() {
       <Route path='/' element={<LandingPage/>}/>
 
       <Route path='/home' element={<LandingPage/>}/>
-      <Route exact path="/login" element={<Login/>} />
+      <Route exact path="/login" element={<Login setCurrentUser={setCurrentUser} setAppUserType={setUserType}/>} />
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/contactus" element={<ContactUs/>} />
       <Route exact path="/beneficiarystories" element={<BeneficiaryStories/>} />
