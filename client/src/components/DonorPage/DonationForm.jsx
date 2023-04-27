@@ -1,59 +1,36 @@
-import React, { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
-import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
-// remember to add: npm install @stripe/react-stripe-js
-// to readme
+import React from 'react'
 
+import { useForm } from 'react-hook-form';
 
-function DonationForm() {
-  const stripe = useStripe();
-  const elements = useElements();
-  const [amount, setAmount] = useState('');
-  const stripePromise = loadStripe('your_stripe_public_key');
+export default function Form() {
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const onSubmit = data => console.log(data);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardElement),
-    });
-
-    if (!error) {
-      // Send the payment method ID and amount to your server
-      const response = await fetch('/api/donate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ payment_method_id: paymentMethod.id, amount })
-      });
-
-      const data = await response.json();
-      console.log(data);
-    }
-  }
-
+    // console.log(watch('username'));
+    
   return (
-   <Elements stripe={stripePromise}>
-   <form onSubmit={handleSubmit}>
-      <label>
-        Donation amount:
-        <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)} />
-      </label>
+    <section>
+        <div className="register">
+            <div className="col-1">
+                <h2>Sign In</h2>
+                <span>register and enjoy the service</span>
 
-      <label>
-        Card details:
-        <CardElement />
-      </label>
+                <form id='form' className='flex flex-col' onSubmit={handleSubmit(onSubmit)}>
+                    <input type="text" {...register("username")} placeholder='username' />
+                    <input type="text" {...register("password")} placeholder='password' />
+                    <input type="text" {...register("confirmpwd")} placeholder='confirm password' />
+                    <input type="text" {...register("mobile", { required : true, maxLength: 10 })} placeholder='mobile number' />
+                    {errors.mobile?.type === "required" && "Mobile Number is required"}
+                    {errors.mobile?.type === "maxLength" && "Max Length Exceed"}
+                    <button className='btn'>Sign In</button>
+                </form>
 
-      <button type="submit" disabled={!stripe}>
-        Donate
-      </button>
-    </form>
-    </Elements>
-  );
+            </div>
+            <div className="col-2">
+                <img src="" alt="" />
+            </div>
+        </div>
+    </section>
+  )
 }
-
-export default DonationForm;

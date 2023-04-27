@@ -1,24 +1,112 @@
-.hero {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://images.unsplash.com/photo-1520254553641-2eed4cf2ef26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1330&q=80');
-  background-size: cover;
-  backdrop-filter: blur(10px);
-  z-index: 1;
+body {
+  padding: 40px 0;
+  background-color: rgba(255, 255, 255, 0.5); /* set the background color of the body to match the background color of the container */
 }
 
-.auth-wrapper {
+
+.logncontainer {
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  padding: 0px;
+}
+
+
+
+.logincontainer {
+  
+  background-color: rgba(255, 255, 255, 0.5); /* set the background color with an alpha value for transparency */
+  backdrop-filter: blur(50px); /* apply a blur effect to the background */
+  padding:0; /* add 20px padding to all sides of the container */
+  display: flex; /* set the display to flex to center the child elements */
+  justify-content: center; /* horizontally center the child elements */
+  align-items: center; /* vertically center the child elements */
+  height: 100vh; /* set the height to the full height of the viewport */
+}
+.loginbutton {
+  background-color: #8869DB; 
+ 
+  border: 2px solid  rgb(5, 5, 5);
+}
+
+.loginbutton:hover {
+  background-color:  white;
+  color:  #8869DB;
+}
+.dropbtn {
+  background-color: #9840D7;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* The Close Button (x) */
+.cancelbtn {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 400px;
-  height: 500px;
-  background-color: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  z-index: 2;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 16px;
+  font-weight: bold;
+  height: 45px;
+  width: 50px;
+  background-color: #8869DB;
+  border: none;
+  color: white;
+  padding: 12px 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.cancelbtn  span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+
+
+.cancelbtn:hover,
+.cancelbtn:focus {
+  color: black;
+  cursor: pointer;
+  
+}
+.logincontainer {
+  background-color: rgba(255, 255, 255, 0.5); /* set the background color with an alpha value for transparency */
+  backdrop-filter: blur(10px); /* apply a blur effect to the background */
+  padding: 0px; /* add 20px padding to all sides of the container */
+  display: flex; /* set the display to flex to center the child elements */
+  justify-content: center; /* horizontally center the child elements */
+  align-items: center; /* vertically center the child elements */
+  height: 100vh; /* set the height to the full height of the viewport */
+}
+.signin-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  
+}
+
+.signin-image {
+  position:absolute;
+  top: 0;
+  left: 0;
+  width: 15%;
+ 
+  height: 70px; /* Adjust the height of the logo image as needed */
+ 
 }

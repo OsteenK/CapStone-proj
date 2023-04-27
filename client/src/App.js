@@ -1,5 +1,5 @@
 
-import './App.css';
+ import './App.css';
 import { useState } from "react";
 import { Routes,Route } from 'react-router-dom';
 import Popup from "../src/components/Popup";
@@ -8,14 +8,15 @@ import Login from '../src/components/Login';
 import LandingPage from '../src/components/DonorPage/LandingPage';
 // import NavBar from '../src/components/NavBar'
 import BeneficiaryStories from './components/BeneficiaryStories';
-import CharityDetails from './components/DonorPage/CharityDetails';
-import CharityDashboard from './components/CharityPage/CharityDashboard'
-import CharityEditForm from './components/CharityPage/CharityEditForm'
-import ContactUs from './components/ContactUs';
-import BeneficiaryForm from './components/CharityPage/BeneficiaryForm';
-import Charities from './components/DonorPage/Charities';
-import AdministratorDashboard from './components/Administrator/AdministratorDashboard';
-
+import BeneficiaryForm from "../src/components/CharityPage/BeneficiaryForm"
+import NavBar from './components/NavBar';
+import ContactUs from "./components/ContactUs"
+import CharityEditForm from "./components/CharityPage/CharityEditForm"
+import Charities from "./components/DonorPage/Charities"
+import CharityDetails from "./components/DonorPage/CharityDetails"
+import CharityDashboard from './components/CharityPage/CharityDashboard';
+import AdministratorDashboard from "./components/Administrator/AdministratorDashboard"
+import DonationForm from './components/DonorPage/DonationForm';
 
 function App() {
   const [popupVariables, setPopupVariables] = useState({
@@ -43,7 +44,9 @@ function App() {
       <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
       <Route exact path="/administratordashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
-      
+      <Route exact path="/donationform" element={<DonationForm/>} />
+      <Route path="/charitydetails/:id" component={CharityDetails} />
+
       {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
       
 
