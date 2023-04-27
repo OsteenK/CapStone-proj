@@ -7,7 +7,7 @@ function CharityCard({ charity }) {
     function handleClick(event) {
         navigate(`/charity-details/${charity.id}`); // Navigate to the CharityDetails page for this charity
     }
-    const num = (Math.round(((charity.total_donations/charity.goal_amount)*100)/10))*10
+    const num = (Math.round(((charity.total_donated/charity.goal_amount)*100)/10))*10
 
     return(
         <div className='col card-group'>
@@ -25,7 +25,7 @@ function CharityCard({ charity }) {
                     <div className="h-3 w-full bg-lavender-100 rounded mt-4 mx-auto">
                         <div className="h-3 bg-lavender-200 rounded" style={{width: `${num}%`}}></div>
                     </div>
-                    <span className="text-medium font-bold">Raised <span className="text-lavender-200">{charity.total_donations.toLocaleString("en-US", {style: "currency", currency: "USD", maximumFractionDigits: 0})}</span> of {charity.goal_amount.toLocaleString("en-US", {style: "currency", currency: "USD", maximumFractionDigits: 0})}</span>
+                    <span className="text-medium font-bold">Raised <span className="text-lavender-200">{charity.total_donated.toLocaleString("en-US", {style: "currency", currency: "USD", maximumFractionDigits: 0})}</span> of {charity.goal_amount.toLocaleString("en-US", {style: "currency", currency: "USD", maximumFractionDigits: 0})}</span>
                 </div>
 
               </div>
