@@ -5,7 +5,7 @@
 ### Group Members
 | Name      | Role |
 | ----------- | ----------- |
-| Osteen Mutinda      | Scrum Master and Full Stack Developer      |
+| Osteen Mutinda      | Scrum Master and Backend Developer      |
 | Glen Kimani   | Frontend Developer        |
 | Jennifer Sammy   | Frontend Developer        |
 | Joanna Oluoch   | Full Stack Developer         |

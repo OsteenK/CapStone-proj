@@ -3,7 +3,7 @@ import CharityCard from "./CharityCard";
 import Pagination from "../Pagination";
 import LoadingScreen from "../LoadingScreen";
 import NavBar from "../NavBar";
-
+import Footer from "../Footer";
 
 
 const Charities = () => {
@@ -58,7 +58,7 @@ const Charities = () => {
       </section>
 
       {/* Header */}
-      <div id="charities" className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8">
+      <div id="charities" className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8 text-center">
         <h1 className="mb-2 sm:mt-4 md:mt-14 text-5xl text-lavender-400 font-extrabold leading-tight">Active Charities</h1>
         
         <p className="mb-16 mt-4 text-xl text-center font-medium "> Each of <span className="text-lavender-200 font-bold">our carefully selected charities</span> aim to promote equality improve health outcomes and create a more just and equitable world for all, through <span className="text-lavender-200 font-bold">proper sanitation and sanitary products</span>.</p>
@@ -72,6 +72,7 @@ const Charities = () => {
       </div>
 
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalItems={charitiesToDisplay.length} itemsPerPage={itemsPerPage} scrollTo={"charities"}/>
+      <Footer />
     </div>
   )};
 

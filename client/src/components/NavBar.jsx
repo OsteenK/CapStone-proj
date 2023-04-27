@@ -24,7 +24,7 @@ function NavBar(user) {
 <div className='navbar-left'>
 <a className="my-1 mr-2 flex items-center text-lavendar-900 hover:text-neutral-900 focus:text-neutral-900 lg:mb-0 lg:mt-0 justify-start" style={{marginRight: "290px"}} href="/home">
           <img
-            src="Give Hope Logo (1).png"
+            src="Give Hope Logo.png"
             style={{height: "62px"}}
             alt=""
             loading="lazy" />

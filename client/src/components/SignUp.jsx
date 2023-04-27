@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
+
 import "./signup.css";
 
 export default function Register() {
@@ -11,7 +12,7 @@ export default function Register() {
   const [last_name, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [ password_confirmation, setConfirmPassword ] = useState("")
+  
   const [userType, setUserType] = useState("");
   const [charityName, setCharityName] = useState("");
  const [contactEmail, setContactEmail] = useState("");
@@ -80,7 +81,7 @@ export default function Register() {
       // Render charity fields
       break;
   }
-
+ 
   return (
    
     <div class="signcontainer mx-auto">

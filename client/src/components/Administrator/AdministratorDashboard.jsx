@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Pagination from "../Pagination";
 import Administratornavbar from './Administrator navbar';
+import Footer from "../Footer";
 
 function AdministratorDashboard({ popupVariables, setPopupVariables }) {
   // States
@@ -261,7 +262,8 @@ function AdministratorDashboard({ popupVariables, setPopupVariables }) {
         <Pagination currentPage={currentPageTable2} setCurrentPage={setCurrentPageTable2} totalItems={activeCharities.length} itemsPerPage={itemsPerPage} scrollTo={"active-charities"}/>
       </div>
 
-    </div>
+      <Footer />
+      </div>
     
   );
 }

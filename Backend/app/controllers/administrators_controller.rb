@@ -19,6 +19,15 @@ class AdministratorsController < ApplicationController
     render json: @charity_applications
   end
 
+  def unapproved
+    @charities = Charity.where(approved: false)
+    render json: @charities, status: :ok
+  end
+  def approved
+  @charities = Charity.where(approved: true)
+  render json: @charities, status: :ok
+end
+
   # POST /charity_applications/:id/approve
   def approve_charity_application
     @charity_application = CharityApplication.find(params[:id])

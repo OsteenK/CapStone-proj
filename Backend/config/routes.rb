@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get '/donors/:id', to: 'donors#show'
 
+  get '/login', to: 'session#new'
 
   post '/login' , to: 'session#create'
   delete '/logout', to: 'session#destroy'
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
   get '/images' , to: 'images#index'
 
   #CHARITY ROUTES
+  get '/charities', to: 'charities#index'
+  post '/charity/signup', to: 'charities#create'
 
   get 'beneficiaries', to: 'charities#beneficiaries'
   get 'charitydetails', to: 'charities#beneficiaries'
@@ -32,16 +35,18 @@ Rails.application.routes.draw do
 
 
   #DONOR ROUTES
-  post '/donor/register', to: 'donor#register'
-  post '/donor/login', to: 'donor#login'
-  get '/charities', to: 'donor#charities'
-  get '/charities/:id', to: 'donor#show_charity'
-  post '/donations', to: 'donor#donate'
-  post '/donations/automate', to: 'donor#automate_donation'
-  post '/donations/cancel', to: 'donor#cancel_donation'
-  get '/beneficiaries', to: 'donor#beneficiaries'
-  post '/donations/paypal', to: 'donor#paypal'
-  post '/donations/stripe', to: 'donor#stripe'
+  post '/donor/signup', to: 'donors#create'
+  get '/donor/signup', to: 'donors#new'
+
+  post '/donor/login', to: 'donors#login'
+  get '/charities', to: 'donors#charities'
+  get '/charities/:id', to: 'donors#show_charity'
+  post '/donations', to: 'donors#donate'
+  post '/donations/automate', to: 'donors#automate_donation'
+  post '/donations/cancel', to: 'donors#cancel_donation'
+  get '/beneficiaries', to: 'donors#beneficiaries'
+  post '/donations/paypal', to: 'donors#paypal'
+  post '/donations/stripe', to: 'donors#stripe'
 
    # Administrator routes
    post '/administrator/login', to: 'administrators#login'
@@ -49,6 +54,10 @@ Rails.application.routes.draw do
    post '/administrator/applications/:id/approve', to: 'administrators#approve_application'
    post '/administrator/applications/:id/reject', to: 'administrators#reject_application'
    delete '/administrator/charities/:id', to: 'administrators#delete_charity'
+   get '/charities/unapproved', to: 'charities#unapproved'
+   get '/charities/approved', to: 'charities#approved'
+   
+
 
    # Donations routes
    get '/donations', to: 'donations#index'

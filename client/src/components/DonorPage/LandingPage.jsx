@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../NavBar";
+import Footer from "../Footer";
 import CharityCard from "./CharityCard";
 import LoadingScreen from "../LoadingScreen";
 import { Link } from 'react-router-dom';
@@ -25,7 +26,7 @@ const LandingPage = () => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar/>
      
       <main>
       <section className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{backgroundImage: "url(https://images.unsplash.com/photo-1567057419865-38d8cff1c2b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80)", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}}>
@@ -42,8 +43,8 @@ const LandingPage = () => {
           </div>
         </section>
 
-        <section className="pb-24 pt-8">
-          <div className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8">
+        <section className="pb-24 pt-8 text-center">
+          <div className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8 text-center">
             <h1 className="mb-2 sm:mt-4 md:mt-14 text-5xl text-lavender-400 font-extrabold leading-tight">OUR MISSION</h1>
 
             <p className="mb-16 mt-4 text-lavender-400 text-2xl text-center font-medium">Empower girls with  <span className="text-lavender-200 text-uppercase">dignity</span> and <span className="text-lavender-200 text-uppercase">confidence</span>.</p>
@@ -95,7 +96,7 @@ const LandingPage = () => {
           <button className="bg-lavender-200 text-white font-extrabold mt-12 rounded-lg hover:bg-lavender-300 no-underline p-4">JOIN THE FIGHT!</button>
         </section>
         
-        <section className="bg-lavender-100 p-4">
+        <section className="bg-lavender-100 p-4 text-center">
           <div className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8">
             <h1 className="mb-2 sm:mt-4 md:mt-14 text-5xl text-white font-extrabold leading-tight">OUR CAUSES</h1>
             
@@ -112,7 +113,7 @@ const LandingPage = () => {
           </div>
         </section>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div> 
   );
 };

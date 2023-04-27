@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import BeneficiaryCard from "./BeneficiaryCard";
 import Pagination from "./Pagination";
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 function BeneficiaryStories(){
     // States
@@ -44,6 +45,7 @@ function BeneficiaryStories(){
 
                 {/* Pagination Buttons */}
                 <Pagination totalItems={stories.length} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage}/>
+                <Footer />
             </div>
         )
     }
