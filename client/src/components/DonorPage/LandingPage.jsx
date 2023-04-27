@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../NavBar";
+import Footer from "../Footer";
 import CharityCard from "./CharityCard";
 import LoadingScreen from "../LoadingScreen";
 import { Link } from 'react-router-dom';
@@ -25,7 +26,7 @@ const LandingPage = () => {
 
   return (
     <div>
-      <NavBar />
+      <NavBar/>
      
       <main>
       <section className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{backgroundImage: "url(https://images.unsplash.com/photo-1567057419865-38d8cff1c2b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80)", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}}>
@@ -112,7 +113,7 @@ const LandingPage = () => {
           </div>
         </section>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </div> 
   );
 };

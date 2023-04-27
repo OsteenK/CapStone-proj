@@ -1,3 +1,157 @@
-.auth-inner  {
-    height: fit-content;
-}
+body {
+    padding: 40px 0;
+    background-color: rgba(255, 255, 255, 0.5); /* set the background color of the body to match the background color of the container */
+  }
+
+.signcontainer {
+    width: 90%;
+    margin: 0 auto; /* center the container horizontally */
+    display: flex; /* use flexbox to align the elements vertically */
+    flex-direction: column; /* set the direction of the flexbox to column */
+    align-items: center;
+    margin: 0 auto;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(-10px);
+  }
+  
+
+
+.signupcontainer {
+    background-color: rgba(255, 255, 255, 0.5); /* set the background color with an alpha value for transparency */
+    backdrop-filter: blur(10px); /* apply a blur effect to the background */
+    padding:0; /* add 20px padding to all sides of the container */
+    display: flex; /* set the display to flex to center the child elements */
+    justify-content: center; /* horizontally center the child elements */
+    align-items: center; /* vertically center the child elements */
+    height: 100vh; /* set the height to the full height of the viewport */
+  }
+  .registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .registration-form label {
+    font-weight: bold;
+    margin-top: 1px;
+  }
+  
+  .registration-form input[type="text"],
+  .registration-form input[type="email"],
+  .registration-form input[type="password"],
+  .registration-form input[type="number"],
+  .registration-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #4a4747;
+    border-radius: 7px;
+  }
+  
+  .registration-form input[type="radio"] {
+    margin-right: 5px;
+  }
+ 
+ .form div {
+    margin-bottom: 2rem;
+  }
+  .form-fields {
+    margin: 0;
+    padding: 0;
+    width: 85%;
+  }
+  
+  
+  form label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: bold;
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form input[type="number"],
+  form textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    box-sizing: border-box;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  
+  .form textarea {
+    height: 8rem;
+  }
+  
+  .signupbutton {
+    background-color: #8869DB; 
+   
+    border: 2px solid  rgb(5, 5, 5);
+  }
+  
+  .signupbutton:hover {
+    background-color:  white;
+    color:  #8869DB;
+  }
+
+  .cancelbtn {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 16px;
+    font-weight: bold;
+    height: 45px;
+    width: 50px;
+    background-color: #8869DB;
+    border: none;
+    color: white;
+    padding: 12px 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition: all 0.5s;
+  }
+  
+  .cancelbtn  span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  
+  
+  .cancelbtn:hover,
+  .cancelbtn:focus {
+    color: black;
+    cursor: pointer;
+    
+  }
+  .signup-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+    
+  }
+
+
+.signup-image {
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 1%;
+   
+    height: 70px; /* Adjust the height of the logo image as needed */
+   
+  }

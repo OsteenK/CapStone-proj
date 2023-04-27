@@ -1,6 +1,6 @@
 class CharitiesController < ApplicationController
-  before_action :set_charity, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:index, :show]
+  skip_before_action :authorize, only: [:index, :create]
+  
 
   def index
     @charities = Charity.all
@@ -127,8 +127,18 @@ def set_charity
 @charity = Charity.find(params[:id])
 end
 
+def unapproved_charities
+  @charities = Charity.where(approved: false)
+  render json: @charities, status: :ok
+end
+
+def approved_charities
+  @charities = Charity.where(approved: true)
+  render json: @charities, status: :ok
+end
+
 def charity_params
-params.require(:charity).permit(:name, :description)
+params.permit( :email, :password)
 end
 
 def beneficiary_params

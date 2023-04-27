@@ -8,6 +8,7 @@
   justify-content: space-between;
   align-items: center;
   background-color: #d1c4e9;
+  padding: 1px 10px;
   
 }
 
@@ -20,6 +21,14 @@
   height: 50px;
 }
 
+.navbar img {
+  position: absolute;
+  top: 5;
+  left: 0;
+  width: auto;
+  height: 70px; /* Adjust the height of the logo image as needed */
+  margin-right: 10px; /* Add some space between the logo and the home link */
+}
 
 
 .navbar-buttons button {
