@@ -1,6 +1,6 @@
 import React  from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
+import Swal from 'sweetalert';
 
 function NavBar({ currentUser, userType }) {
 
@@ -12,7 +12,13 @@ function NavBar({ currentUser, userType }) {
   const handleLogout = () =>{
     sessionStorage.clear();
     localStorage.clear();
-    navigate("/home");
+    Swal({
+      title: "Logged Out",
+      text: "Log out successful",
+      icon: "success",
+      button: "OK"
+    })
+    navigate("/");
   }
 
   // NavBar Links for each user
@@ -20,31 +26,31 @@ function NavBar({ currentUser, userType }) {
     <ul className='list-style-none mb-0 font-bold flex pl-0 lg:flex-row items-center'>
       <li className='sm:mx-4 my-4 lg:my-0 lg:pr-2  sm:text-lg lg:text-xl font-bold'>
           <a href="/" className="active text-white no-underline hover:underline">
-          Home
+            Home
           </a>    
       </li>
       
       <li className='sm:mx-4 my-4 lg:my-0 lg:pr-2  sm:text-lg lg:text-xl font-bold'>
           <a href="/charities" className="active text-white no-underline hover:underline">
-          Our Charities
+            Our Charities
           </a>    
       </li>
 
       <li className='sm:mx-4 my-4 lg:my-0 lg:pr-2  sm:text-lg lg:text-xl font-bold'>
           <a href="/beneficiarystories" className="active text-white no-underline hover:underline hover:text-lavender-400">
-          Beneficiary Stories
+            Beneficiary Stories
           </a>    
       </li>
 
       <li className='sm:mx-4 my-4 lg:my-0 lg:pr-2  sm:text-lg lg:text-xl font-bold'>
           <a href="/contactus" className="active text-white no-underline hover:underline">
             Contact Us
-            </a>    
+          </a>    
       </li>
 
       <li className='sm:mx-4 my-4 lg:my-0 lg:pr-2 text-lg font-bold bg-lavender-200 hover:bg-lavender-300 p-2 px-3 rounded-3xl'>
           <a href="/charities" className="active text-white no-underline">
-          Donate!
+            Donate!
           </a>    
       </li>
 
@@ -94,7 +100,7 @@ function NavBar({ currentUser, userType }) {
     <ul className='list-style-none mb-0 font-bold flex pl-0 lg:flex-row items-center'>
       <li className='sm:mx-4 my-4 lg:my-0 lg:pr-2 text-lg font-bold bg-lavender-200 hover:bg-lavender-300 p-2 px-3 rounded-3xl'>
           <a href={token ? "/" : "/login"} className="active text-white no-underline"  onClick={token ? handleLogout : ""}>
-          {token ? "Logout" : "Login"}
+            {token ? "Logout" : "Login"}
           </a>    
       </li>
     </ul>
