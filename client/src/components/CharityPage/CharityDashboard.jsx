@@ -67,7 +67,7 @@ function CharityDashboard() {
   return (
     <div >
       <div className='header'>
-        <CharityNavBar />
+        {/* <CharityNavBar /> */}
         <div className=' mt-9   '>
           <h3 className='text-white '>Charity Dashboard</h3>
           <p >Manage your donations and the stories of those </p>
