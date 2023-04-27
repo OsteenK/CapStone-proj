@@ -7,17 +7,9 @@ class CharitiesController < ApplicationController
     render json: @charities, status: :ok
   end
 
-  # def show
-  #   render json: @charity, include: {} status: :ok
-  # end
   def show
     @charity = Charity.includes(:administrator, :beneficiaries).find(params[:id])
-    render json: @charity.as_json(
-      include: {
-        administrator: { only: [:id] },
-        beneficiaries: {}
-      }
-    )
+    render json: @charity
   end
   
   def approve
