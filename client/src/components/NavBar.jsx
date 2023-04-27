@@ -110,7 +110,7 @@ function NavBar({ currentUser, userType }) {
     <nav className={`relative w-full flex-wrap items-center justify-between py-2 lg:py-4 sticky top-0 z-10 ${userType === "Charity"? "bg-lavender-400" : "bg-lavender-100"}`}>
       <div className="flex w-full flex-wrap items-center justify-between px-3">
         <div  className='lg:visible sm:invisible sm:h-0 lg:h-full'>
-          <a className="my-1 mr-2 flex items-center text-white lg:mb-0 lg:mt-0" href={userType === "Donor" ? "/" : "#"}>
+          <a className="my-1 mr-2 flex items-center text-white lg:mb-0 lg:mt-0" href={(userType === "Donor" || userType === undefined) ? "/" : "#"}>
             <img
               className=""
               src={userType === "Charity" ? "https://res.cloudinary.com/dtnt2f8ao/image/upload/v1682622014/Give%20Hope/Give%20Hope%20Logos/Give_Hope_Logo_dark_mlaztl.png" : "https://res.cloudinary.com/dtnt2f8ao/image/upload/v1682512809/Give%20Hope/Give%20Hope%20Logos/Give_Hope_Logo_light_vywhpr.png"}
