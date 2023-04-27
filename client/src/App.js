@@ -57,8 +57,7 @@ function App() {
       <Route exact path="/beneficiarystories" element={<BeneficiaryStories/>} />
       <Route exact path="/charity-details/:id" element={<CharityDetails/>} />
       <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
-      <Route exact path="/charityform" element={<CharityEditForm/>} />
-      <Route exact path="/charityedit" element={<CharityEditForm/>} />
+      <Route exact path="/charityeditform" element={<CharityEditForm/>} />
       <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
       <Route exact path="/administratordashboard" element={<AdministratorDashboard currentUser={currentUser} popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
