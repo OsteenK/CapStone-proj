@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import CharityCard from "./CharityCard";
 import LoadingScreen from "../LoadingScreen";
 import { Link } from 'react-router-dom';
@@ -8,6 +9,8 @@ import { GiBookmarklet } from "react-icons/gi";
 const LandingPage = () => {
   const [currentUser, sestCurrentUser] = useState({});
   const [charities, setCharities] = useState([]);
+
+  const navigate = useNavigate();
 
  // Fetch charities from backend
  useEffect(() => {
@@ -89,7 +92,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <button className="bg-lavender-200 text-white font-extrabold mt-12 rounded-lg hover:bg-lavender-300 no-underline p-4">JOIN THE FIGHT!</button>
+          <button onClick={()=> navigate("/login")} className="bg-lavender-200 text-white font-extrabold mt-12 rounded-lg hover:bg-lavender-300 no-underline p-4">JOIN THE FIGHT!</button>
         </section>
         
         <section className="bg-lavender-100 p-4 text-center">
