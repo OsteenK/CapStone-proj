@@ -34,7 +34,7 @@ export default function Login({ setCurrentUser, setAppUserType }) {
       if (data.error) {
         // Show an error message
         Swal({
-          title: "Error",
+          title: "Login Error",
           text: `${data.error}`,
           icon: "error",
           button: "Try Again"
@@ -52,10 +52,10 @@ export default function Login({ setCurrentUser, setAppUserType }) {
           button: "OK",
         });
        
-        if (userType === "administrator") {
+        if (data.user_type === "Administrator") {
           navigate("/administratordashboard");
         } 
-        else if (userType === "charity"){
+        else if (data.user_type === "Charity"){
           navigate("/charitydashboard");
         }
         else  {
