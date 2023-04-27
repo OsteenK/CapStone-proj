@@ -7,11 +7,15 @@ function CharityCard({ charity, cardData, progress }) {
     function handleClick(event) {
         navigate(`/charitydetails/${charity.id}`); // Navigate to the CharityDetails page for this charity
     }
+
     const num = (Math.round(((charity?.total_donations/charity.goal_amount)*100)/10))*10
     console.log(num)
     const toLocaleString = (value) => {
         return value?.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
       };
+
+    const num = (Math.round(((charity.total_donations/charity.goal_amount)*100)/10))*10
+
 
     return(
         <div className="col card-group">
