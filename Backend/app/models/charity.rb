@@ -6,4 +6,8 @@ class Charity < ApplicationRecord
    has_many :donors, through: :donations
    has_many :beneficiaries
 
+   def total_donated
+    self.donations.sum{|donation| donation.donation_amount}
+   end
+
 end
