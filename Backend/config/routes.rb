@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get '/donors/:id', to: 'donors#show'
 
-
+# Auth Routes
   post '/login' , to: 'session#create'
   delete '/logout', to: 'session#destroy'
   get '/loggedin', to: 'application#logged'
@@ -25,17 +25,11 @@ Rails.application.routes.draw do
   post 'beneficiaries', to: 'charities#create_beneficiary'
   put 'beneficiaries/:beneficiary_id', to: 'charities#update_beneficiary'
   delete 'beneficiaries/:beneficiary_id', to: 'charities#destroy_beneficiary'
-  # get 'beneficiaries/:beneficiary_id/items', to: 'charities#items'
-  # post 'beneficiaries/:beneficiary_id/items', to: 'charities#create_items'
-  # put 'beneficiaries/:beneficiary_id/items/:items_id', to: 'charities#update_items'
-  # delete 'beneficiaries/:beneficiary_id/items/:items_id', to: 'charities#destroy_items'
 
 
   #DONOR ROUTES
   post '/donor/register', to: 'donor#register'
   post '/donor/login', to: 'donor#login'
-  get '/charities', to: 'donor#charities'
-  get '/charities/:id', to: 'donor#show_charity'
   post '/donations', to: 'donor#donate'
   post '/donations/automate', to: 'donor#automate_donation'
   post '/donations/cancel', to: 'donor#cancel_donation'
