@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import CharityCard from "./CharityCard";
 import Pagination from "../Pagination";
 import LoadingScreen from "../LoadingScreen";
-import NavBar from "../NavBar";
 
 
 const Charities = () => {
@@ -32,7 +31,6 @@ const Charities = () => {
   }
   return (
     <div>
-      <NavBar/>
       {/* Hero Image */}
       <section>
         <div className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{backgroundImage: `url(${charitiesToDisplay[0].img_url})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}}>

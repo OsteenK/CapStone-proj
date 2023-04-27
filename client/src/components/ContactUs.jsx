@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../components/ContactUs.css";
-import NavBar from "./NavBar";
 
 
 const ContactUs = () => {
@@ -50,7 +49,6 @@ const ContactUs = () => {
 
   return (
     <div >
-      <NavBar/>
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">

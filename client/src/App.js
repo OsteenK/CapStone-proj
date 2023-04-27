@@ -40,7 +40,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <NavBar/> */}
+      <NavBar currentUser={currentUser}/>
       <Routes>
         
       <Route path='/' element={<LandingPage/>}/>
@@ -50,7 +50,7 @@ function App() {
       <Route exact path="/signup" element={<SignUp/>} />
       <Route exact path="/contactus" element={<ContactUs/>} />
       <Route exact path="/beneficiarystories" element={<BeneficiaryStories/>} />
-      <Route exact path="/charitydetails" element={<CharityDetails/>} />
+      <Route exact path="/charity-details/:id" element={<CharityDetails/>} />
       <Route exact path="/charitydashboard" element={<CharityDashboard/>} />
       <Route exact path="/charityform" element={<CharityEditForm/>} />
       <Route exact path="/charityedit" element={<CharityEditForm/>} />
