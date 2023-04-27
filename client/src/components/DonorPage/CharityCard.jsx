@@ -8,7 +8,6 @@ function CharityCard({ charity }) {
         navigate(`/charity-details/${charity.id}`); // Navigate to the CharityDetails page for this charity
     }
     const num = (Math.round(((charity.total_donations/charity.goal_amount)*100)/10))*10
-    console.log(num)
 
     return(
         <div className='col card-group'>

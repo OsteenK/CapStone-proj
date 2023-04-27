@@ -4,7 +4,6 @@ function Pagination({ currentPage, setCurrentPage, totalItems, itemsPerPage, scr
     // Navigatiton
     const navigate = useNavigate();
     const element = document.getElementById(scrollTo)
-    console.log(element)
 
     // Holds the page numbers, thus the buttons numbers
     let pages = [];

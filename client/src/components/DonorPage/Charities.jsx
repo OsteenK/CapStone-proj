@@ -8,7 +8,7 @@ import NavBar from "../NavBar";
 const Charities = () => {
   // States
   const [charities, setCharities] = useState([]);
-  const [currentPage, setCurrentPage] = useState(2);
+  const [currentPage, setCurrentPage] = useState(1);
 
   // Pagination variables
   const itemsPerPage = 3; // Number of items per page
