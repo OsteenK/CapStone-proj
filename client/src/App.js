@@ -21,7 +21,8 @@ import AdministratorDashboard from "./components/Administrator/AdministratorDash
 
 function App() {
   // States
-  const [currentUser, setCurrentUser] = useState({})
+  const [currentUser, setCurrentUser] = useState({});
+  const[userType, setUserType] = useState("");
   const [popupVariables, setPopupVariables] = useState({
     visible: false,
     header: "",
@@ -35,12 +36,15 @@ function App() {
     const headers = {'Authorization': `Bearer ${token}`}
     fetch("http://127.0.0.1:3000/loggedin", {headers})
     .then((response) => response.json())
-    .then((data) => setCurrentUser(data.current_user))
+    .then((data) => {
+      setCurrentUser(data.current_user);
+      setUserType(data.user_type)
+    })
   }, [])
 
   return (
     <div className="App">
-      <NavBar currentUser={currentUser}/>
+      <NavBar currentUser={currentUser} userType={userType}/>
       <Routes>
         
       <Route path='/' element={<LandingPage/>}/>
@@ -56,7 +60,7 @@ function App() {
       <Route exact path="/charityedit" element={<CharityEditForm/>} />
       <Route exact path="/charities" element={<Charities/>} />
       <Route exact path="/beneficiaryform" element={<BeneficiaryForm/>} />
-      <Route exact path="/administratordashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
+      <Route exact path="/administratordashboard" element={<AdministratorDashboard currentUser={currentUser} popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
       
       {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
       
