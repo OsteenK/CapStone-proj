@@ -1,6 +1,6 @@
 
  import './App.css';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes,Route } from 'react-router-dom';
 import Popup from "../src/components/Popup";
 import Footer from "../src/components/Footer";
@@ -20,11 +20,23 @@ import AdministratorDashboard from "./components/Administrator/AdministratorDash
 import DonationForm from './components/DonorPage/DonationForm';
 
 function App() {
+  // States
+  const [currentUser, setCurrentUser] = useState({})
   const [popupVariables, setPopupVariables] = useState({
     visible: false,
     header: "",
     body: ""
   })
+
+  const token = localStorage.getItem('token');  
+
+  // Fetch logged in user
+  useEffect(() => {
+    const headers = {'Authorization': `Bearer ${token}`}
+    fetch("http://127.0.0.1:3000/loggedin", {headers})
+    .then((response) => response.json())
+    .then((data) => setCurrentUser(data.current_user))
+  }, [])
 
   return (
     <div className="App">
