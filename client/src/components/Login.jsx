@@ -75,7 +75,7 @@ import Swal from 'sweetalert';
   <div className="login-form">
    <div className="logincontainer">
      <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full' >
-  
+    
           <div className='hidden sm:block'>
     <img className='w-full h-full object-cover' src='https://res.cloudinary.com/dtnt2f8ao/image/upload/v1682257030/Give%20Hope/AfriPads.avif' alt="" />
           </div>
