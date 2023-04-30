@@ -131,31 +131,31 @@ Donation.create([
         donor_id: 2
     },
     {
-        donation_amount: 500,
+        donation_amount: 5045,
         anonymous: false,
         charity_id: 4,
         donor_id: 1
     },
     {
-        donation_amount: 10,
+        donation_amount: 1000,
         anonymous: false,
         charity_id: 2,
         donor_id: 3
     },
     {
-        donation_amount: 70,
+        donation_amount: 7000,
         anonymous: true,
         charity_id: 6,
         donor_id: 3
     },
     {
-        donation_amount: 120,
+        donation_amount: 1020,
         anonymous: false,
         charity_id: 2,
         donor_id: 1
     },
     {
-        donation_amount: 50,
+        donation_amount: 5000,
         anonymous: false,
         charity_id: 5,
         donor_id: 2
@@ -167,13 +167,13 @@ Donation.create([
         donor_id: 3
     },
     {
-        donation_amount: 100,
+        donation_amount: 129070,
         anonymous: false,
         charity_id: 7,
         donor_id: 2
     },
     {
-        donation_amount: 1000,
+        donation_amount: 1200,
         anonymous: true,
         charity_id: 5,
         donor_id: 3

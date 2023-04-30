@@ -10,7 +10,7 @@ import Swal from 'sweetalert';
 
 
 
- function Login() {
+export default function Login({ setCurrentUser, setAppUserType }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
@@ -35,39 +35,41 @@ import Swal from 'sweetalert';
         userType,
       })
     })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response.error) {
-          // Show an error message
-          console.log(response.message);
-        } else {
-          localStorage.setItem("token", response.jwt);
-          console.log(response);
-          // Navigate to the appropriate component
-          Swal({
-            title: "Success!",
-            text: "LoggedIn successfully.",
-            icon: "success",
-            button: "OK",
-          });
-
-          if (userType === "administrator") {
-            navigate("/administratordashboard");
-          } 
-          else if (userType === "charity"){
-            navigate("/charitydashboard");
-          }
-          else  {
-            navigate("/home");
-          }
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        // Show an error message
+        Swal({
+          title: "Login Error",
+          text: `${data.error}`,
+          icon: "error",
+          button: "Try Again"
+        });
+        
+      } else {
+        localStorage.setItem("token", data.jwt);
+        setCurrentUser(data.current_user)
+        setAppUserType(data.user_type)
+         // Navigate to the appropriate component
+        Swal({
+          title: "Success!",
+          text: "LoggedIn successfully.",
+          icon: "success",
+          button: "OK",
+        });
+       
+        if (data.user_type === "Administrator") {
+          navigate("/administratordashboard");
+        } 
+        else if (data.user_type === "Charity"){
+          navigate("/charitydashboard");
         }
-      });
-
-    };
-
-   
- 
-  
+        else  {
+          navigate("/home");
+        }
+      }
+    });
+  };
 
   return (
  
@@ -94,34 +96,56 @@ import Swal from 'sweetalert';
 
         <div className='flex flex-col text-gray-400 py-2'>
             <label>Email address</label>
-            <input 
-            type="email" 
-            className="form-control"
-            placeholder="Enter email"
-            onChange={(e) => setEmail(e.target.value)}
+            <input
+              type="email"
+              className="form-control"
+              placeholder="Enter email"
+              name="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
         </div>
         <div className='flex flex-col text-gray-400 py-2'>
             <label>Password</label>
-            <input 
-            type="password"
-            className="form-control"
-            placeholder="Enter password"
-            onChange={(e) => setPassword(e.target.value)}
+            <input
+              type="password"
+              className="form-control"
+              placeholder="Enter password"
+              name="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-        </div>
-        <div className='flex justify-between text-gray-400 py-2'>
-           
-            <p className='flex items-center'><input className='mr-2' type="checkbox" /> Remember Me</p>
-            
-            <select value={userType} onChange={(e) => setUserType(e.target.value)}>
-              <option value="donor">Donor</option>
-             <option value="charity">Charity</option>
-              <option value="administrator">Administrator</option>
-             </select>
-        </div>
-        
-        <div className="d-grid">
+          </div>
+          <div className="mb-3">
+            <label style={{ marginRight: "10px" }}>
+              Login As:
+              <select
+                name="userType"
+                value={userType}
+                onChange={(e) => setUserType(e.target.value)}
+                style={{ marginLeft: "5px" }}
+              >
+                <option value="donor">Donor</option>
+                <option value="charity">Charity</option>
+                <option value="administrator">Administrator</option>
+              </select>
+            </label>
+          </div>
+          <div className="mb-3">
+            <div className="custom-control custom-checkbox">
+              <input
+                type="checkbox"
+                className="custom-control-input"
+                id="customCheck1"
+              />
+
+              <label className="custom-control-label" htmlFor="customCheck1">
+                Remember me
+              </label>
+            </div>
+          </div>
+
+          <div className="d-grid">
             <button type="submit" className="btn btn-primary" onClick={handleLogin}>
              Login
             </button>

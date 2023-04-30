@@ -43,7 +43,15 @@ class ApplicationController < ActionController::Base
   end
 
   def logged
-    render json: { logged_in: logged_in?, current_user: @current_user }, include: :charities
+    puts @current_user.is_a?(Administrator)
+    if @current_user.is_a?(Administrator)
+      render json: { logged_in: logged_in?, user_type: "Administrator", current_user: @current_user }, include: {charities: {methods: :total_donated}} #, except: :total_donations
+    elsif @current_user.is_a?(Donor)
+      render json: {logged_in: logged_in?, user_type: "Donor", current_user: @current_user }
+    elsif @current_user.is_a?(Charity)
+      render json: {logged_in: logged_in?, user_type: "Charity", current_user: @current_user }
+    end
+    
   end
 
   def authorized_donor
