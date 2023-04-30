@@ -1,32 +1,38 @@
 
 
+
 import React, {  useContext, useState } from "react";
 import Swal from 'sweetalert';
+ import { useNavigate } from "react-router-dom";
+ import { Link } from "react-router-dom";
+// import './login.css';
 
 
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 
 export default function Login({ setCurrentUser, setAppUserType }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [userType, setUserType] = useState("userType");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userType, setUserType] = useState("");
   const navigate = useNavigate();
 
-  
+
+
+
   const handleLogin = (event) => {
     event.preventDefault();
-  
-    fetch("http://127.0.0.1:3000/login",{
+
+    fetch("/login", {
       method: "POST",
       headers:{
-        "Content-Type": "application/json"
+      
+        'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email, password, userType
+        email,
+        password,
+        userType,
       })
     })
     .then(response => response.json())
@@ -66,13 +72,29 @@ export default function Login({ setCurrentUser, setAppUserType }) {
   };
 
   return (
-    <div className="auth-page">
-    <div className="auth-wrapper container">
-      
-        <form onSubmit={handleLogin}>
-          <h3>Sign In</h3>
+ 
+<div className="logncontainer mx-auto">
+  <div className="login-form">
+   <div className="logincontainer">
+     <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full' >
+  
+          <div className='hidden sm:block'>
+    <img className='w-full h-full object-cover' src='https://res.cloudinary.com/dtnt2f8ao/image/upload/v1682257030/Give%20Hope/AfriPads.avif' alt="" />
+          </div>
 
-          <div className="mb-3">
+          <div className=' bg-lavender-100 flex flex-col justify-center'>
+           <img className="signin-image" 
+            src="Give Hope Logo (1).png"
+            style={{height: "35px"}}
+            alt=""
+            loading="lazy" />
+    <form className='max-w-[400px] w-full mx-auto rounded-lg bg-gray-900 p-8 px-8' onSubmit={handleLogin}>
+        
+        <h2 className="signin-heading">SIGN IN</h2>
+
+       
+
+        <div className='flex flex-col text-gray-400 py-2'>
             <label>Email address</label>
             <input
               type="email"
@@ -82,9 +104,8 @@ export default function Login({ setCurrentUser, setAppUserType }) {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-          </div>
-
-          <div className="mb-3">
+        </div>
+        <div className='flex flex-col text-gray-400 py-2'>
             <label>Password</label>
             <input
               type="password"
@@ -129,19 +150,36 @@ export default function Login({ setCurrentUser, setAppUserType }) {
              Login
             </button>
           </div>
-          <p class="mb-0 mt-2 pt-1 text-sm font-semibold">
-                Don't have an account?
-                <a
-                  href="#!"
-                  class="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
-                  ></a
-                >
+         
+
+
+         <div className="container" style={{backgroundcolor:"#f1f1f1"}}>
+           <Link to="/home">
+            <button className="cancelbtn" >X</button>
+           </Link>
+
+           
             
-          <Link to="/signup">Sign Up</Link>
-          </p>
-        </form>
+            
+           <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
+                 Don't have an account?
+                
+               <Link to="/signup">Sign Up</Link>
+              </p>
+         </div>
+      </form>
       </div>
-    </div>
-   
+      </div>
+      </div>
+     </div>
+   </div>
   );
 }
+
+export default Login;
+
+
+
+
+
+

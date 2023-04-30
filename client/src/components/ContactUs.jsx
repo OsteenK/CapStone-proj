@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "../components/ContactUs.css";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 
 const ContactUs = () => {
@@ -49,7 +51,8 @@ const ContactUs = () => {
 
   return (
     <div >
-      <div class="container-fluid">
+      <NavBar/>
+      <div class="contact container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="">Contact Us</div>
@@ -140,7 +143,8 @@ const ContactUs = () => {
         </div>
       </div>
       </div>
-    </div>
+      <Footer />
+       </div>
   );
 };
 

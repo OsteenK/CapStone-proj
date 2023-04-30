@@ -7,6 +7,7 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { donorData } from './donorData.js';
 import Pagination from '../Pagination';
 import { Link } from 'react-router-dom';
+import Footer from "../Footer";
 
 function CharityDashboard() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -174,8 +175,11 @@ function CharityDashboard() {
           </tbody>
         </table>
       </div>
+      
       <Pagination totalItems={donorData.length} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage}/>
-    </div>
+    
+      <Footer />
+      </div>
   )
 }
 

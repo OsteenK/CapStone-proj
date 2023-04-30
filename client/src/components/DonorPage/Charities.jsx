@@ -64,11 +64,12 @@ const Charities = () => {
       {/* Charity Cards */}
       <div className='container'>
         <div className='row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4'>
-          {charitiesPerPage.map((charity => <CharityCard key={charity.name} charity={charity}/>))}
+          {charitiesPerPage.map((charity => <CharityCard key={charity.id} charity={charity}/>))}
         </div>  
       </div>
 
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalItems={charitiesToDisplay.length} itemsPerPage={itemsPerPage} scrollTo={"charities"}/>
+      <Footer />
     </div>
   )};
 

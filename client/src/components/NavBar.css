@@ -1,0 +1,58 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d1c4e9;
+  padding: 1px 10px;
+  
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left img {
+  height: 50px;
+}
+
+.navbar img {
+  position: absolute;
+  top: 5;
+  left: 0;
+  width: auto;
+  height: 70px; /* Adjust the height of the logo image as needed */
+  margin-right: 10px; /* Add some space between the logo and the home link */
+}
+
+
+.navbar-buttons button {
+  margin-left: 20px;
+  border: none;
+  border-radius: 66px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.donate-button {
+  background-color: #9c27b0;
+  color: #fff;
+  padding: 10px 20px;
+}
+
+.login-button {
+  background-color: #9c27b0;
+  color: #fff;
+  padding: 10px 20px;
+
+
+}
+.login-button:hover {
+  color: #4955b2;
+}
+

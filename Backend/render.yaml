@@ -1,0 +1,18 @@
+databases:
+  - name: capstone
+    databaseName: capstone_fe8d
+    user: capstone_fe8d_user
+
+services:
+  - type: web
+    name: GiveHope
+    env: ruby
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: GiveHope
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
