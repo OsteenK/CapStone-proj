@@ -14,7 +14,7 @@ function CharityCard({ charity, cardData, progress }) {
         return value?.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
       };
 
-    const num = (Math.round(((charity.total_donations/charity.goal_amount)*100)/10))*10
+  
 
 
     return(
