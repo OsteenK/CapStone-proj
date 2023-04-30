@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../NavBar";
-import Footer from "../Footer";
+import { useNavigate } from "react-router-dom";
 import CharityCard from "./CharityCard";
 import LoadingScreen from "../LoadingScreen";
 import { Link } from 'react-router-dom';
@@ -10,6 +9,8 @@ import { GiBookmarklet } from "react-icons/gi";
 const LandingPage = () => {
   const [currentUser, sestCurrentUser] = useState({});
   const [charities, setCharities] = useState([]);
+
+  const navigate = useNavigate();
 
  // Fetch charities from backend
  useEffect(() => {
@@ -25,9 +26,7 @@ const LandingPage = () => {
   }
 
   return (
-    <div>
-      <NavBar/>
-     
+    <div> 
       <main>
       <section className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{backgroundImage: "url(https://images.unsplash.com/photo-1567057419865-38d8cff1c2b9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80)", backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center"}}>
           <div className="container mx-auto xl:px-32">
@@ -93,7 +92,7 @@ const LandingPage = () => {
               </div>
             </div>
           </section>
-          <button className="bg-lavender-200 text-white font-extrabold mt-12 rounded-lg hover:bg-lavender-300 no-underline p-4">JOIN THE FIGHT!</button>
+          <button onClick={()=> navigate("/signup")} className="bg-lavender-200 text-white font-extrabold mt-12 rounded-lg hover:bg-lavender-300 no-underline p-4">JOIN THE FIGHT!</button>
         </section>
         
         <section className="bg-lavender-100 p-4 text-center">
@@ -113,7 +112,6 @@ const LandingPage = () => {
           </div>
         </section>
       </main>
-      <Footer />
     </div> 
   );
 };
