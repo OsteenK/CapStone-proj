@@ -51,7 +51,7 @@ const ContactUs = () => {
 
   return (
     <div >
-      <NavBar/>
+      
       <div class="contact container-fluid">
         <div class="row">
           <div class="col-12">

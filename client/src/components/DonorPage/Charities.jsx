@@ -69,7 +69,7 @@ const Charities = () => {
       </div>
 
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalItems={charitiesToDisplay.length} itemsPerPage={itemsPerPage} scrollTo={"charities"}/>
-      <Footer />
+    
     </div>
   )};
 

@@ -69,7 +69,7 @@ function App() {
 
       </Routes>
 
-      {/* <Footer /> */}
+      <Footer />
 
       {/* Popup Component can be used by any other component */}
       <Popup visible={popupVariables.visible} header={popupVariables.header} body={popupVariables.body} setPopupVariables={setPopupVariables}/>

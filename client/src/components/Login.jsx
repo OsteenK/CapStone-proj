@@ -176,7 +176,6 @@ export default function Login({ setCurrentUser, setAppUserType }) {
   );
 }
 
-export default Login;
 
 
 

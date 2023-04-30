@@ -42,7 +42,7 @@ function BeneficiaryStories(){
 
                 {/* Pagination Buttons */}
                 <Pagination totalItems={stories.length} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage}/>
-                <Footer />
+                
             </div>
         )
     }
