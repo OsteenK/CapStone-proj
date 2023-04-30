@@ -1,8 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
 function Pagination({ currentPage, setCurrentPage, totalItems, itemsPerPage, scrollTo }) {
-    // Navigatiton
-    const navigate = useNavigate();
     const element = document.getElementById(scrollTo)
 
     // Holds the page numbers, thus the buttons numbers

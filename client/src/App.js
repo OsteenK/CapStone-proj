@@ -1,5 +1,4 @@
-
- import './App.css';
+import './App.css';
 import { useState, useEffect } from "react";
 import { Routes,Route } from 'react-router-dom';
 import Popup from "../src/components/Popup";
@@ -68,9 +67,7 @@ function App() {
       
 
       </Routes>
-
-      {/* <Footer /> */}
-
+      
       {/* Popup Component can be used by any other component */}
       <Popup visible={popupVariables.visible} header={popupVariables.header} body={popupVariables.body} setPopupVariables={setPopupVariables}/>
     </div>
