@@ -50,8 +50,35 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
   }
 
   function handleRejection(e){
-    console.log(e.target)
     // Make request to backend to reject the application
+    // Send DELETE request to delete the charity from the backend
+    fetch(`http://localhost:3000/charities/reject/${e.target.id}`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(response => {
+      if (response.ok){
+        Swal({
+          title: "Successful rejection!",
+          text: "The charity has been rejected.",
+          icon: "success",
+          button: "OK",
+        })
+        window.location.reload();
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      Swal({
+        title: "Rejection Failed",
+        text: `${error}`,
+        icon: "error",
+        button: "OK",
+      })
+    })
   }
 
   function handleDelete(e){

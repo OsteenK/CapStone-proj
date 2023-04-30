@@ -36,7 +36,7 @@ class CharitiesController < ApplicationController
 
   # PUT /charities/approve/:id
   def approve
-    @charity = Charity.find(params[:id])
+    @charity = set_charity
     
     if @charity.update(charity_params)
       CharityNotifierMailer.send_application_approved_email(@charity).deliver
@@ -44,6 +44,14 @@ class CharitiesController < ApplicationController
     else
       render json: @charity.errors, status: :unprocessable_entity
     end    
+  end
+
+  # DELETE /charities/reject/:id
+  def reject
+    @charity = set_charity
+    CharityNotifierMailer.send_application_rejected_email(@charity).deliver
+    @charity.destroy
+    head :no_content
   end
 
   # DELETE /charities/:id
@@ -116,32 +124,32 @@ class CharitiesController < ApplicationController
     @items = @beneficiary.items.find(params[:items_id])
     @items.destroy
     head :no_content
-end
+  end
 
-private
-def set_charity
-@charity = Charity.find(params[:id])
-end
+  private
+  def set_charity
+    @charity = Charity.find(params[:id])
+  end
 
-def unapproved_charities
-  @charities = Charity.where(approved: false)
-  render json: @charities, status: :ok
-end
+  def unapproved_charities
+    @charities = Charity.where(approved: false)
+    render json: @charities, status: :ok
+  end
 
-def approved_charities
-  @charities = Charity.where(approved: true)
-  render json: @charities, status: :ok
-end
+  def approved_charities
+    @charities = Charity.where(approved: true)
+    render json: @charities, status: :ok
+  end
 
-def charity_params
-params.permit( :email, :password, :approved)
-end
+  def charity_params
+    params.permit( :email, :password, :approved)
+  end
 
-def beneficiary_params
-params.require(:beneficiary).permit(:name, :description)
-end
+  def beneficiary_params
+    params.require(:beneficiary).permit(:name, :description)
+  end
 
-def items_params
-params.require(:items).permit(:name, :description, :quantity)
-end
+  def items_params
+    params.require(:items).permit(:name, :description, :quantity)
+  end
 end
