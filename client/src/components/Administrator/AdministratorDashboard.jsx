@@ -15,6 +15,7 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
   const lastItemIndexTable2 = currentPageTable2 * itemsPerPage;
   const firstItemIndexTable2 = lastItemIndexTable2 - itemsPerPage;
 
+  console.log(currentUser.id)
   // Event Handlers
   function handleApproval(e){
     // Make request to backend to approve the charity
@@ -51,7 +52,7 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
 
   function handleRejection(e){
     // Make request to backend to reject the application
-    // Send DELETE request to delete the charity from the backend
+    // Send DELETE request to delete the charity from the backend and send rejection email
     fetch(`http://localhost:3000/charities/reject/${e.target.id}`, {
       method: "DELETE",
       headers: {
@@ -84,6 +85,34 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
   function handleDelete(e){
     console.log(e.target)
     // Make request to backend to delete the charity
+    // Send DELETE request to delete the charity from the backend
+    fetch(`http://localhost:3000/charities/${e.target.id}`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(response => {
+      if (response.ok){
+        Swal({
+          title: "Successful deletion!",
+          text: "The charity has been deleted.",
+          icon: "success",
+          button: "OK",
+        })
+        window.location.reload();
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      Swal({
+        title: "Delete Failed",
+        text: `${error}`,
+        icon: "error",
+        button: "OK",
+      })
+    })
   }
 
 

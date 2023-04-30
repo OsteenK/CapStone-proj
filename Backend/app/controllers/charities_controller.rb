@@ -56,6 +56,7 @@ class CharitiesController < ApplicationController
 
   # DELETE /charities/:id
   def destroy
+    @charity = set_charity
     AdministratorNotifierMailer.send_charity_deletion_email(@charity).deliver
     CharityNotifierMailer.send_charity_deletion_notice(@charity).deliver
     @charity.destroy
