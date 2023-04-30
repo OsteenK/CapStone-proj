@@ -20,8 +20,6 @@ class CharitiesController < ApplicationController
     redirect_to @charity
   end
   
-  
-  
 
   def create
     @charity = Charity.new(charity_params)
@@ -36,7 +34,9 @@ class CharitiesController < ApplicationController
   end
 
   def update
+    @charity = Charity.find(params[:id])
     if @charity.update(charity_params)
+      CharityNotifierMailer.send_application_approved_email(@charity).deliver
       render json: @charity, status: :ok
     else
       render json: @charity.errors, status: :unprocessable_entity
@@ -130,7 +130,7 @@ def approved_charities
 end
 
 def charity_params
-params.permit( :email, :password)
+params.permit( :email, :password, :approved)
 end
 
 def beneficiary_params
