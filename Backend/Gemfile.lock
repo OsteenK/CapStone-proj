@@ -269,8 +269,9 @@ DEPENDENCIES
   sqlite3 (~> 1.4)
   stimulus-rails
   turbo-rails
+  tzinfo-data
   web-console
   webdrivers
 
 BUNDLED WITH
-   2.4.7
+   2.4.1
