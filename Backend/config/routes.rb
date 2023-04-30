@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
 
   get '/donors/:id', to: 'donors#show'
-
-# Auth Routes
+  
+  # Auth Routes
   post '/login' , to: 'session#create'
   delete '/logout', to: 'session#destroy'
   get '/loggedin', to: 'application#logged'
@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get '/images' , to: 'images#index'
 
   #CHARITY ROUTES
+  put "/charities/approve/:id", to: "charities#approve"
+
   get '/charities', to: 'charities#index'
   post '/charity/signup', to: 'charities#create'
 

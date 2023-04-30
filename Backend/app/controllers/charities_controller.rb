@@ -12,15 +12,6 @@ class CharitiesController < ApplicationController
     render json: @charity
   end
   
-  def approve
-    @charity = Charity.find(params[:id])
-    @charity.update(approved: true)
-    CharityNotifierMailer.send_application_approved_email(@charity).deliver
-  
-    redirect_to @charity
-  end
-  
-
   def create
     @charity = Charity.new(charity_params)
 
@@ -33,16 +24,29 @@ class CharitiesController < ApplicationController
     end
   end
 
+  # PUT /charities/:id
   def update
     @charity = Charity.find(params[:id])
     if @charity.update(charity_params)
-      CharityNotifierMailer.send_application_approved_email(@charity).deliver
       render json: @charity, status: :ok
     else
       render json: @charity.errors, status: :unprocessable_entity
     end
   end
 
+  # PUT /charities/approve/:id
+  def approve
+    @charity = Charity.find(params[:id])
+    
+    if @charity.update(charity_params)
+      CharityNotifierMailer.send_application_approved_email(@charity).deliver
+      render json: @charity, status: :accepted
+    else
+      render json: @charity.errors, status: :unprocessable_entity
+    end    
+  end
+
+  # DELETE /charities/:id
   def destroy
     AdministratorNotifierMailer.send_charity_deletion_email(@charity).deliver
     CharityNotifierMailer.send_charity_deletion_notice(@charity).deliver

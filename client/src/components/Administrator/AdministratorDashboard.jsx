@@ -19,7 +19,7 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
   function handleApproval(e){
     // Make request to backend to approve the charity
     // Send PUT request to update charity approval status
-    fetch(`http://localhost:3000/charities/${e.target.id}`, {
+    fetch(`http://localhost:3000/charities/approve/${e.target.id}`, {
       method: "PUT",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
