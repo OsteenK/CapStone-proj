@@ -5,7 +5,7 @@ import Swal from 'sweetalert';
 function NavBar({ currentUser, userType }) {
 
   const navigate = useNavigate();
-  const token =localStorage.getItem('token');
+  const token = localStorage.getItem('token');
 
   // Event Handlers
   // Logout

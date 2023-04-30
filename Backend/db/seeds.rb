@@ -42,7 +42,7 @@ Charity.create([
         goal_amount: 5000,
         total_donations: 3857,
         administrator_id: 1,
-        approved: true
+        approved: false
     },
     {
         name: "Water To Schools",
