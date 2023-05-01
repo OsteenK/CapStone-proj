@@ -8,13 +8,16 @@ class SessionController < ApplicationController
 
     if donor && donor.authenticate(params[:password])
       token = JWT.encode({ donor_id: donor.id }, 'my_s3cr3t')
-      render json: { loggedin: true, donor: donor.as_json(only: [:id, :name]), jwt: token }, status: :accepted
-    elsif charity && charity.authenticate(params[:password])
+      render json: { loggedin: true, current_user: donor, user_type: "Donor", jwt: token }, status: :accepted
+
+    elsif charity && charity.authenticate(params[:password]) && charity.approved?
       token = JWT.encode({ charity_id: charity.id }, 'my_s3cr3t')
-      render json: { loggedin: true, charity: charity.as_json(only: [:id, :name]), jwt: token }, status: :accepted
+      render json: { loggedin: true, current_user: charity, user_type: "Charity", jwt: token }, status: :accepted
+
     elsif administrator && administrator.authenticate(params[:password])
       token = JWT.encode({ administrator_id: administrator.id }, 'my_s3cr3t')
-      render json: { loggedin: true, administrator: administrator.as_json(only: [:id, :name]), jwt: token }, status: :accepted
+      render json: { loggedin: true, current_user: administrator, user_type: "Administrator", jwt: token }, include: {charities: {methods: :total_donated}}, status: :accepted
+
     else
       render json: { error: 'Invalid email or password' }, status: :unauthorized
     end

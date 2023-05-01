@@ -3,9 +3,9 @@ class AdministratorsController < ApplicationController
 
   # POST /admin/login
   def login
-    admin = Admin.find_by(email: params[:email])
-    if admin && admin.authenticate(params[:password])
-      token = JWT.encode({ admin_id: admin.id }, Rails.application.secrets.secret_key_base, 'HS256')
+    administrator = Administrator.find_by(email: params[:email])
+    if Administrator && Administrator.authenticate(params[:password])
+      token = JWT.encode({ administrator_id: Administrator.id }, Rails.application.secrets.secret_key_base, 'HS256')
       render json: { token: token }
     else
       render json: { error: 'Invalid email or password' }, status: :unprocessable_entity
@@ -18,6 +18,15 @@ class AdministratorsController < ApplicationController
     @charity_applications = CharityApplication.all
     render json: @charity_applications
   end
+
+  def unapproved
+    @charities = Charity.where(approved: false)
+    render json: @charities, status: :ok
+  end
+  def approved
+  @charities = Charity.where(approved: true)
+  render json: @charities, status: :ok
+end
 
   # POST /charity_applications/:id/approve
   def approve_charity_application
@@ -49,7 +58,7 @@ class AdministratorsController < ApplicationController
   end
 
   private
-    def authorize_admin
+    def authorize_administartor
       # check if the request is coming from an admin
       token = request.headers["Authorization"]&.split(" ")&.last
       begin

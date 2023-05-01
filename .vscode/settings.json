@@ -1,3 +1,4 @@
 {
-    "sqltools.useNodeRuntime": true
+    "sqltools.useNodeRuntime": true,
+    "prettier.bracketSameLine": true
 }

@@ -1,4 +1,4 @@
-.container-fluid {
+.contact container-fluid {
     background-color: #B2A5D4;
     /* height: 20px; */
     font-size: 35px;
@@ -7,10 +7,13 @@
     align-items: center;
     justify-content: center;
     color: white;
-    padding-block: 20px;
-
+    padding-block: 70px;
+    width: 100vw;
   }
-  
+/* form{
+  margin-left: 480px;
+  margin-top: 200px;
+} */
   h1 {
     color: #8869DB;
     font-size: 24px;
@@ -20,12 +23,12 @@
     background-color: #fff;
     color: #000;
   }
-  form{
+  /* form{
     padding:60px;
     background-color: #B2A5D4;
     border-radius: 20px;
     height:550px
-}
+} */
 
   .btn-primary {
     margin-top: 20px;
@@ -38,8 +41,6 @@
     text-align: left;
   }
  
-  body {
-    overflow-x: hidden;
-  }
+  
   
  

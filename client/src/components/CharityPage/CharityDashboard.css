@@ -10,7 +10,9 @@
   background-color: #3A1A52;
   padding: 20px;
 }
-
+.topdiv{
+  
+}
 .navbar-left {
   display: flex;
   align-items: center;
@@ -62,14 +64,20 @@ text{
 .header{
   width: 100vw;
   background: #3A1A52;
-  /* margin-top: -25.68rem; */
+   /* margin-top: -25.68rem;  */
   height: 15rem;
   display: grid;
   place-items: center;
   padding: 1rem;
   color: white;
   
+   margin-top: 60px; 
 }
+.mt-9{
+  text-align: center;
+  margin-top: 5rem;
+}
+
 .cards{
   width: 90%;
   display: grid;
@@ -91,7 +99,7 @@ text{
 }
 
 .card-3{
-  background: #ce93d8;
+  background: #B2A5DA;
   border-radius: 30px;
 }
 .donor-table{
@@ -101,11 +109,14 @@ text{
   place-items: center;
   padding: 2rem;
   width: 100%;
-  background: #ce93d8;
+  background: #B2A5DA;
   border-radius: 30px;
   margin-top: 80px;
 }
 .beneficiary-table{
+  width: 90%;
+  display: grid;
+  width: 100%;
   background-color:white;
   border-radius: 30px;
   margin-top: 80px;
@@ -115,4 +126,11 @@ text{
 }
 .more.info{
   color: #3A1A52;
+}
+p {
+  margin-bottom: 1px;
+}
+
+h3 {
+  margin-top: 2px;
 }

@@ -1,6 +1,9 @@
 class DonorsController < ApplicationController
+  # skip_before_action :authorize, only: [ :create]
   before_action :authorize_request, only: [:create, :donate, :set_donation_reminder]
-  
+ 
+
+
   def index
     charities = Charity.all
     render json: { charities: charities }, status: :ok
@@ -9,6 +12,8 @@ class DonorsController < ApplicationController
   def create
     donor = Donor.create(donor_params)
     if donor.save
+      DonorNotifierMailer.send_donor_signup_email(donor).deliver_now
+
       render json: { message: 'Donor created successfully' }, status: :created
     else
       render json: { error: 'Unable to create donor' }, status: :unprocessable_entity
@@ -37,7 +42,7 @@ class DonorsController < ApplicationController
   private
 
   def donor_params
-    params.permit(:name, :email, :password)
+    params.require(:donor).permit( :email, :password)
   end
 
   def donation_params
