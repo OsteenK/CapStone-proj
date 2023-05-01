@@ -7,16 +7,41 @@ import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import BeneficiaryStories from '../BeneficiaryStories';
 import CharityCard from './CharityCard';
+import AccordionBox from '../../AccordionBox';
+import { useLocation } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 
-
-
-const CharityDetails = ({charity, cardData}) => {
+const CharityDetails = ({charity, cardData, data}) => {
   const navigate = useNavigate();
   const [charities, setCharities] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [beneficiaries, setBeneficiaries] = useState([]);
+  const [stories, setStories] = useState([]);
   
+  // const {charity.id} = useParams();
+ 
+  const accordionData = [
+    {
+      title: "Make a difference in the life of a child",
+      text:
+        "Suspendisse finibus urna mauris, vitae consequat quam blandit vel. Vestibulum leo ligula, molestie ullamcorper  vulputate vitae sodales commodo nisl. Nulla facilisi.  Pellentesque est metus. There are many variations of eration in some form.",
+      status: true,
+    },
+    {
+      title: "Let’s do the right thing now",
+      text:
+        "Suspendisse finibus urna mauris, vitae consequat quam blandit vel. Vestibulum leo ligula, molestie ullamcorper  vulputate vitae sodales commodo nisl. Nulla facilisi.  Pellentesque est metus. There are many variations of eration in some form.",
+      status: false,
+    },
+    {
+      title: "Join your hand with us for a better life",
+      text:
+        "Suspendisse finibus urna mauris, vitae consequat quam blandit vel. Vestibulum leo ligula, molestie ullamcorper  vulputate vitae sodales commodo nisl. Nulla facilisi.  Pellentesque est metus. There are many variations of eration in some form.",
+      status: false,
+    },
+  ];
+
 // Pagination variables
 const itemsPerPage = 3; // Number of items per page
 const lastItemIndex = currentPage * itemsPerPage; // Calculate the index after the last item for the current page
@@ -25,48 +50,49 @@ const firstItemIndex = lastItemIndex - itemsPerPage; // Calculate the index of t
 
 
   // Fetch charities from backend
-  useEffect(() => {
-    if (charity) {
-    fetch(`http://127.0.0.1:3000/charities/${charity.id}`)
-      .then((response) => response.json())
-      .then((charitiesData) => setCharities(charitiesData));
-    }
-  }, []);
-  
+  const location = useLocation();
+  const { charityId } = location.state;
+  console.log(charityId);
 
+  useEffect(() => {
+  
+  fetch(`http://localhost:3000/charities/${charityId}`, {
+      method: "GET",
+      headers:{
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json'
+      },
+      
+    })
+    .then((response) => response.json())
+    .then((charities) => console.log(charities));
+
+  }, [charityId]);
 
 
 // Filtering and Pagination of fetched data
 const beneficiariesToDisplay =  beneficiaries.filter(( beneficiary) => beneficiary.approved);
 const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastItemIndex);
 
-  
+
   return (
        
-    <div>
 
-      <section>
-        <div className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{ backgroundImage: `url(${ beneficiariesToDisplay[0]?.img_url})`, backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
-          <div className="container mx-auto xl:px-32">
-            <div className="flex items-center md:justify-end">
-
-              {/* Text Card */}
-              <div className="mb-12 p-12 lg:mb-0 lg:w-2/5 rounded-2xl bg-lavender-100/80 text-white text-left">
-                <h1 className="mb-4 text-5xl text-white font-extrabold leading-tight">Help Mercy</h1>
-
-                <p className="text-xl font-medium mb-6">Did you know that millions of girls like Mercy lack access to proper sanitary products, hindering their education and putting their health at risk?<br />You can make a difference by supporting charities that work to improve these conditions and empower girls around the world. Join the movement today and help create a brighter future for all girls.</p>
-
-                <p className="text-xl font-medium mb-6"><strong>Charity:</strong> { beneficiariesToDisplay[0]?.name}</p>
-
-                <a className="bg-lavender-200 rounded-3xl p-2.5 px-4 h-12 text-white text-lg font-bold bottom-0 hover:bg-lavender-300 no-underline" href="#charities">Donate Now!</a>
+ 
+    
+    <>
+       <div>
+            <section className='hero-section'>
+               <div className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{ backgroundImage: 'https://images.unsplash.com/photo-1544476301-66914d9e95aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80', backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
+                <div className="container mx-auto xl:px-32">
+                   <div className="flex items-center md:justify-end">
+                     
+                    
+                   </div>
+                 </div>
               </div>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-   
+            </section>
+           
     <section className="content-section"style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
      <div id="charities" className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8 text-center">
         <h1 className="mb-2 sm:mt-4 md:mt-14 text-5xl text-lavender-400 font-extrabold leading-tight">Active Charities</h1>
@@ -110,23 +136,58 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
         </div> 
        
     </section>
-        
-    <section className="beneficiaryStoriesToDisplay-section">
-    <div className='container'>
-        <div className='row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4'>
-          {beneficiariesPerPage.map((beneficiary => <BeneficiaryStories key={beneficiary.id} Beneficiary={beneficiary} />))}
-        </div>
-      </div>
-    
-     
-     
 
-    </section>
-   
-    {/* <Footer /> */}
-  </div>
-    
-   
+           <section className="beneficiaryStoriesToDisplay-section">
+           {stories.map((beneficiary) => (
+           <div className="block rounded-lg bg-white text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.1)]">
+            <img className="rounded-t-lg object-cover h-96 w-full" src={beneficiary.img_url} alt="beneficiary"/>            
+
+            <div className="p-6 px-8">
+                <h5 className="mb-2 py-2 text-2xl font-extrabold leading-tight text-lavender-200 text-center">
+                    {`${beneficiary.name}, ${beneficiary.location}`}
+                </h5>
+
+                <p className="mb-4 text-base text-lavender-400">
+                {beneficiary.description}
+                </p>
+                <p className="text-base text-lavender-400">
+                    <strong className="">{beneficiary.name} received:</strong><br/>
+                    {beneficiary.items}
+                </p>
+
+                
+                
+            </div>
+        </div>
+           ))};
+          </section>
+          
+         </div>
+      
+      <section className="faq-area">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6">
+
+              <div className="faq-img-box">
+                <img src="https://images.unsplash.com/photo-1509099863731-ef4bff19e808?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" alt="" />
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="accordion-container">
+                {accordionData.map(({ title, text, status }, index) => (
+                  <AccordionBox
+                    title={title}
+                    text={text}
+                    status={status}
+                    key={index} />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      </>
  
 
  )

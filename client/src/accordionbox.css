@@ -1,0 +1,112 @@
+/*=== single-accordion ===*/
+.single__accordion {
+    margin-top: -10px;
+}
+.accordion__title {
+    margin-top: 10px;
+}
+.accordion__title-text {
+    color: #232323;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    padding: 25px 35px;
+    display: block;
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 20px;
+    position: relative;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+ .single__accordion .accordion-panel .accordion__title .accordion__title-text:before,
+ .single__accordion .accordion-panel .accordion__title .accordion__title-text:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    right: 39px;
+    width: 2px;
+    height: 10px;
+    background-color: #232323;
+    z-index: 1;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    -ms-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
+    transition: 0.3s ease;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.accordion__title-text {
+    background-color: #e36955;
+    color: #fff;
+}
+ .single__accordion .accordion-panel .accordion__title .accordion__title-text:after,
+ .single__accordion .accordion-panel.active .accordion__title .accordion__title-text:before {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: translateY(-50%) rotate(90deg);
+    -ms-transform:translateY(-50%)  rotate(90deg);
+    -o-transform: translateY(-50%) rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
+}
+.accordion__title-text:before {
+    background-color: #fff;
+    z-index: 2;
+}
+.accordion__content {
+    padding: 30px 20px 25px 35px;
+}
+.accordion__content-desc {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.ac>.ac-q{
+    font-family: 'Playfair Display', serif;
+	color: #232323;
+	width: 100%;
+	margin: 2;
+	cursor: pointer;
+	padding: 25px 35px;
+	display: block;
+	background-color: #d1c4e9;
+	font-weight: 600;
+	font-size: 20px;
+	position: relative;
+	-webkit-transition: 0.3s ease;
+	-moz-transition: 0.3s ease;
+	-ms-transition: 0.3s ease;
+	-o-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.ac>.ac-q span {
+    display: block;
+    outline: none;
+}
+
+.ac > .ac-a p {
+    padding: 30px 20px 25px 35px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+.accordion-container .is-active > h2 {
+	background: #9c27b0 !important;
+    color: #ffffff;
+}
+
+
+
+
+

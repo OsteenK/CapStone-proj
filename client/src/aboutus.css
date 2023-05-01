@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,900&display=swap');
+.about-area {
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+.about-area .about-large-img {
+    margin-bottom: 60px;
+}
+.about-area .about-large-img img,
+.about-area .about-semi-img img {
+    width: 100%;
+}
+.about-area .about-heading {
+    padding-left: 30px;
+}
+.about-area .about-heading .section-heading .section__desc {
+    line-height: 30px;
+    margin-top: 45px;
+}
+
+
+
+/*===================================
+    MIXER AREA
+=====================================*/
+.mixer-area {
+    position: relative;
+    z-index: 1;
+   
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding-top: 120px;
+    padding-bottom: 120px;
+}
+.mixer-area:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #d1c4e9;
+    z-index: -1;
+}
+.mixer-area .mixer-heading .section__title {
+    font-size: 50px;
+    line-height: 84px;
+    margin-bottom: 48px;
+    font-weight: 800;
+}
+
+
+.mixer-area3:after {
+    background-color: #d1c4e9;
+}
+.mixer-area3 .section-heading {
+    padding-right: 70px;
+    padding-left: 70px;
+}
+
+
+
+/*===================================
+    FAQ AREA
+=====================================*/
+.faq-area {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    background-color: #f2f0ec;
+}
+.faq-area .faq-img-box {
+    margin-right: 30px;
+    margin-top: 50px;
+}
+.faq-area .faq-img-box img {
+    width: 100%;
+}
+
+
+
+
+.theme-btn {
+    font-size: 12px;
+    text-transform: uppercase;
+    background: #9c27b0;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 0 30px 0 35px;
+    line-height: 49px;
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    -webkit-transition: 0.3s ease-in;
+    -moz-transition: 0.3s ease-in;
+    -ms-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    transition: 0.3s ease-in;
+    text-decoration: none;
+    border: none;
+}
+.theme-btn:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 1px;
+    z-index: -1;
+    background: #9c27b0;
+    -webkit-transform-origin: bottom left;
+    transform-origin: bottom left;
+    -webkit-transform: skew(-12deg,0deg);
+    -moz-transform: skew(-12deg,0deg);
+    -ms-transform: skew(-12deg,0deg);
+    -o-transform: skew(-12deg,0deg);
+    transform: skew(-12deg,0deg);
+    -webkit-transition: 0.3s ease-in;
+    -moz-transition: 0.3s ease-in;
+    -ms-transition: 0.3s ease-in;
+    -o-transition: 0.3s ease-in;
+    transition: 0.3s ease-in;
+}
+.theme-btn:hover,
+.theme-btn:hover:after {
+    background-color: #56185f;
+    color: #fff;
+}
+
+
+/*===================================
+    SERVICE AREA
+=====================================*/
+.service-area {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding-top: 90px;
+    padding-bottom: 120px;
+}
+/*=== heart-icon ===*/
+.service-area .heart-icon {
+    position: absolute;
+    animation: heartbeat 0.7s cubic-bezier(0.245, 0.325, 0.51, 1.305) infinite alternate;
+}
+.service-area .heart-icon-1 {
+    top: 0;
+    left: 16%;
+}
+.service-area .heart-icon-2 {
+    top: 6%;
+    left: 0;
+}
+.service-area .heart-icon-3 {
+    top: 33%;
+    left: 9%;
+}
+.service-area .heart-icon-4 {
+    top: 37%;
+    left: 20%;
+}
+.service-area .heart-icon-5 {
+    top: 56%;
+    left: 10%;
+}
+.service-area .heart-icon-6 {
+    bottom: 17%;
+    left: 9%;
+}
+.service-area .heart-icon-7 {
+    top: -9%;
+    right: 7%;
+}
+.service-area .heart-icon-8 {
+    top: 14%;
+    right: 9%;
+}
+.service-area .heart-icon-9 {
+    top: 24%;
+    right: 20%;
+}
+.service-area .heart-icon-10 {
+    top: 50%;
+    right: 14%;
+}
+.service-area .heart-icon-11 {
+    bottom: 25%;
+    right: 3%;
+}
+
+.service-area .service-wrap {
+    margin-top: 52px;
+    margin-bottom: 50px;
+}
+.service-area .service-wrap .service-item .service-item-inner .service-icon {
+    display: inline-block;
+    padding: 12px 15px;
+    position: relative;
+    margin-bottom: 27px;
+    z-index: 1;
+}
+.service-area .service-wrap .service-item .service-item-inner .service-icon i {
+    font-size: 65px;
+    line-height: 60px;
+    color: #424242;
+}
+.service-area .service-wrap .service-item .service-item-inner .service-icon:before,
+.service-area .service-wrap .service-item .service-item-inner .service-icon:after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 45px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: #e5f5f6;
+}
+.service-area .service-wrap .service-item .service-item-inner .service-icon:after {
+    -webkit-transform-origin: bottom left;
+    transform-origin: bottom left;
+    -webkit-transform: skew(-15deg,0deg);
+    -moz-transform: skew(-15deg,0deg);
+    -ms-transform: skew(-15deg,0deg);
+    -o-transform: skew(-15deg,0deg);
+    transform: skew(-15deg,0deg);
+}
+.service-area .service-wrap .service-item2 .service-item-inner .service-icon:before,
+.service-area .service-wrap .service-item2 .service-item-inner .service-icon:after {
+    background-color: #fbe9e6;
+}
+.service-area .service-wrap .service-item3 .service-item-inner .service-icon:before,
+.service-area .service-wrap .service-item3 .service-item-inner .service-icon:after {
+    background-color: #fdf3e3;
+}
+.service-area .service-wrap .service-item4 .service-item-inner .service-icon:before,
+.service-area .service-wrap .service-item4 .service-item-inner .service-icon:after {
+    background-color: #f3ebf7;
+}
+.service-area .service-wrap .service-item .service-item-inner .service-content {
+    padding-right: 35px;
+    padding-left: 35px;
+}
+.service-area .service-wrap .service-item .service-item-inner .service-content .service__title {
+    font-size: 20px;
+    line-height: 20px;
+    font-weight: 800;
+    text-transform: capitalize;
+    margin-bottom: 23px;
+}
+.service-area .service-wrap .service-item .service-item-inner .service-content .service__desc {
+    line-height: 29px;
+}
+.service-area .button-shared .theme-btn,
+.service-area .button-shared .theme-btn:after {
+    background-color: #9c27b0;
+}
+.service-area .button-shared .theme-btn:hover,
+.service-area .button-shared .theme-btn:hover:after {
+    background-color: #56185f;
+}
+
+/* Heartbeat frame*/
+@-webkit-keyframes heartbeat {
+    to {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+}
+
+@keyframes heartbeat {
+    to {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+}
+
+/*===================================
+    SERVICE AREA 2
+=====================================*/
+.service-area2 {
+    padding-top: 120px;
+}
+.service-area2 .heart-icon-1 {
+    top: 30px;
+}
+.service-area2 .heart-icon-2 {
+    top: 14%;
+    left: 0;
+}
