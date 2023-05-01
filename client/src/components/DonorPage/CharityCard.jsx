@@ -1,11 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function CharityCard({ charity, cardData, progress }) {
     const navigate = useNavigate();
+    const [charityId, setCharityId] = useState(null);
+
 
     // Event Handlers
+    useEffect(() => {
+      if (charity) {
+        setCharityId(charity.id);
+      }
+    }, [charity]);
     function handleClick(event) {
-        navigate(`/charitydetails/${charity.id}`); // Navigate to the CharityDetails page for this charity
+        navigate(`/charitydetails?id=${charityId}`); // Navigate to the CharityDetails page for this charity
     }
 
     const num = (Math.round(((charity?.total_donations/charity.goal_amount)*100)/10))*10
@@ -45,71 +53,7 @@ function CharityCard({ charity, cardData, progress }) {
   </div>
 </div>
 
-//         <div>
-//       {charity ? (
-//         <div>
-//           <h2 className="text-2xl font-bold mb-2">{charity.name}</h2>
-//           <p className="text-gray-500 mb-2">{charity.mission}</p>
-//           <div className="h-1 w-20 bg-blue-500 mb-3"></div>
-//           <div className="flex items-center mb-2">
-//             <div className="w-12 h-12 bg-cover bg-center rounded-full mr-3" style={{ backgroundImage: `url(${charity.logo})` }}></div>
-//             <div>
-//               <p className="text-lg font-medium">{charity.cause}</p>
-//               <p className="text-gray-500">{charity.location}</p>
-//             </div>
-//           </div>
-//           <p className="text-gray-800">{charity.description}</p>
-//           <div className="mt-4 flex justify-between">
-//             <div className="text-xs font-bold uppercase text-gray-500">Raised</div>
-//             <div className="text-xs font-bold uppercase text-gray-500">Goal</div>
-//           </div>
-//           <div className="mt-2 flex justify-between">
-//             <div className="text-sm font-bold text-gray-800">${charity.raised}</div>
-//             <div className="text-sm font-bold text-gray-800">${charity.goal}</div>
-//           </div>
-//           <div className="mt-2">
-//             <div className="relative pt-1">
-//               <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-100">
-//                 <div style={{ width: `${progress}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       ) : (
-//         <div>
-//           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-//             <div className="p-4">
-//               <h3 className="text-lg font-semibold text-gray-800">{cardData.name}</h3>
-//               <p className="text-gray-500 mb-2">{cardData.mission}</p>
-//               <div className="h-1 w-20 bg-blue-500 mb-3"></div>
-//               <div className="flex items-center mb-2">
-//                 <div className="w-12 h-12 bg-cover bg-center rounded-full mr-3" style={{ backgroundImage: `url(${cardData.logo})` }}></div>
-//                 <div>
-//                   <p className="text-lg font-medium">{cardData.cause}</p>
-//                   <p className="text-gray-500">{cardData.location}</p>
-//                 </div>
-// </div>
-// <p className="text-gray-800">{cardData.description}</p>
-// <div className="mt-4 flex justify-between">
-// <div className="text-xs font-bold uppercase text-gray-500">Raised</div>
-// <div className="text-xs font-bold uppercase text-gray-500">Goal</div>
-// </div>
-// <div className="mt-2 flex justify-between">
-// <div className="text-sm font-bold text-gray-800">${cardData.raised}</div>
-// <div className="text-sm font-bold text-gray-800">${cardData.goal}</div>
-// </div>
-// <div className="mt-2">
-// <div className="relative pt-1">
-// <div className="overflow-hidden h-2 mb-4 text-xs flex rounded bg-gray-100">
-// <div style={{ width: `${progress}% `}} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-blue-500"></div>
-// </div>
-// </div>
-// </div>
-// </div>
-// </div>
-// </div>
-// )}
-//        </div>
+
     )
 }
 

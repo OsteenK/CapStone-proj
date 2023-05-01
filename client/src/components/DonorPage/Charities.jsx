@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CharityCard from "./CharityCard";
 import Pagination from "../Pagination";
 import LoadingScreen from "../LoadingScreen";
+import './Charities.css';
 
 
 const Charities = () => {

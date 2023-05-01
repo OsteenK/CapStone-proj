@@ -12,17 +12,6 @@ class CharitiesController < ApplicationController
     render json: @charity
   end
   
-  def approve
-    @charity = Charity.find(params[:id])
-    @charity.update(approved: true)
-    CharityNotifierMailer.send_application_approved_email(@charity).deliver
-  
-    redirect_to @charity
-  end
-  
-  
-  
-
   def create
     @charity = Charity.new(charity_params)
 
@@ -35,7 +24,9 @@ class CharitiesController < ApplicationController
     end
   end
 
+  # PUT /charities/:id
   def update
+    @charity = Charity.find(params[:id])
     if @charity.update(charity_params)
       render json: @charity, status: :ok
     else
@@ -43,7 +34,29 @@ class CharitiesController < ApplicationController
     end
   end
 
+  # PUT /charities/approve/:id
+  def approve
+    @charity = set_charity
+    
+    if @charity.update(charity_params)
+      CharityNotifierMailer.send_application_approved_email(@charity).deliver
+      render json: @charity, status: :accepted
+    else
+      render json: @charity.errors, status: :unprocessable_entity
+    end    
+  end
+
+  # DELETE /charities/reject/:id
+  def reject
+    @charity = set_charity
+    CharityNotifierMailer.send_application_rejected_email(@charity).deliver
+    @charity.destroy
+    head :no_content
+  end
+
+  # DELETE /charities/:id
   def destroy
+    @charity = set_charity
     AdministratorNotifierMailer.send_charity_deletion_email(@charity).deliver
     CharityNotifierMailer.send_charity_deletion_notice(@charity).deliver
     @charity.destroy
@@ -112,32 +125,32 @@ class CharitiesController < ApplicationController
     @items = @beneficiary.items.find(params[:items_id])
     @items.destroy
     head :no_content
-end
+  end
 
-private
-def set_charity
-@charity = Charity.find(params[:id])
-end
+  private
+  def set_charity
+    @charity = Charity.find(params[:id])
+  end
 
-def unapproved_charities
-  @charities = Charity.where(approved: false)
-  render json: @charities, status: :ok
-end
+  def unapproved_charities
+    @charities = Charity.where(approved: false)
+    render json: @charities, status: :ok
+  end
 
-def approved_charities
-  @charities = Charity.where(approved: true)
-  render json: @charities, status: :ok
-end
+  def approved_charities
+    @charities = Charity.where(approved: true)
+    render json: @charities, status: :ok
+  end
 
-def charity_params
-params.permit( :email, :password)
-end
+  def charity_params
+    params.permit( :email, :password, :approved)
+  end
 
-def beneficiary_params
-params.require(:beneficiary).permit(:name, :description)
-end
+  def beneficiary_params
+    params.require(:beneficiary).permit(:name, :description)
+  end
 
-def items_params
-params.require(:items).permit(:name, :description, :quantity)
-end
+  def items_params
+    params.require(:items).permit(:name, :description, :quantity)
+  end
 end

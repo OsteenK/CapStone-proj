@@ -84,23 +84,23 @@ export default function Register() {
  
   return (
    
-    <div class="signcontainer mx-auto">
+    <div class="signcontainer mx-auto"   >
        <div class="signup-form">
         
-      <div className="signupcontainer">
+      <div className="signupcontainer" >
         <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full' >
   
-        <div className=' bg-lavender-100 flex flex-col justify-center'>
+        <div className=' bg-lavender-100 flex flex-col justify-center' >
      
          
       
         
 
-        <form onSubmit={handleSubmit} className="registration-form" style={{margin: "0 auto", width: "60%"}}>
+        <form onSubmit={handleSubmit} className="registration-form" style={{margin: "0 auto", width: "60%", marginTop: "20px"}}>
   
        <h3 className="signup-heading">Join Our Community </h3>
       
-       <div className="m-4">
+       <div className="m-4" >
          Register As
          <input
            type="radio"

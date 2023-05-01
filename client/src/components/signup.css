@@ -1,5 +1,4 @@
 body {
-    padding: 40px 0;
     background-color: rgba(255, 255, 255, 0.5); /* set the background color of the body to match the background color of the container */
   }
 
@@ -31,7 +30,7 @@ body {
     align-items: center;
     width: 100%;
     max-width: 500px;
-    margin: 0 auto;
+    margin: 50px auto 20px auto;
   }
   
   .registration-form label {

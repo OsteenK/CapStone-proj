@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Pagination from "../Pagination";
 import LoadingScreen from '../LoadingScreen';
+import Swal from "sweetalert";
 
 function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables }) {
   // States
@@ -14,28 +15,110 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
   const lastItemIndexTable2 = currentPageTable2 * itemsPerPage;
   const firstItemIndexTable2 = lastItemIndexTable2 - itemsPerPage;
 
+  console.log(currentUser.id)
   // Event Handlers
   function handleApproval(e){
-    console.log(e.target)
     // Make request to backend to approve the charity
+    // Send PUT request to update charity approval status
+    fetch(`http://localhost:3000/charities/approve/${e.target.id}`, {
+      method: "PUT",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({approved: true})
+    })
+    .then(response => {
+      if (response.ok){
+        Swal({
+          title: "Successful approval!",
+          text: "The charity has been approved and is now active.",
+          icon: "success",
+          button: "OK",
+        })
+        window.location.reload();
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      Swal({
+        title: "Approval Failed",
+        text: `${error}`,
+        icon: "error",
+        button: "OK",
+      })
+    })
   }
 
   function handleRejection(e){
-    console.log(e.target)
     // Make request to backend to reject the application
+    // Send DELETE request to delete the charity from the backend and send rejection email
+    fetch(`http://localhost:3000/charities/reject/${e.target.id}`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(response => {
+      if (response.ok){
+        Swal({
+          title: "Successful rejection!",
+          text: "The charity has been rejected.",
+          icon: "success",
+          button: "OK",
+        })
+        window.location.reload();
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      Swal({
+        title: "Rejection Failed",
+        text: `${error}`,
+        icon: "error",
+        button: "OK",
+      })
+    })
   }
 
   function handleDelete(e){
     console.log(e.target)
     // Make request to backend to delete the charity
+    // Send DELETE request to delete the charity from the backend
+    fetch(`http://localhost:3000/charities/${e.target.id}`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(response => {
+      if (response.ok){
+        Swal({
+          title: "Successful deletion!",
+          text: "The charity has been deleted.",
+          icon: "success",
+          button: "OK",
+        })
+        window.location.reload();
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      Swal({
+        title: "Delete Failed",
+        text: `${error}`,
+        icon: "error",
+        button: "OK",
+      })
+    })
   }
 
 
   if(currentUser === undefined || currentUser.charities === undefined) {
     return (
       <div className='text-center'>
-        <h1 className='text-6xl text-lavender-200 pt-12'>Please refresh the page.</h1>
-        <p>Sorry for the inconvenience :'D</p>
         <LoadingScreen />
       </div>
     )
@@ -49,7 +132,7 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
       <div className='w-100 text-base'>
         {/* Stats Cards */}
         <div className="my-28 text-gray-800 text-center px-32">
-          <div className="grid md:gap-x-8 md:grid-cols-1 lg:gap-x-12 lg:grid-cols-3">
+          <div className="grid sm:gap-y-4 md:gap-x-8 md:grid-cols-1 lg:gap-x-12 lg:grid-cols-3">
   
             {/* First Card */}
             <div className="rounded-2xl shadow-lg h-full block bg-lavender-200 text-left">
@@ -89,41 +172,43 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
           <h1 className='text-white text-4xl font-bold'>Charity Applications</h1>
           <p className='text-lavender-400'>These are the charities awaiting review and decision on whether the are approved or rejected.</p>
           
-          <table className='bg-white w-full  text-lavender-400 text-base mb-4 border'>
-            <thead className='border-b'>
-              <th scope='col' className='px-6 py-4'>Charity Name</th>
-              <th scope='col' className='px-6 py-4'>Email</th>
-              <th scope='col' className='px-6 py-4'>Goal Amount</th>
-              <th scope='col' className='px-6 py-4'>Description</th>
-              <th scope='col' className='px-6 py-4'>Banner Image</th>
-            </thead>
-  
-            <tbody className='divide-y'>
-              {charityApplications.slice(firstItemIndexTable1, lastItemIndexTable1).map((charity) =>
-                <tr>
-                  <td className='whitespace-nowrap px-6 py-4'>{charity.name}</td>
-                  <td className='whitespace-nowrap px-6 py-4'>{charity.email}</td>
-                  <td className='whitespace-nowrap px-6 py-4'>{charity.goal_amount.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    maximumFractionDigits: 0
-                  })}</td>
-  
-                  <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => setPopupVariables({visible: true, header: charity.name, body: charity.description})}>Click to read</button></td>
-  
-  
-                  <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => window.open(charity.img_url, "_blank")}>Click to view</button></td>
-                  {/* Buttons */}
-                  <td>
-  
-                    <button className='p-2 px-3 mr-2 rounded-full bg-lavender-400 hover:bg-lavender-500 text-white  text-base font-bold' onClick={handleApproval}>Approve</button>
-  
-                    <button className='p-2 px-3 mr-2 rounded-full bg-lavender-200 hover:bg-lavender-300 text-white  text-base font-bold' onClick={handleRejection}>Reject</button>
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
+          <div className='overflow-x-scroll'>
+            <table className='bg-white w-full text-lavender-400 text-base mb-4 border'>
+              <thead className='border-b'>
+                <th scope='col' className='px-6 py-4'>Charity Name</th>
+                <th scope='col' className='px-6 py-4'>Email</th>
+                <th scope='col' className='px-6 py-4'>Goal Amount</th>
+                <th scope='col' className='px-6 py-4'>Description</th>
+                <th scope='col' className='px-6 py-4'>Banner Image</th>
+              </thead>
+    
+              <tbody className='divide-y'>
+                {charityApplications.slice(firstItemIndexTable1, lastItemIndexTable1).map((charity) =>
+                  <tr>
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.name}</td>
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.email}</td>
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.goal_amount.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      maximumFractionDigits: 0
+                    })}</td>
+    
+                    <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => setPopupVariables({visible: true, header: charity.name, body: charity.description})}>Click to read</button></td>
+    
+    
+                    <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => window.open(charity.img_url, "_blank")}>Click to view</button></td>
+                    
+                    {/* Buttons */}
+                    <td className='md:flex md:items-center md:pt-3'>
+                      <button id={`${charity.id}`} className='p-2 px-3 mr-2 rounded-full bg-lavender-400 hover:bg-lavender-500 text-white  text-base font-bold' onClick={handleApproval}>Approve</button>
+    
+                      <button id={`${charity.id}`} className='p-2 px-3 mr-2 rounded-full bg-lavender-200 hover:bg-lavender-300 text-white  text-base font-bold' onClick={handleRejection}>Reject</button>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
   
           <Pagination currentPage={currentPageTable1} setCurrentPage={setCurrentPageTable1} totalItems={charityApplications.length} itemsPerPage={itemsPerPage} scrollTo={"charity-applications"}/>
         </div>
@@ -135,48 +220,50 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
           <h1 className='text-lavender-400 text-4xl font-bold'>Active Charities</h1>
           <p className='text-lavender-400'>These are the charities that are currently active and collecting donations.</p>
           
-          <table className='bg-white w-full  text-lavender-400 text-base mb-4 border'>
-            <thead className='border-b rounded-t-lg'>
-              <th scope='col' className='px-6 py-4'>Charity Name</th>
-              <th scope='col' className='px-6 py-4'>Email</th>
-              <th scope='col' className='px-6 py-4'>Total Donations</th>
-              <th scope='col' className='px-6 py-4'>Goal Amount</th>
-              <th scope='col' className='px-6 py-4'>Description</th>
-              <th scope='col' className='px-6 py-4'>Banner Image</th>
-            </thead>
-  
-            <tbody className='divide-y'>
-              {activeCharities.slice(firstItemIndexTable2, lastItemIndexTable2).map((charity) =>
-                <tr>
-                  <td className='whitespace-nowrap px-6 py-4'>{charity.name}</td>
-  
-                  <td className='whitespace-nowrap px-6 py-4'>{charity.email}</td>
-  
-                  <td className='whitespace-nowrap px-6 py-4'>{charity.total_donated.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    maximumFractionDigits: 0
-                  })}</td>
-  
-                  <td className='whitespace-nowrap px-6 py-4'>{charity.goal_amount.toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    maximumFractionDigits: 0
-                  })}</td>
-  
-                  <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => setPopupVariables({visible: true, header: charity.name, body: charity.description})}>Click to read</button></td>
-  
-  
-                  <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => window.open(charity.img_url, "_blank")}>Click to view</button></td>
-                  {/* Buttons */}
-                  <td>
-                    <button className='p-2 px-3 mr-2 rounded-full bg-lavender-200 hover:bg-lavender-300 text-white  text-base font-bold' onClick={handleDelete}>Delete</button>
-                  </td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-  
+          <div className='overflow-x-scroll'>
+            <table className='bg-white w-full  text-lavender-400 text-base mb-4 border'>
+              <thead className='border-b rounded-t-lg'>
+                <th scope='col' className='px-6 py-4'>Charity Name</th>
+                <th scope='col' className='px-6 py-4'>Email</th>
+                <th scope='col' className='px-6 py-4'>Total Donations</th>
+                <th scope='col' className='px-6 py-4'>Goal Amount</th>
+                <th scope='col' className='px-6 py-4'>Description</th>
+                <th scope='col' className='px-6 py-4'>Banner Image</th>
+              </thead>
+    
+              <tbody className='divide-y'>
+                {activeCharities.slice(firstItemIndexTable2, lastItemIndexTable2).map((charity) =>
+                  <tr>
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.name}</td>
+    
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.email}</td>
+    
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.total_donated.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      maximumFractionDigits: 0
+                    })}</td>
+    
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.goal_amount.toLocaleString("en-US", {
+                      style: "currency",
+                      currency: "USD",
+                      maximumFractionDigits: 0
+                    })}</td>
+    
+                    <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => setPopupVariables({visible: true, header: charity.name, body: charity.description})}>Click to read</button></td>
+    
+    
+                    <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => window.open(charity.img_url, "_blank")}>Click to view</button></td>
+                    {/* Buttons */}
+                    <td>
+                      <button id={`${charity.id}`} className='p-2 px-3 mr-2 rounded-full bg-lavender-200 hover:bg-lavender-300 text-white  text-base font-bold' onClick={handleDelete}>Delete</button>
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+
           <Pagination currentPage={currentPageTable2} setCurrentPage={setCurrentPageTable2} totalItems={activeCharities.length} itemsPerPage={itemsPerPage} scrollTo={"active-charities"}/>
         </div>
   

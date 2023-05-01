@@ -1,7 +1,6 @@
 
 import './BeneficiaryForm.css'
 import { useState } from "react";
-import Footer from '../Footer';
 import CharityNavBar from './CharityNavBar';
 const BeneficiaryForm = () => {
 
@@ -130,7 +129,6 @@ const BeneficiaryForm = () => {
                     </li>
                 </ul>
             </div>
-            {/* <Footer /> */}
         </div>
     )
 

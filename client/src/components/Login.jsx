@@ -8,9 +8,7 @@ import Swal from 'sweetalert';
 import './login.css';
 
 
-
-
-export default function Login({ setCurrentUser, setAppUserType }) {
+function Login({ setCurrentUser, setAppUserType }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
@@ -23,10 +21,9 @@ export default function Login({ setCurrentUser, setAppUserType }) {
   const handleLogin = (event) => {
     event.preventDefault();
 
-    fetch("/login", {
+    fetch("http://localhost:3000/login", {
       method: "POST",
       headers:{
-      
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
@@ -48,8 +45,8 @@ export default function Login({ setCurrentUser, setAppUserType }) {
         
       } else {
         localStorage.setItem("token", data.jwt);
-        setCurrentUser(data.current_user)
-        setAppUserType(data.user_type)
+        // setCurrentUser(data.current_user)
+        // setAppUserType(data.user_type)
          // Navigate to the appropriate component
         Swal({
           title: "Success!",
@@ -176,7 +173,7 @@ export default function Login({ setCurrentUser, setAppUserType }) {
   );
 }
 
-
+export default Login;
 
 
 
