@@ -15,7 +15,7 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
   const lastItemIndexTable2 = currentPageTable2 * itemsPerPage;
   const firstItemIndexTable2 = lastItemIndexTable2 - itemsPerPage;
 
-  console.log(currentUser.id)
+  console.log(currentUser?.id)
   // Event Handlers
   function handleApproval(e){
     // Make request to backend to approve the charity
