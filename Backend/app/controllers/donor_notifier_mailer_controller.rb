@@ -1,5 +1,5 @@
-class DonorNotifierMailer < ApplicationMailer
-    default from: 'notifications@example.com'
+class DonorNotifierMailerController < ApplicationMailer
+    default from: 'givehopecharities@gmail.com'
   
     def send_donor_signup_email(donor)
       @donor = donor
