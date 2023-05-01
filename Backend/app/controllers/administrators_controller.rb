@@ -3,7 +3,7 @@ class AdministratorsController < ApplicationController
 
   # POST /admin/login
   def login
-    Administrator = Administrator.find_by(email: params[:email])
+    administrator = Administrator.find_by(email: params[:email])
     if Administrator && Administrator.authenticate(params[:password])
       token = JWT.encode({ administrator_id: Administrator.id }, Rails.application.secrets.secret_key_base, 'HS256')
       render json: { token: token }
