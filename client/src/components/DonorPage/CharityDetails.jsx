@@ -93,49 +93,7 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
               </div>
             </section>
            
-    <section className="content-section"style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-     <div id="charities" className="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8 text-center">
-        <h1 className="mb-2 sm:mt-4 md:mt-14 text-5xl text-lavender-400 font-extrabold leading-tight">Active Charities</h1>
-
-        <p className="mb-16 mt-4 text-xl text-center font-medium "> Each of <span className="text-lavender-200 font-bold">our carefully selected charities</span> aim to promote equality improve health outcomes and create a more just and equitable world for all, through <span className="text-lavender-200 font-bold">proper sanitation and sanitary products</span>.</p>
-      </div>
-
     
-    <div className="card-grid"> 
-    <div className='container'>
-        <div className='row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4'>
-        <div className="col card-group">
-   <div className="card w-100">
-    <img className="card-img-top max-h-64 object-cover" src={charity ? charity.img_url : (cardData && cardData.logo)} alt="..." />
-
-    <div className="card-body">
-      <h5 className="card-title font-bold text-lavender-200">{charity ? charity.name : (cardData && cardData.name)}</h5>
-      <div className="max-h-32 overflow-hidden">
-        <p className="card-text text-base text-left">{charity ? charity.description.slice(0, 200) : (cardData && cardData.description.slice(0, 200))}...</p>
-      </div>
-
-      {/* Progress Bar */}
-      <div>
-       <div className="h-3 w-full bg-lavender-100 rounded mt-4 mx-auto">
-        <div className="h-3 bg-lavender-200 rounded" style={{ width: `${charity ? (charity.total_donations / charity.goal_amount) * 100 : (cardData && (cardData.raised / cardData.goal) * 100)}%` }}></div>
-        </div>
-         <span className="text-medium font-bold">Raised <span className="text-lavender-200">{charity ? toLocaleString(charity.total_donations) : (cardData && toLocaleString(cardData.raised))}</span> of {charity ? toLocaleString(charity.goal_amount) : (cardData && toLocaleString(cardData.goal))}</span>
-      </div>
-
-
-    </div>
-   
-  </div>
-</div>
-        </div>  
-      </div>
-       
-          <button className='btn btn' style={{backgroundColor:'#9840D7',borderRadius:'20px',margin:'30px'}} onClick={() => {window.location.href = 'https://checkout.stripe.com/c/pay/cs_test_a1wbe9GTyCQmrXKcsiMcn3kEbRCpCrGaL6hjHXgOm09ZTRdsxkubBybAAR#fidkdWxOYHwnPyd1blpxYHZxWjA0SH9OR2lBX3xgQnwyMnRKTWBKVHxuS0BAN1JxSDJMMUxXf1BhTWlWbGx%2FUlJhbzQ3SXRfPEJ%2FYWhkX0FdYVVxbEdvblZwQjRSaklOdGpnRz0xMjw8bDJvNTVTZn9tSjRUSycpJ3VpbGtuQH11anZgYUxhJz8ncWB2cVoydkw3ZjI1V0IzXzQ0X0YxYmInKSd3YGNgd3dgd0p3bGJsayc%2FJ21xcXV2PyoqZm1gZm5qcHErdnF3bHVgK2ZqaConeCUl'}}>Donate Now!</button>
-
-       
-        </div> 
-       
-    </section>
 
            <section className="beneficiaryStoriesToDisplay-section">
            {stories.map((beneficiary) => (
