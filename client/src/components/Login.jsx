@@ -5,7 +5,7 @@ import React, {  useContext, useState } from "react";
 import Swal from 'sweetalert';
  import { useNavigate } from "react-router-dom";
  import { Link } from "react-router-dom";
-// import './login.css';
+import './login.css';
 
 
 function Login({ setCurrentUser, setAppUserType }) {
@@ -45,8 +45,8 @@ function Login({ setCurrentUser, setAppUserType }) {
         
       } else {
         localStorage.setItem("token", data.jwt);
-        setCurrentUser(data.current_user)
-        setAppUserType(data.user_type)
+        // setCurrentUser(data.current_user)
+        // setAppUserType(data.user_type)
          // Navigate to the appropriate component
         Swal({
           title: "Success!",
@@ -74,7 +74,7 @@ function Login({ setCurrentUser, setAppUserType }) {
   <div className="login-form">
    <div className="logincontainer">
      <div className='grid grid-cols-1 sm:grid-cols-2 h-screen w-full' >
-  
+    
           <div className='hidden sm:block'>
     <img className='w-full h-full object-cover' src='https://res.cloudinary.com/dtnt2f8ao/image/upload/v1682257030/Give%20Hope/AfriPads.avif' alt="" />
           </div>
@@ -174,7 +174,6 @@ function Login({ setCurrentUser, setAppUserType }) {
 }
 
 export default Login;
-
 
 
 

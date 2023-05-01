@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   #CHARITY ROUTES
   put "/charities/approve/:id", to: "charities#approve"
   delete "/charities/reject/:id", to: "charities#reject"
-
+  get '/charitydetails/:id', to: 'charities#show'
   get '/charities', to: 'charities#index'
   post '/charity/signup', to: 'charities#create'
 

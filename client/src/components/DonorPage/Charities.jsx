@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import CharityCard from "./CharityCard";
 import Pagination from "../Pagination";
 import LoadingScreen from "../LoadingScreen";
+import './Charities.css';
 
 
 const Charities = () => {
@@ -69,6 +70,7 @@ const Charities = () => {
       </div>
 
       <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} totalItems={charitiesToDisplay.length} itemsPerPage={itemsPerPage} scrollTo={"charities"}/>
+    
     </div>
   )};
 
