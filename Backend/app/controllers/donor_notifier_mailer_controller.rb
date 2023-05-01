@@ -1,4 +1,4 @@
-class Donornotifiermailer < ApplicationMailer
+class DonorNotifierMailer < ApplicationMailer
     default from: 'notifications@example.com'
   
     def send_donor_signup_email(donor)
