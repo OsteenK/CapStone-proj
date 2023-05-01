@@ -18,6 +18,7 @@ import CharityDetails from "./components/DonorPage/CharityDetails"
 import CharityDashboard from './components/CharityPage/CharityDashboard';
 import AdministratorDashboard from "./components/Administrator/AdministratorDashboard"
 import DonationForm from './components/DonorPage/DonationForm';
+import AboutArea from './Aboutus';
 
 function App() {
   // States
@@ -73,7 +74,7 @@ function App() {
       <Route exact path="/administratordashboard" element={<AdministratorDashboard popupVariables={popupVariables} setPopupVariables={setPopupVariables}/>} />
       <Route exact path="/donationform" element={<DonationForm/>} />
       <Route path="/charitydetails/:id" component={CharityDetails} />
-
+      <Route exact path="/aboutus" element={<AboutArea/>} />
       {/* <Route exact path="/donationform" element={<DonationForm/>} /> */}
       
 
