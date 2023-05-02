@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import BeneficiaryCard from "./BeneficiaryCard";
 import Pagination from "./Pagination";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 function BeneficiaryStories(){
     // States
@@ -28,6 +30,7 @@ function BeneficiaryStories(){
     }else{
         return(
             <div class="w-screen mx-0 p-4 bg-lavender-100">
+                <NavBar/>
                 {/* Page Heading */}
                 <div class="sm:w-full lg:w-1/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8 text-center">
                     <h1 class="mb-2 sm:mt-4 md:mt-5 text-5xl text-white font-extrabold leading-tight">Changing the World</h1>
@@ -42,7 +45,7 @@ function BeneficiaryStories(){
 
                 {/* Pagination Buttons */}
                 <Pagination totalItems={stories.length} currentPage={currentPage} setCurrentPage={setCurrentPage} itemsPerPage={itemsPerPage}/>
-                
+                <Footer/>
             </div>
         )
     }

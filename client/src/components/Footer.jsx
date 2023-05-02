@@ -7,7 +7,7 @@ function Footer() {
           <div className="container text-white text-center md:text-left mx-6 py-16 px-0">
             <div className="grid-1 grid lg:gap-16 md:gap-12 md:grid-cols-1 lg:grid-cols-2">
               <div className="text-left">
-                <img src="https://res.cloudinary.com/dtnt2f8ao/image/upload/v1682513605/Give%20Hope/Give%20Hope%20Logos/Give_Hope_Logo_dark_kdlh8a.png" className="pb-4 lg:h-32 md:h-28"/>
+                <img src="./Give Hope Logo (1).png" className="pb-4 lg:h-32 md:h-28"/>
                 <p className="">
                   Every member of Give Hope is dedicated to breaking down barriers to education for girls around the world. We can achieve this by not just providing sanitary towels, but also providing clean water and sanitation facilities.
                   <br/><br/>

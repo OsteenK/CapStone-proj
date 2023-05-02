@@ -107,8 +107,9 @@ function NavBar({ currentUser, userType }) {
   )
 
   return (
-    <nav className={`relative w-full flex-wrap items-center justify-between py-2 lg:py-4 sticky top-0 z-10 ${userType === "Charity"? "bg-lavender-400" : "bg-lavender-100"}`}>
-      <div className="flex w-full flex-wrap items-center justify-between px-3">
+  
+    <nav className={`relative w-full flex-wrap items-center justify-between py-1 lg:py-2 sticky top-0 z-10 ${userType === "Charity"? "bg-lavender-400" : "bg-lavender-100"}`}>
+      <div className="flex w-full flex-wrap items-center justify-between ">
         <div  className='lg:visible sm:invisible sm:h-0 lg:h-full'>
           <a className="my-1 mr-2 flex items-center text-white lg:mb-0 lg:mt-0" href={(userType === "Donor" || userType === undefined) ? "/" : "#"}>
             <img
@@ -127,6 +128,7 @@ function NavBar({ currentUser, userType }) {
         </div>
       </div>
     </nav>
+   
   );
 }
 

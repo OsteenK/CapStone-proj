@@ -10,10 +10,12 @@ import CharityCard from './CharityCard';
 import AccordionBox from '../../AccordionBox';
 import { useLocation } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import Footer from '../Footer';
 
 
-const CharityDetails = ({charity, cardData, data}) => {
+const CharityDetails = () => {
   const navigate = useNavigate();
+  const [charity, setCharity] = useState(null);
   const [charities, setCharities] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [beneficiaries, setBeneficiaries] = useState([]);
@@ -25,23 +27,27 @@ const CharityDetails = ({charity, cardData, data}) => {
     {
       title: "Make a difference in the life of a child",
       text:
-        "Suspendisse finibus urna mauris, vitae consequat quam blandit vel. Vestibulum leo ligula, molestie ullamcorper  vulputate vitae sodales commodo nisl. Nulla facilisi.  Pellentesque est metus. There are many variations of eration in some form.",
+        "Did you know that in many parts of Africa, girls miss school during their menstrual cycles because they lack access to adequate sanitary products? This can have a devastating impact on their education and future opportunities. By supporting our organization, you can help provide girls in Africa with the resources they need to manage their menstrual health and stay in school. Make a difference in the life of a child today.",
       status: true,
     },
     {
       title: "Let’s do the right thing now",
       text:
-        "Suspendisse finibus urna mauris, vitae consequat quam blandit vel. Vestibulum leo ligula, molestie ullamcorper  vulputate vitae sodales commodo nisl. Nulla facilisi.  Pellentesque est metus. There are many variations of eration in some form.",
+        "Doing the right thing now can lead to a better tomorrow. Whether it's supporting a charitable cause or making environmentally-conscious choices, every action we take can have a positive impact on the world around us.",
       status: false,
     },
     {
       title: "Join your hand with us for a better life",
       text:
-        "Suspendisse finibus urna mauris, vitae consequat quam blandit vel. Vestibulum leo ligula, molestie ullamcorper  vulputate vitae sodales commodo nisl. Nulla facilisi.  Pellentesque est metus. There are many variations of eration in some form.",
+        "Join us to make a positive impact on the lives of those who need it most. By working together, we can build a better future for communities in need. Your support can help us provide access to education, clean water, healthcare, and other essential services that can transform lives. Let's join hands and create a better world for all.",
       status: false,
     },
   ];
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
 // Pagination variables
 const itemsPerPage = 3; // Number of items per page
 const lastItemIndex = currentPage * itemsPerPage; // Calculate the index after the last item for the current page
@@ -65,7 +71,10 @@ const firstItemIndex = lastItemIndex - itemsPerPage; // Calculate the index of t
       
     })
     .then((response) => response.json())
-    .then((charities) => console.log(charities));
+    .then((charity) => {
+      setCharity(charity);
+      setBeneficiaries(charity.beneficiaries);
+    });
 
   }, [charityId]);
 
@@ -81,11 +90,20 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
  
     
     <>
+    <NavBar/>
        <div>
             <section className='hero-section'>
-               <div className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center" style={{ backgroundImage: 'https://images.unsplash.com/photo-1544476301-66914d9e95aa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80', backgroundRepeat: "no-repeat", backgroundSize: "cover", backgroundPosition: "center" }}>
-                <div className="container mx-auto xl:px-32">
-                   <div className="flex items-center md:justify-end">
+            <div
+             className="px-6 py-32 md:px-12 text-center lg:text-left h-xl flex items-center"
+             style={charity ? {
+                  backgroundImage: `url(${charity.image_url})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center"
+               } : {}}
+             >
+              <div className="container mx-auto xl:px-32">
+               <div className="flex items-center md:justify-end">
                      
                     
                    </div>
@@ -93,33 +111,50 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
               </div>
             </section>
            
-    
+            <section className="mixer-area mixer-area3 text-center">
+              <div className="container">
+                  <div className="row">
+                      <div className="col-lg-12">
+                          <div className="section-heading mixer-heading">
+                             
+                          {charity &&<h1 class="mb-2 sm:mt-4 md:mt-5 text-5xl text-black font-extrabold leading-tight">{charity.name}</h1>}
+                            {charity && <p class="mb-16 mt-4 text-xl text-center font-medium text-black">{charity.description}</p>}
+                              <Link className="theme-btn" to="/donationform">
+                                  start donation
+                              </Link>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+      </section>
 
-           <section className="beneficiaryStoriesToDisplay-section">
-           {stories.map((beneficiary) => (
-           <div className="block rounded-lg bg-white text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.1)]">
-            <img className="rounded-t-lg object-cover h-96 w-full" src={beneficiary.img_url} alt="beneficiary"/>            
-
-            <div className="p-6 px-8">
-                <h5 className="mb-2 py-2 text-2xl font-extrabold leading-tight text-lavender-200 text-center">
-                    {`${beneficiary.name}, ${beneficiary.location}`}
-                </h5>
-
-                <p className="mb-4 text-base text-lavender-400">
-                {beneficiary.description}
-                </p>
-                <p className="text-base text-lavender-400">
-                    <strong className="">{beneficiary.name} received:</strong><br/>
-                    {beneficiary.items}
-                </p>
-
-                
-                
-            </div>
+      <section className="beneficiaryStoriesToDisplay-section">
+  <h2 className="mb-2 sm:mt-4 md:mt-5 text-5xl text-white font-extrabold leading-tight">Beneficiaries</h2>
+  {beneficiaries &&
+    beneficiaries
+      .filter(
+        (beneficiary, index) =>
+          beneficiaries.findIndex(
+            (b) =>
+              b.id === beneficiary.id &&
+              b.name === beneficiary.name &&
+              b.description === beneficiary.description &&
+              b.img_url === beneficiary.img_url
+          ) === index
+      )
+      .map((beneficiary) => (
+        <div key={beneficiary.id} className="card">
+          <img src={beneficiary.img_url} alt={beneficiary.name} />
+          <div className="card-body">
+            <h5 className="card-title">{beneficiary.name}</h5>
+            <p className="card-text">{beneficiary.description}</p>
+          </div>
         </div>
-           ))};
-          </section>
-          
+      ))}
+</section>
+
+
+
          </div>
       
       <section className="faq-area">
@@ -127,7 +162,7 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
           <div className="row">
             <div className="col-lg-6">
 
-              <div className="faq-img-box">
+              <div className="faq-img-box" style={{backgroundImage: `url(${charity.image_url})`}}>
                 <img src="https://images.unsplash.com/photo-1509099863731-ef4bff19e808?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" alt="" />
               </div>
             </div>
@@ -145,6 +180,7 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
           </div>
         </div>
       </section>
+      <Footer/>
       </>
  
 

@@ -88,14 +88,6 @@ const BeneficiaryForm = () => {
                 placeholder= "Items Received"
                 />
 
-                <input className="beneficiary-form-input"
-                name="charity_id"
-                type="integer"
-                onChange= {(event)=>{setCharityId(event.target.value)}}
-                value= {charityId}
-                placeholder= "Charity_Id"
-                />
-
                 <input className="beneficiary-form-input-description"
                 name="description"
                 type="text"
@@ -103,6 +95,7 @@ const BeneficiaryForm = () => {
                 value= {description}
                 placeholder= "Description of how your charity helped the beneficiary using the donations from the donors"
                 />
+                <div></div>
                 <button className='submit-button' type= "submit">Add Story</button>
             </form>
 

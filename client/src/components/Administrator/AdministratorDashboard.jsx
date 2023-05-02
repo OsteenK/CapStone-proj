@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Pagination from "../Pagination";
 import LoadingScreen from '../LoadingScreen';
-import Swal from "sweetalert";
+import Swal from "sweetalert2";
+import Footer from '../Footer';
+import Administratornavbar from "../Administrator/Administrator navbar"
 
 function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables }) {
   // States
@@ -15,7 +17,12 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
   const lastItemIndexTable2 = currentPageTable2 * itemsPerPage;
   const firstItemIndexTable2 = lastItemIndexTable2 - itemsPerPage;
 
-  console.log(currentUser?.id)
+  if (currentUser) {
+    console.log(currentUser.id);
+  } else {
+    console.log("currentUser is undefined");
+  }
+  
   // Event Handlers
   function handleApproval(e){
     // Make request to backend to approve the charity
@@ -30,22 +37,22 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
     })
     .then(response => {
       if (response.ok){
-        Swal({
+        Swal.fire({
           title: "Successful approval!",
           text: "The charity has been approved and is now active.",
           icon: "success",
-          button: "OK",
+          confirmButtonText: "OK",
         })
         window.location.reload();
       }
     })
     .catch(error => {
       console.error(error);
-      Swal({
+      Swal.fire({
         title: "Approval Failed",
         text: `${error}`,
         icon: "error",
-        button: "OK",
+        confirmButtonText: "OK",
       })
     })
   }
@@ -62,22 +69,22 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
     })
     .then(response => {
       if (response.ok){
-        Swal({
+        Swal.fire({
           title: "Successful rejection!",
           text: "The charity has been rejected.",
           icon: "success",
-          button: "OK",
+          confirmButtonText: "OK",
         })
         window.location.reload();
       }
     })
     .catch(error => {
       console.error(error);
-      Swal({
+      Swal.fire({
         title: "Rejection Failed",
         text: `${error}`,
         icon: "error",
-        button: "OK",
+        confirmButtonText: "OK",
       })
     })
   }
@@ -95,34 +102,31 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
     })
     .then(response => {
       if (response.ok){
-        Swal({
+        Swal.fire({
           title: "Successful deletion!",
           text: "The charity has been deleted.",
           icon: "success",
-          button: "OK",
+          confirmButtonText : "OK",
         })
         window.location.reload();
       }
     })
     .catch(error => {
       console.error(error);
-      Swal({
+      Swal.fire({
         title: "Delete Failed",
         text: `${error}`,
         icon: "error",
-        button: "OK",
+        confirmButtonText : "OK",
       })
     })
   }
 
-
-  if(currentUser === undefined || currentUser.charities === undefined) {
-    return (
-      <div className='text-center'>
-        <LoadingScreen />
-      </div>
-    )
-  } else {
+  if(!currentUser || !currentUser.charities) {
+    // handle error or return null
+    return null;
+} else {
+  
     // Array to hold the active charities
     const activeCharities = currentUser.charities.filter((charity) => charity.approved)
     // Array to hold the charity applications
@@ -130,6 +134,8 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
 
     return (
       <div className='w-100 text-base'>
+     
+      <Administratornavbar/>
         {/* Stats Cards */}
         <div className="my-28 text-gray-800 text-center px-32">
           <div className="grid sm:gap-y-4 md:gap-x-8 md:grid-cols-1 lg:gap-x-12 lg:grid-cols-3">
@@ -137,11 +143,14 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
             {/* First Card */}
             <div className="rounded-2xl shadow-lg h-full block bg-lavender-200 text-left">
               <div className="p-6 pt-10">
-                <h1 className="text-7xl font-extrabold text-white my-2 mt-5">{activeCharities.reduce((acc, charity) => {return acc + charity.total_donated}, 0).toLocaleString("en-US", {
-                    style: "currency",
-                    currency: "USD",
-                    maximumFractionDigits: 0
-                  })}</h1>
+                <h1 className="text-7xl font-extrabold text-white my-2 mt-5">
+                  {activeCharities.reduce((acc, charity) => {return acc + (charity.total_donated || 0)}, 0)?.toLocaleString("en-US", {
+                      style: "currency",
+                        currency: "USD",
+                        maximumFractionDigits: 0
+                   })
+
+                  }</h1>
                 <h3 className="text-4xl font-normal text-white mb-3">Raised</h3>
                 {/* <a className='text-lavender-200'>More info</a> */}
               </div>
@@ -187,11 +196,13 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
                   <tr>
                     <td className='whitespace-nowrap px-6 py-4'>{charity.name}</td>
                     <td className='whitespace-nowrap px-6 py-4'>{charity.email}</td>
-                    <td className='whitespace-nowrap px-6 py-4'>{charity.goal_amount.toLocaleString("en-US", {
+                    <td className='whitespace-nowrap px-6 py-4'>
+                      {charity.goal_amount?.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                       maximumFractionDigits: 0
-                    })}</td>
+                    })
+                    }</td>
     
                     <td><button type="button" className='whitespace-nowrap px-6 py-4 underline decoration-solid text-lavender-400 hover:text-lavender-200' onClick={() => setPopupVariables({visible: true, header: charity.name, body: charity.description})}>Click to read</button></td>
     
@@ -238,13 +249,13 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
     
                     <td className='whitespace-nowrap px-6 py-4'>{charity.email}</td>
     
-                    <td className='whitespace-nowrap px-6 py-4'>{charity.total_donated.toLocaleString("en-US", {
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.total_donated?.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                       maximumFractionDigits: 0
                     })}</td>
     
-                    <td className='whitespace-nowrap px-6 py-4'>{charity.goal_amount.toLocaleString("en-US", {
+                    <td className='whitespace-nowrap px-6 py-4'>{charity.goal_amount?.toLocaleString("en-US", {
                       style: "currency",
                       currency: "USD",
                       maximumFractionDigits: 0
@@ -266,7 +277,7 @@ function AdministratorDashboard({ currentUser, popupVariables, setPopupVariables
 
           <Pagination currentPage={currentPageTable2} setCurrentPage={setCurrentPageTable2} totalItems={activeCharities.length} itemsPerPage={itemsPerPage} scrollTo={"active-charities"}/>
         </div>
-  
+        <Footer/>
       </div>
     );
   }

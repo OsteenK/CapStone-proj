@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom';
-
+import Swal from 'sweetalert2';
 
 import "./signup.css";
 
@@ -59,12 +59,19 @@ export default function Register() {
         Accept: "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify({
+      body: JSON.stringify(data),
         
-      }),
+      
     })
       .then((response) => {
         if (response.ok) {
+          Swal.fire({
+            title: "Success!",
+            text: "SignedUp successfully.",
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+          
           navigate("/login");
         } else {
           // Handle error response
@@ -206,7 +213,7 @@ export default function Register() {
            type="first_name"
            className="form-control"
            placeholder="firstname"
-           onChange={(e) => setName(e.target.value)}
+           onChange={(e) => setFirstName(e.target.value)}
          />
        </div>
        <div className="mb-3">
@@ -215,7 +222,7 @@ export default function Register() {
            type="last_name"
            className="form-control"
            placeholder="lastname"
-           onChange={(e) => setName(e.target.value)}
+           onChange={(e) => setLastName(e.target.value)}
          />
        </div>
 
