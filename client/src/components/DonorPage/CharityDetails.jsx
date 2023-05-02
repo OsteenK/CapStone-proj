@@ -129,10 +129,10 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
       </section>
 
       <section className="beneficiaryStoriesToDisplay-section">
-      <div className="beneficiary-block rounded-lg bg-lavender-100 text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.1)]">
+      <div className="beneficiary-block rounded-lg  text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.1)]">
       <div class="sm:w-full lg:w-2/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8 text-center">
-                    <h1 class="mb-2 sm:mt-4 md:mt-5 text-5xl text-white font-bold leading-tight">Changing the World</h1>
-  <h2 className="mb-2 sm:mt-4 md:mt-5 text-5xl text-white text-align: center font-light leading-tight">Beneficiaries</h2>
+                    <h1 class="mb-2 sm:mt-4 md:mt-5 text-5xl text-black font-bold leading-tight">Changing the World</h1>
+  <h2 className="mb-2 sm:mt-4 md:mt-5 text-5xl text-black text-align: center font-light leading-tight">Beneficiaries</h2>
   {beneficiaries &&
     beneficiaries
       .filter(
