@@ -117,8 +117,8 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
                       <div className="col-lg-12">
                           <div className="section-heading mixer-heading">
                              
-                          {charity &&<h1 class="mb-2 sm:mt-4 md:mt-5 text-5xl text-black font-extrabold leading-tight">{charity.name}</h1>}
-                            {charity && <p class="mb-16 mt-4 text-xl text-center font-medium text-black">{charity.description}</p>}
+                          {charity &&<h1 class="mb-2 sm:mt-4 md:mt-5 text-5xl text-white font-extrabold leading-tight">{charity.name}</h1>}
+                            {charity && <p class="mb-16 mt-4 text-xl text-center font-medium text-white">{charity.description}</p>}
                               <Link className="theme-btn" to="/donationform">
                                   start donation
                               </Link>
@@ -129,7 +129,10 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
       </section>
 
       <section className="beneficiaryStoriesToDisplay-section">
-  <h2 className="mb-2 sm:mt-4 md:mt-5 text-5xl text-white font-extrabold leading-tight">Beneficiaries</h2>
+      <div className="beneficiary-block rounded-lg bg-lavender-100 text-left shadow-[0_2px_15px_-3px_rgba(0,0,0,0.1),0_10px_20px_-2px_rgba(0,0,0,0.1)]">
+      <div class="sm:w-full lg:w-2/2 sm:mx-1 md:mx-auto sm:px-0 md:px-8 text-center">
+                    <h1 class="mb-2 sm:mt-4 md:mt-5 text-5xl text-white font-bold leading-tight">Changing the World</h1>
+  <h2 className="mb-2 sm:mt-4 md:mt-5 text-5xl text-white text-align: center font-light leading-tight">Beneficiaries</h2>
   {beneficiaries &&
     beneficiaries
       .filter(
@@ -143,6 +146,7 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
           ) === index
       )
       .map((beneficiary) => (
+        <div class="card-column">
         <div key={beneficiary.id} className="card">
           <img src={beneficiary.img_url} alt={beneficiary.name} />
           <div className="card-body">
@@ -150,7 +154,10 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
             <p className="card-text">{beneficiary.description}</p>
           </div>
         </div>
+        </div>
       ))}
+      </div>
+      </div>
 </section>
 
 
@@ -162,7 +169,7 @@ const beneficiariesPerPage=  beneficiariesToDisplay.slice(firstItemIndex, lastIt
           <div className="row">
             <div className="col-lg-6">
 
-              <div className="faq-img-box" style={{backgroundImage: `url(${charity.image_url})`}}>
+              <div className="faq-img-box" >
                 <img src="https://images.unsplash.com/photo-1509099863731-ef4bff19e808?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80" alt="" />
               </div>
             </div>
