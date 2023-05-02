@@ -42,6 +42,8 @@ function CharityDashboard() {
     },
     // ... add more donors data here
    ];
+   const [beneficiary, setBeneficiary] = useState();
+   const [beneficiaryData, setBeneficiaryData] = useState();
    const beneficiarydata=[
     {id:1,
     Name:"lory",
@@ -61,12 +63,19 @@ function CharityDashboard() {
       }
 
    ]
- 
+  
    const donorsPerPage = donorData.slice(firstItemIndex,lastItemIndex)
 //addammy,
 
+const handleDelete = (beneficiary) => {
+  const updatedData = beneficiarydata.filter((item) => item.id !== beneficiary?.id);
+  setBeneficiaryData(updatedData);
+};
+
+
   return (
     <div >
+      <CharityNavBar/>
       <div className='header'>
         {/* <CharityNavBar /> */}
         <div className=' mt-9   '>
@@ -166,9 +175,8 @@ function CharityDashboard() {
               <td>{donor.itemsreceived}</td>
               <td><a href="/" target="_blank">click to read</a></td>
               <td>{donor.date}</td>
-              <td><button 
-                            
-                            className="delete-button">Delete</button></td>
+              <td><button className="delete-button" onClick={() => handleDelete(beneficiary)}>Delete</button>
+</td>
             </tr>
           ))}
            

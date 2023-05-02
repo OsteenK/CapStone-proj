@@ -14,7 +14,9 @@ class CharitiesController < ApplicationController
   
   def create
     @charity = Charity.new(charity_params)
-
+    @charity.administrator_id = 1
+    @charity.approved = false 
+    
     if @charity.save
       AdministratorNotifierMailer.send_new_charity_application_email(@charity).deliver
       CharityNotifierMailer.send_application_received_email(@charity).deliver

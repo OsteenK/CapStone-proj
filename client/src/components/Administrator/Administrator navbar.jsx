@@ -4,12 +4,17 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 
-function administratornavbar(user) {
+function AdministratorNavbar(user) {
   console.log(user)
-  
+  const navigate = useNavigate();
   const token =localStorage.getItem('token');
   // Logout
   
+  const logout = () =>{
+    sessionStorage.clear();
+    localStorage.clear();
+          navigate("/login");
+  }
   return (
     <nav className='navbar'>
      <nav
@@ -50,7 +55,8 @@ function administratornavbar(user) {
   
 
   
-  <Link   to='/home' >
+  
+  <Link to='/home'onClick ={logout} className="nav-link" aria-expanded="false">
   <button className='login-button'>Logout</button>
   </Link>
 
@@ -63,4 +69,4 @@ function administratornavbar(user) {
   );
 }
 
-export default administratornavbar;
+export default AdministratorNavbar;

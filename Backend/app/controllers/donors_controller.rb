@@ -1,13 +1,13 @@
 class DonorsController < ApplicationController
   # skip_before_action :authorize, only: [ :create]
-  before_action :authorize_request, only: [:create, :donate, :set_donation_reminder]
+  before_action :authorize_request, only: [ :donate, :set_donation_reminder]
  
 
-
   def index
-    charities = Charity.all
-    render json: { charities: charities }, status: :ok
+    donors = Donor.all
+    render json: { donors: donors }, status: :ok
   end
+  
 
   def create
     donor = Donor.create(donor_params)
@@ -42,8 +42,9 @@ class DonorsController < ApplicationController
   private
 
   def donor_params
-    params.require(:donor).permit( :email, :password)
+    params.permit(:first_name, :last_name, :email, :password)
   end
+  
 
   def donation_params
     params.permit(:amount, :charity_id, :anonymous, :payment_method)

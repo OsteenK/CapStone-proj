@@ -7,10 +7,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #d1c4e9;
-  padding: 1px 10px;
+  background-color: #f7f6fa;
+ 
   
 }
+
 
 .navbar-left {
   display: flex;
@@ -56,3 +57,30 @@
   color: #4955b2;
 }
 
+/* Make the navigation links stack vertically for small screens */
+@media (max-width: 640px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar li {
+    margin: 10px 0;
+  }
+}
+
+/* Adjust the padding and margin of the navigation links */
+.navbar li {
+  margin: 0 10px;
+  padding: 10px;
+}
+
+/* Set the background color and text color of the active navigation link */
+.navbar li.active {
+  background-color: #6b7280;
+  color: #fff;
+}
+
+/* Add hover styles to the navigation links */
+.navbar li:hover {
+  background-color: #d1d5db;
+}

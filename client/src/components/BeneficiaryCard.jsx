@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 function BeneficiaryCard( { story } ) {
     const navigate = useNavigate();
 
+
+    
     // Event Handlers
     function handleClick(event) {
-        navigate(`/charity-details/${story.charity_id}`); // Navigate to the CharityDetails page for this beneficiary
+        { navigate('/charitydetails', { state: { charityId: story.id } })}; // Navigate to the CharityDetails page for this beneficiary
     }
 
     return(
@@ -42,23 +44,3 @@ function BeneficiaryCard( { story } ) {
 
 export default BeneficiaryCard;
 
-
-// // Fetching from backend
-// useEffect(() => {
-//     fetch("http://127.0.0.1:3000/beneficiaries", {
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//       "Content-Type": "application/json"
-//     }
-//     })
-//      .then(response => response.json())
-//      .then((data) => {
-//      console.log(data);
-//      setBeneficiaries(data);
-      
-//       // Do something with the response
-//       })
-//       .catch(error => {
-//       console.log(error);
-//       });
-//      },[token]);

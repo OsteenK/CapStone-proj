@@ -33,11 +33,21 @@ function App() {
 
   // Fetch logged in user
   useEffect(() => {
-    const headers = {'Authorization': `Bearer ${token}`}
-    fetch("http://127.0.0.1:3000/loggedin", {headers})
-    .then((response) => response.json())
+    // fetch the current user's data from the API
+    fetch('http://127.0.0.1:3000/loggedin' ,{
+      method : 'GET',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+    },
+    })
+
+      .then(response => response.json()
     .then((data) => setCurrentUser(data.current_user))
-  }, [])
+  )
+ 
+}, [token]);
+  
 
 
 
@@ -48,14 +58,14 @@ function App() {
     // Check if the current location is login or signup
     const isAuthPage = location.pathname === '/login' || location.pathname === '/signup';
   
-    // Conditionally render NavBar and Footer
-    const renderNavBar = !isAuthPage && <NavBar/>;
-    const renderFooter = !isAuthPage && <Footer/>;
+    // // Conditionally render NavBar and Footer
+    // const renderNavBar = !isAuthPage && <NavBar/>;
+    // const renderFooter = !isAuthPage && <Footer/>;
 
 
   return (
     <div className="App">
-    {renderNavBar}
+    {/* {renderNavBar} */}
       <Routes>
         
       <Route path='/' element={<LandingPage/>}/>
@@ -80,10 +90,20 @@ function App() {
 
       </Routes>
 
-      {renderFooter}
+      {/* {renderFooter} */}
 
       {/* Popup Component can be used by any other component */}
       <Popup visible={popupVariables.visible} header={popupVariables.header} body={popupVariables.body} setPopupVariables={setPopupVariables}/>
+    
+    {/* Render AdministratorDashboard if currentUser exists */}
+    {currentUser?.id && (
+      <AdministratorDashboard
+        currentUser={currentUser}
+        popupVariables={popupVariables}
+        setPopupVariables={setPopupVariables}
+      />
+    )}
+    
     </div>
   );
 }
