@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useState }  from 'react';
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert';
 
@@ -6,6 +6,7 @@ function NavBar({ currentUser, userType }) {
 
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
+  const[Toggle, showMenu] = useState(false);
 
   // Event Handlers
   // Logout
@@ -109,6 +110,8 @@ function NavBar({ currentUser, userType }) {
   return (
   
     <nav className={`relative w-full flex-wrap items-center justify-between py-1 lg:py-2 sticky top-0 z-10 ${userType === "Charity"? "bg-lavender-400" : "bg-lavender-100"}`}>
+      <div className={Toggle ? "nav_menu show-menu" :
+        "nav_menu" }>
       <div className="flex w-full flex-wrap items-center justify-between ">
         <div  className='lg:visible sm:invisible sm:h-0 lg:h-full'>
           <a className="my-1 mr-2 flex items-center text-white lg:mb-0 lg:mt-0" href={(userType === "Donor" || userType === undefined) ? "/" : "#"}>
@@ -126,6 +129,7 @@ function NavBar({ currentUser, userType }) {
           {userType === "Charity" ? charityNavLinks: []}
           {userType === "Administrator" ? administratorNavLinks: []}
         </div>
+      </div>
       </div>
     </nav>
    
